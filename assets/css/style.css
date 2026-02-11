@@ -6,10 +6,10 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    background: linear-gradient(135deg, #222831 0%, #393E46 100%);
     min-height: 100vh;
     padding: 20px;
-    color: #e0e0e0;
+    color: #DFD0B8;
 }
 
 /* Day Selector */
@@ -21,19 +21,19 @@ body {
     display: flex;
     align-items: center;
     gap: 20px;
-    background: rgba(30, 30, 50, 0.95);
+    background: rgba(34, 40, 49, 0.95);
     padding: 15px 30px;
     border-radius: 50px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
     z-index: 1000;
     backdrop-filter: blur(10px);
-    border: 2px solid rgba(139, 92, 246, 0.3);
+    border: 2px solid rgba(148, 137, 121, 0.3);
 }
 
 .nav-btn {
-    background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+    background: linear-gradient(135deg, #948979 0%, #393E46 100%);
     border: none;
-    color: white;
+    color: #DFD0B8;
     font-size: 1.5em;
     width: 45px;
     height: 45px;
@@ -47,7 +47,7 @@ body {
 
 .nav-btn:hover {
     transform: scale(1.1);
-    box-shadow: 0 5px 20px rgba(139, 92, 246, 0.5);
+    box-shadow: 0 5px 20px rgba(148, 137, 121, 0.5);
 }
 
 .nav-btn:active {
@@ -65,13 +65,13 @@ body {
 .day-number {
     font-size: 2em;
     font-weight: bold;
-    color: #8b5cf6;
+    color: #948979;
     min-width: 60px;
     text-align: center;
 }
 
 .day-label {
-    color: #b8b8d0;
+    color: #DFD0B8;
 }
 
 .container {
@@ -81,20 +81,20 @@ body {
 
 header {
     text-align: center;
-    color: white;
+    color: #DFD0B8;
     margin-bottom: 30px;
     padding: 20px;
-    background: rgba(30, 30, 50, 0.7);
+    background: rgba(34, 40, 49, 0.7);
     border-radius: 15px;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(139, 92, 246, 0.2);
+    border: 1px solid rgba(148, 137, 121, 0.2);
 }
 
 header h1 {
     font-size: 2.5em;
     margin-bottom: 10px;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    background: linear-gradient(135deg, #8b5cf6, #6366f1);
+    background: linear-gradient(135deg, #948979, #DFD0B8);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -112,9 +112,9 @@ header p {
 }
 
 .toggle-btn {
-    background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+    background: linear-gradient(135deg, #948979 0%, #393E46 100%);
     border: none;
-    color: white;
+    color: #DFD0B8;
     padding: 12px 30px;
     border-radius: 25px;
     font-size: 1.1em;
@@ -124,12 +124,12 @@ header p {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    box-shadow: 0 5px 20px rgba(139, 92, 246, 0.3);
+    box-shadow: 0 5px 20px rgba(148, 137, 121, 0.3);
 }
 
 .toggle-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.5);
+    box-shadow: 0 8px 25px rgba(148, 137, 121, 0.5);
 }
 
 .toggle-btn:active {
@@ -149,18 +149,18 @@ header p {
 }
 
 .prayer-card {
-    background: rgba(30, 30, 50, 0.8);
+    background: rgba(57, 62, 70, 0.8);
     border-radius: 20px;
     padding: 25px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid rgba(139, 92, 246, 0.2);
+    border: 1px solid rgba(148, 137, 121, 0.2);
     width: 380px;
 }
 
 .prayer-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(139, 92, 246, 0.3);
+    box-shadow: 0 15px 40px rgba(148, 137, 121, 0.3);
 }
 
 /* Hide cards when in current-only mode */
@@ -173,57 +173,57 @@ header p {
 }
 
 .prayer-card.fajr {
-    border-top: 5px solid #fbbf24;
+    border-top: 5px solid #948979;
 }
 
 .prayer-card.dhuhr {
-    border-top: 5px solid #fbbf24;
+    border-top: 5px solid #948979;
 }
 
 .prayer-card.asr {
-    border-top: 5px solid #fbbf24;
+    border-top: 5px solid #948979;
 }
 
 .prayer-card.maghrib {
-    border-top: 5px solid #fbbf24;
+    border-top: 5px solid #948979;
 }
 
 .prayer-card.isha {
-    border-top: 5px solid #fbbf24;
+    border-top: 5px solid #948979;
 }
 
 /* Completed card - all activities checked */
 .prayer-card.completed {
-    background: rgba(16, 185, 129, 0.15);
-    border-top: 5px solid #10b981;
-    border: 2px solid #10b981;
+    background: rgba(148, 137, 121, 0.2);
+    border-top: 5px solid #948979;
+    border: 2px solid #948979;
 }
 
 .prayer-card.completed .prayer-name,
 .prayer-card.completed .prayer-time {
-    color: #10b981;
+    color: #948979;
 }
 
 .prayer-header {
     text-align: center;
     margin-bottom: 20px;
     padding-bottom: 15px;
-    border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+    border-bottom: 1px solid rgba(148, 137, 121, 0.2);
 }
 
 .prayer-name {
     font-size: 1.8em;
     font-weight: bold;
     margin-bottom: 10px;
-    color: #e0e0e0;
+    color: #DFD0B8;
 }
 
 .prayer-time {
     font-size: 2em;
     font-weight: bold;
-    color: #8b5cf6;
+    color: #948979;
     padding: 10px;
-    background: rgba(139, 92, 246, 0.1);
+    background: rgba(148, 137, 121, 0.1);
     border-radius: 10px;
     display: inline-block;
 }
@@ -235,14 +235,14 @@ header p {
     align-items: flex-start;
     gap: 12px;
     padding: 15px;
-    background: rgba(20, 20, 40, 0.5);
+    background: rgba(34, 40, 49, 0.5);
     border-radius: 12px;
     transition: all 0.3s ease;
     border: 2px solid transparent;
 }
 
 .activity-item:hover {
-    background: rgba(30, 30, 50, 0.8);
+    background: rgba(57, 62, 70, 0.8);
 }
 
 .activity-checkbox {
@@ -263,7 +263,7 @@ header p {
 }
 
 .activity-text {
-    color: #d0d0e0;
+    color: #DFD0B8;
     font-size: 1.05em;
     line-height: 1.5;
 }
@@ -283,6 +283,52 @@ header p {
 .activity-item:has(.activity-checkbox:checked) .time-badge {
     background: rgba(16, 185, 129, 0.2);
     color: #10b981;
+}
+
+/* Expired (missed) state - NOT checked */
+.activity-item.expired:not(:has(.activity-checkbox:checked)) {
+    background: rgba(107, 114, 128, 0.15);
+    border-color: #6b7280;
+    opacity: 0.7;
+}
+
+.activity-item.expired:not(:has(.activity-checkbox:checked)) .activity-text {
+    color: #9ca3af;
+}
+
+.activity-item.expired:not(:has(.activity-checkbox:checked)) .time-badge {
+    background: rgba(107, 114, 128, 0.2);
+    color: #9ca3af;
+}
+
+/* Disable pointer on expired checkbox */
+.activity-item.expired .activity-checkbox:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+/* Missed message */
+.missed-message {
+    margin-top: 10px;
+    padding: 8px 12px;
+    background: rgba(251, 191, 36, 0.15);
+    border: 1px solid rgba(251, 191, 36, 0.3);
+    border-radius: 8px;
+    color: #fbbf24;
+    font-size: 0.9em;
+    text-align: center;
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Current activity highlight */
@@ -320,10 +366,10 @@ header p {
 .time-badge {
     display: inline-block;
     padding: 4px 12px;
-    background: rgba(139, 92, 246, 0.2);
+    background: rgba(148, 137, 121, 0.2);
     border-radius: 20px;
     font-size: 0.9em;
-    color: #8b5cf6;
+    color: #948979;
     margin-left: 8px;
     font-weight: bold;
 }

@@ -3,8 +3,8 @@ let currentDay = 1;
 const maxDays = 30;
 let showAllCards = false; // View mode: false = current only, true = show all
 
-// Ramadan 2026 start date: February 17, 2026
-const ramadanStartDate = new Date(2026, 1, 17); // Month is 0-indexed (1 = February)
+// Ramadan 2026 start date: February 18, 2026
+const ramadanStartDate = new Date(2026, 1, 18); // Month is 0-indexed (1 = February)
 
 // Calculate current Ramadan day based on today's date
 function calculateRamadanDay() {
@@ -32,218 +32,233 @@ function calculateRamadanDay() {
   return maxDays;
 }
 
+// Check if we are currently IN Ramadan (not before, not after)
+function isInRamadan() {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const ramadanStart = new Date(ramadanStartDate);
+  ramadanStart.setHours(0, 0, 0, 0);
+
+  const ramadanEnd = new Date(ramadanStartDate);
+  ramadanEnd.setDate(ramadanEnd.getDate() + maxDays);
+  ramadanEnd.setHours(0, 0, 0, 0);
+
+  return today >= ramadanStart && today < ramadanEnd;
+}
+
 // Prayer times for each day of Ramadan 2026 in Jerusalem
-// Ramadan 2026 starts February 17
+// Ramadan 2026 starts February 18
 const prayerTimes = {
   1: {
-    fajr: "5:15",
-    dhuhr: "12:30",
-    asr: "3:45",
-    maghrib: "6:15",
-    isha: "7:30",
+    fajr: "4:59",
+    dhuhr: "12:01",
+    asr: "3:11",
+    maghrib: "5:36",
+    isha: "7:06",
   },
   2: {
-    fajr: "5:14",
-    dhuhr: "12:30",
-    asr: "3:46",
-    maghrib: "6:16",
-    isha: "7:31",
+    fajr: "4:58",
+    dhuhr: "12:00",
+    asr: "3:11",
+    maghrib: "5:36",
+    isha: "7:06",
   },
   3: {
-    fajr: "5:13",
-    dhuhr: "12:30",
-    asr: "3:47",
-    maghrib: "6:17",
-    isha: "7:32",
+    fajr: "4:57",
+    dhuhr: "12:00",
+    asr: "3:12",
+    maghrib: "5:37",
+    isha: "7:07",
   },
   4: {
-    fajr: "5:12",
-    dhuhr: "12:30",
-    asr: "3:48",
-    maghrib: "6:18",
-    isha: "7:33",
+    fajr: "4:56",
+    dhuhr: "12:00",
+    asr: "3:12",
+    maghrib: "5:38",
+    isha: "7:08",
   },
   5: {
-    fajr: "5:11",
-    dhuhr: "12:30",
-    asr: "3:49",
-    maghrib: "6:19",
-    isha: "7:34",
+    fajr: "4:55",
+    dhuhr: "12:00",
+    asr: "3:13",
+    maghrib: "5:39",
+    isha: "7:09",
   },
   6: {
-    fajr: "5:10",
-    dhuhr: "12:31",
-    asr: "3:50",
-    maghrib: "6:20",
-    isha: "7:35",
+    fajr: "4:54",
+    dhuhr: "12:00",
+    asr: "3:13",
+    maghrib: "5:40",
+    isha: "7:10",
   },
   7: {
-    fajr: "5:09",
-    dhuhr: "12:31",
-    asr: "3:51",
-    maghrib: "6:21",
-    isha: "7:36",
+    fajr: "4:53",
+    dhuhr: "12:00",
+    asr: "3:14",
+    maghrib: "5:41",
+    isha: "7:11",
   },
   8: {
-    fajr: "5:08",
-    dhuhr: "12:31",
-    asr: "3:52",
-    maghrib: "6:22",
-    isha: "7:37",
+    fajr: "4:52",
+    dhuhr: "12:00",
+    asr: "3:14",
+    maghrib: "5:41",
+    isha: "7:11",
   },
   9: {
-    fajr: "5:07",
-    dhuhr: "12:31",
-    asr: "3:53",
-    maghrib: "6:23",
-    isha: "7:38",
+    fajr: "4:51",
+    dhuhr: "12:00",
+    asr: "3:15",
+    maghrib: "5:42",
+    isha: "7:12",
   },
   10: {
-    fajr: "5:06",
-    dhuhr: "12:31",
-    asr: "3:54",
-    maghrib: "6:24",
-    isha: "7:39",
+    fajr: "4:50",
+    dhuhr: "11:59",
+    asr: "3:15",
+    maghrib: "5:43",
+    isha: "7:13",
   },
   11: {
-    fajr: "5:05",
-    dhuhr: "12:31",
-    asr: "3:55",
-    maghrib: "6:25",
-    isha: "7:40",
+    fajr: "4:49",
+    dhuhr: "11:59",
+    asr: "3:16",
+    maghrib: "5:44",
+    isha: "7:14",
   },
   12: {
-    fajr: "5:04",
-    dhuhr: "12:31",
-    asr: "3:56",
-    maghrib: "6:26",
-    isha: "7:41",
+    fajr: "4:48",
+    dhuhr: "11:59",
+    asr: "3:16",
+    maghrib: "5:44",
+    isha: "7:14",
   },
   13: {
-    fajr: "5:03",
-    dhuhr: "12:31",
-    asr: "3:57",
-    maghrib: "6:27",
-    isha: "7:42",
+    fajr: "4:47",
+    dhuhr: "11:59",
+    asr: "3:16",
+    maghrib: "5:45",
+    isha: "7:15",
   },
   14: {
-    fajr: "5:02",
-    dhuhr: "12:31",
-    asr: "3:58",
-    maghrib: "6:28",
-    isha: "7:43",
+    fajr: "4:46",
+    dhuhr: "11:59",
+    asr: "3:17",
+    maghrib: "5:46",
+    isha: "7:16",
   },
   15: {
-    fajr: "5:01",
-    dhuhr: "12:31",
-    asr: "3:59",
-    maghrib: "6:29",
-    isha: "7:44",
+    fajr: "4:44",
+    dhuhr: "11:58",
+    asr: "3:17",
+    maghrib: "5:47",
+    isha: "7:17",
   },
   16: {
-    fajr: "5:00",
-    dhuhr: "12:31",
-    asr: "4:00",
-    maghrib: "6:30",
-    isha: "7:45",
+    fajr: "4:43",
+    dhuhr: "11:58",
+    asr: "3:17",
+    maghrib: "5:47",
+    isha: "7:17",
   },
   17: {
-    fajr: "4:59",
-    dhuhr: "12:31",
-    asr: "4:01",
-    maghrib: "6:31",
-    isha: "7:46",
+    fajr: "4:42",
+    dhuhr: "11:58",
+    asr: "3:18",
+    maghrib: "5:48",
+    isha: "7:18",
   },
   18: {
-    fajr: "4:58",
-    dhuhr: "12:31",
-    asr: "4:02",
-    maghrib: "6:32",
-    isha: "7:47",
+    fajr: "4:41",
+    dhuhr: "11:58",
+    asr: "3:18",
+    maghrib: "5:49",
+    isha: "7:19",
   },
   19: {
-    fajr: "4:57",
-    dhuhr: "12:31",
-    asr: "4:03",
-    maghrib: "6:33",
-    isha: "7:48",
+    fajr: "4:40",
+    dhuhr: "11:57",
+    asr: "3:18",
+    maghrib: "5:50",
+    isha: "7:20",
   },
   20: {
-    fajr: "4:56",
-    dhuhr: "12:31",
-    asr: "4:04",
-    maghrib: "6:34",
-    isha: "7:49",
+    fajr: "4:38",
+    dhuhr: "11:57",
+    asr: "3:19",
+    maghrib: "5:50",
+    isha: "7:20",
   },
   21: {
-    fajr: "4:55",
-    dhuhr: "12:31",
-    asr: "4:05",
-    maghrib: "6:35",
-    isha: "7:50",
+    fajr: "4:37",
+    dhuhr: "11:57",
+    asr: "3:19",
+    maghrib: "5:51",
+    isha: "7:21",
   },
   22: {
-    fajr: "4:54",
-    dhuhr: "12:31",
-    asr: "4:06",
-    maghrib: "6:36",
-    isha: "7:51",
+    fajr: "4:36",
+    dhuhr: "11:57",
+    asr: "3:19",
+    maghrib: "5:52",
+    isha: "7:22",
   },
   23: {
-    fajr: "4:53",
-    dhuhr: "12:31",
-    asr: "4:07",
-    maghrib: "6:37",
-    isha: "7:52",
+    fajr: "4:35",
+    dhuhr: "11:56",
+    asr: "3:20",
+    maghrib: "5:52",
+    isha: "7:22",
   },
   24: {
-    fajr: "4:52",
-    dhuhr: "12:31",
-    asr: "4:08",
-    maghrib: "6:38",
-    isha: "7:53",
+    fajr: "4:33",
+    dhuhr: "11:56",
+    asr: "3:20",
+    maghrib: "5:53",
+    isha: "7:23",
   },
   25: {
-    fajr: "4:51",
-    dhuhr: "12:31",
-    asr: "4:09",
-    maghrib: "6:39",
-    isha: "7:54",
+    fajr: "4:32",
+    dhuhr: "11:56",
+    asr: "3:20",
+    maghrib: "5:54",
+    isha: "7:24",
   },
   26: {
-    fajr: "4:50",
-    dhuhr: "12:31",
-    asr: "4:10",
-    maghrib: "6:40",
-    isha: "7:55",
+    fajr: "4:31",
+    dhuhr: "11:56",
+    asr: "3:20",
+    maghrib: "5:55",
+    isha: "7:25",
   },
   27: {
-    fajr: "4:49",
-    dhuhr: "12:30",
-    asr: "4:11",
-    maghrib: "6:41",
-    isha: "7:56",
+    fajr: "4:29",
+    dhuhr: "11:55",
+    asr: "3:21",
+    maghrib: "5:55",
+    isha: "7:25",
   },
   28: {
-    fajr: "4:48",
-    dhuhr: "12:30",
-    asr: "4:12",
-    maghrib: "6:42",
-    isha: "7:57",
+    fajr: "4:28",
+    dhuhr: "11:55",
+    asr: "3:21",
+    maghrib: "5:56",
+    isha: "7:26",
   },
   29: {
-    fajr: "4:47",
-    dhuhr: "12:30",
-    asr: "4:13",
-    maghrib: "6:43",
-    isha: "7:58",
+    fajr: "4:27",
+    dhuhr: "11:55",
+    asr: "3:21",
+    maghrib: "5:57",
+    isha: "7:27",
   },
   30: {
-    fajr: "4:46",
-    dhuhr: "12:30",
-    asr: "4:14",
-    maghrib: "6:44",
-    isha: "7:59",
+    fajr: "4:25",
+    dhuhr: "11:54",
+    asr: "3:21",
+    maghrib: "5:57",
+    isha: "7:27",
   },
 };
 
@@ -378,6 +393,9 @@ function highlightCurrentActivity() {
     }
   }
 
+  // Mark expired activities (no auto-check)
+  markExpiredActivities(currentMinutes, times);
+
   // Highlight the current prayer card
   if (currentPrayer) {
     const currentCard = document.querySelector(`.prayer-card.${currentPrayer}`);
@@ -386,6 +404,88 @@ function highlightCurrentActivity() {
 
   // Update view based on mode
   updateCardVisibility();
+}
+
+// Mark expired activities (change color only, no auto-check)
+function markExpiredActivities(currentMinutes, times) {
+  // Only mark expired if we're actually IN Ramadan AND viewing today
+  if (!isInRamadan()) {
+    return;
+  }
+
+  const actualRamadanDay = calculateRamadanDay();
+  if (currentDay !== actualRamadanDay) {
+    // Don't mark expired if viewing past or future days
+    return;
+  }
+
+  const prayers = ["fajr", "dhuhr", "asr", "maghrib", "isha"];
+
+  prayers.forEach((prayer) => {
+    const prayerTime = timeToMinutes(times[prayer]);
+    const beforeEndTime = prayerTime;
+    const afterEndTime = prayerTime + 30;
+
+    // Check "before" activity
+    const beforeItem = document.querySelector(
+      `[data-prayer="${prayer}"][data-time="before"]`,
+    );
+    const beforeCheckbox = beforeItem?.querySelector(".activity-checkbox");
+
+    if (beforeItem && beforeCheckbox && currentMinutes >= beforeEndTime) {
+      // Time has passed - mark as expired and disable checkbox
+      if (!beforeCheckbox.checked) {
+        beforeItem.classList.add("expired");
+        beforeCheckbox.disabled = true;
+        addMissedMessage(beforeItem);
+      } else {
+        beforeItem.classList.remove("expired");
+      }
+    } else if (beforeItem) {
+      beforeItem.classList.remove("expired");
+      if (beforeCheckbox) beforeCheckbox.disabled = false;
+      removeMissedMessage(beforeItem);
+    }
+
+    // Check "after" activity
+    const afterItem = document.querySelector(
+      `[data-prayer="${prayer}"][data-time="after"]`,
+    );
+    const afterCheckbox = afterItem?.querySelector(".activity-checkbox");
+
+    if (afterItem && afterCheckbox && currentMinutes >= afterEndTime) {
+      // Time has passed - mark as expired and disable checkbox
+      if (!afterCheckbox.checked) {
+        afterItem.classList.add("expired");
+        afterCheckbox.disabled = true;
+        addMissedMessage(afterItem);
+      } else {
+        afterItem.classList.remove("expired");
+      }
+    } else if (afterItem) {
+      afterItem.classList.remove("expired");
+      if (afterCheckbox) afterCheckbox.disabled = false;
+      removeMissedMessage(afterItem);
+    }
+  });
+}
+
+// Add missed message to activity item
+function addMissedMessage(activityItem) {
+  if (!activityItem.querySelector(".missed-message")) {
+    const message = document.createElement("div");
+    message.className = "missed-message";
+    message.textContent = "⏰ فاتك الوقت، لكن استمر بباقي النشاطات";
+    activityItem.appendChild(message);
+  }
+}
+
+// Remove missed message from activity item
+function removeMissedMessage(activityItem) {
+  const message = activityItem.querySelector(".missed-message");
+  if (message) {
+    message.remove();
+  }
 }
 
 // Update card visibility based on view mode
@@ -486,6 +586,7 @@ function loadCheckboxStates() {
     const prayer = activityItem.dataset.prayer;
     const time = activityItem.dataset.time;
     const key = `day${currentDay}_${prayer}_${time}`;
+
     const saved = localStorage.getItem(key);
     checkbox.checked = saved === "true";
   });
