@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>جدول رمضان 2026 - القدس</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <!-- Day Selector -->
+    <div class="day-selector">
+      <button id="prevDay" class="nav-btn">❮</button>
+      <div class="day-display">
+        <span class="day-label">اليوم</span>
+        <span id="currentDay" class="day-number">1</span>
+        <span class="day-label">من رمضان</span>
+      </div>
+      <button id="nextDay" class="nav-btn">❯</button>
+    </div>
+
+    <div class="container">
+      <header>
+        <div class="moon-icon">🌙</div>
+        <h1>جدولي الرمضاني 2026</h1>
+      </header>
+
+      <div class="view-controls">
+        <button id="toggleView" class="toggle-btn">
+          <span id="viewIcon">📋</span>
+          <span id="viewText">عرض الجميع</span>
+        </button>
+      </div>
+
+      <div class="prayer-cards" id="prayerCards">
+        <!-- صلاة الفجر -->
+        <div class="prayer-card fajr">
+          <div class="prayer-header">
+            <div class="prayer-name">🌅 صلاة الفجر</div>
+            <div class="prayer-time">5:15 ص</div>
+          </div>
+
+          <div class="activity-item" data-prayer="fajr" data-time="before">
+            <input type="checkbox" class="activity-checkbox" id="fajr-before" />
+            <label for="fajr-before" class="activity-content">
+              <span class="time-badge">4:15 ص</span>
+              <span class="activity-text"
+                >قبل الصلاة بساعة: (أضف النشاط هنا)</span
+              >
+            </label>
+          </div>
+
+          <div class="activity-item" data-prayer="fajr" data-time="after">
+            <input type="checkbox" class="activity-checkbox" id="fajr-after" />
+            <label for="fajr-after" class="activity-content">
+              <span class="time-badge">5:15 ص</span>
+              <span class="activity-text"
+                >بعد الصلاة مباشرة: (أضف النشاط هنا)</span
+              >
+            </label>
+          </div>
+        </div>
+
+        <!-- صلاة الظهر -->
+        <div class="prayer-card dhuhr">
+          <div class="prayer-header">
+            <div class="prayer-name">☀️ صلاة الظهر</div>
+            <div class="prayer-time">12:30 م</div>
+          </div>
+
+          <div class="activity-item" data-prayer="dhuhr" data-time="before">
+            <input
+              type="checkbox"
+              class="activity-checkbox"
+              id="dhuhr-before"
+            />
+            <label for="dhuhr-before" class="activity-content">
+              <span class="time-badge">11:30 ص</span>
+              <span class="activity-text"
+                >قبل الصلاة بساعة: (أضف النشاط هنا)</span
+              >
+            </label>
+          </div>
+
+          <div class="activity-item" data-prayer="dhuhr" data-time="after">
+            <input type="checkbox" class="activity-checkbox" id="dhuhr-after" />
+            <label for="dhuhr-after" class="activity-content">
+              <span class="time-badge">12:30 م</span>
+              <span class="activity-text"
+                >بعد الصلاة مباشرة: (أضف النشاط هنا)</span
+              >
+            </label>
+          </div>
+        </div>
+
+        <!-- صلاة العصر -->
+        <div class="prayer-card asr">
+          <div class="prayer-header">
+            <div class="prayer-name">🌤️ صلاة العصر</div>
+            <div class="prayer-time">3:45 م</div>
+          </div>
+
+          <div class="activity-item" data-prayer="asr" data-time="before">
+            <input type="checkbox" class="activity-checkbox" id="asr-before" />
+            <label for="asr-before" class="activity-content">
+              <span class="time-badge">2:45 م</span>
+              <span class="activity-text"
+                >قبل الصلاة بساعة: (أضف النشاط هنا)</span
+              >
+            </label>
+          </div>
+
+          <div class="activity-item" data-prayer="asr" data-time="after">
+            <input type="checkbox" class="activity-checkbox" id="asr-after" />
+            <label for="asr-after" class="activity-content">
+              <span class="time-badge">3:45 م</span>
+              <span class="activity-text"
+                >بعد الصلاة مباشرة: (أضف النشاط هنا)</span
+              >
+            </label>
+          </div>
+        </div>
+
+        <!-- صلاة المغرب -->
+        <div class="prayer-card maghrib">
+          <div class="prayer-header">
+            <div class="prayer-name">🌆 صلاة المغرب</div>
+            <div class="prayer-time">6:15 م</div>
+          </div>
+
+          <div class="activity-item" data-prayer="maghrib" data-time="before">
+            <input
+              type="checkbox"
+              class="activity-checkbox"
+              id="maghrib-before"
+            />
+            <label for="maghrib-before" class="activity-content">
+              <span class="time-badge">5:15 م</span>
+              <span class="activity-text"
+                >قبل الصلاة بساعة: (أضف النشاط هنا)</span
+              >
+            </label>
+          </div>
+
+          <div class="activity-item" data-prayer="maghrib" data-time="after">
+            <input
+              type="checkbox"
+              class="activity-checkbox"
+              id="maghrib-after"
+            />
+            <label for="maghrib-after" class="activity-content">
+              <span class="time-badge">6:15 م</span>
+              <span class="activity-text"
+                >بعد الصلاة مباشرة: (أضف النشاط هنا)</span
+              >
+            </label>
+          </div>
+        </div>
+
+        <!-- صلاة العشاء -->
+        <div class="prayer-card isha">
+          <div class="prayer-header">
+            <div class="prayer-name">🌙 صلاة العشاء</div>
+            <div class="prayer-time">7:30 م</div>
+          </div>
+
+          <div class="activity-item" data-prayer="isha" data-time="before">
+            <input type="checkbox" class="activity-checkbox" id="isha-before" />
+            <label for="isha-before" class="activity-content">
+              <span class="time-badge">6:30 م</span>
+              <span class="activity-text"
+                >قبل الصلاة بساعة: (أضف النشاط هنا)</span
+              >
+            </label>
+          </div>
+
+          <div class="activity-item" data-prayer="isha" data-time="after">
+            <input type="checkbox" class="activity-checkbox" id="isha-after" />
+            <label for="isha-after" class="activity-content">
+              <span class="time-badge">7:30 م</span>
+              <span class="activity-text"
+                >بعد الصلاة مباشرة: (أضف النشاط هنا)</span
+              >
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/js/app.js"></script>
+  </body>
+</html>
