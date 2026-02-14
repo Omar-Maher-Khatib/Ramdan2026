@@ -4,10 +4,108 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>جدول رمضان 2026</title>
+    <link rel="stylesheet" href="assets/css/home.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
-    <link rel="stylesheet" href="assets/css/navbar.css" />
+    <style>
+      body {
+        background: linear-gradient(
+          135deg,
+          #1a1f26 0%,
+          #222831 50%,
+          #2d3642 100%
+        );
+        padding: 20px;
+        direction: rtl;
+        overflow-x: hidden;
+      }
+
+      .background-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image:
+          radial-gradient(
+            circle at 20% 80%,
+            rgba(148, 137, 121, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 20%,
+            rgba(223, 208, 184, 0.08) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 40% 40%,
+            rgba(74, 157, 95, 0.05) 0%,
+            transparent 50%
+          );
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .container {
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Override header to match other pages */
+      .schedule-header {
+        text-align: center;
+        margin-bottom: 35px;
+        padding: 25px 20px;
+        backdrop-filter: blur(10px);
+      }
+
+      .schedule-header-icon {
+        font-size: 3.5em;
+        margin-bottom: 10px;
+        display: block;
+        filter: drop-shadow(0 0 10px rgba(223, 208, 184, 0.5));
+      }
+
+      .schedule-header h1 {
+        font-size: 2.2em;
+        color: #dfd0b8;
+        margin-bottom: 8px;
+        background: linear-gradient(135deg, #948979, #dfd0b8);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .schedule-header p {
+        color: #948979;
+        font-size: 1.1em;
+      }
+
+      /* Footer outside container */
+      .main-footer {
+        position: relative;
+        z-index: 1;
+      }
+
+      .back-button {
+        display: inline-block;
+        padding: 15px 40px;
+        background: linear-gradient(135deg, #948979, #dfd0b8);
+        color: #222831;
+        text-decoration: none;
+        border-radius: 50px;
+        font-size: 1.1em;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 20px rgba(148, 137, 121, 0.3);
+      }
+      .back-button:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(148, 137, 121, 0.5);
+      }
+    </style>
   </head>
   <body>
+    <div class="background-overlay"></div>
     <!-- Side Navbar -->
     <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة">
       <span></span>
@@ -126,13 +224,11 @@
     </div>
 
     <div class="container">
-      <header>
-        <a href="index.html" class="back-home-btn" title="العودة للرئيسية">
-          ← الرئيسية
-        </a>
-        <div class="moon-icon">🌙</div>
+      <div class="schedule-header">
+        <span class="schedule-header-icon">🌙</span>
         <h1>جدولي الرمضاني 2026</h1>
-      </header>
+        <p>نظّم يومك في رمضان</p>
+      </div>
 
       <div class="view-controls">
         <button id="toggleView" class="toggle-btn">
@@ -373,15 +469,24 @@
           </button>
         </div>
       </div>
-
-      <footer class="main-footer">
-        <p>﴿ وَمَا خَلَقْتُ الْجِنَّ وَالْإِنسَ إِلَّا لِيَعْبُدُونِ ﴾</p>
-        <p class="footer-year">1447 هـ - 2026 م</p>
-        <p class="made-by">
-          Made with ❤️ by <strong>Omar Maher Khatib</strong>
-        </p>
-      </footer>
     </div>
+
+    <div
+      style="
+        text-align: center;
+        padding: 40px 20px 50px;
+        position: relative;
+        z-index: 1;
+      "
+    >
+      <a href="index.html" class="back-button">← العودة للرئيسية</a>
+    </div>
+
+    <footer class="main-footer">
+      <p>﴿ وَمَا خَلَقْتُ الْجِنَّ وَالْإِنسَ إِلَّا لِيَعْبُدُونِ ﴾</p>
+      <p class="footer-year">1447 هـ - 2026 م</p>
+      <p class="made-by">Made with ❤️ by <strong>Omar Maher Khatib</strong></p>
+    </footer>
 
     <script src="assets/js/navbar.js"></script>
     <script src="assets/js/app.js"></script>
