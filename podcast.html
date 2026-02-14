@@ -6,45 +6,242 @@
     <title>بودكاست إسلامي - التطبيق الإسلامي</title>
     <link rel="stylesheet" href="assets/css/home.css" />
     <style>
-      .coming-soon {
+      /* ===== Podcast Page Styles ===== */
+      .podcast-page {
+        padding: 30px 20px 60px;
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+      }
+
+      .podcast-header {
+        text-align: center;
+        margin-bottom: 35px;
+        padding-top: 20px;
+      }
+
+      .podcast-header-icon {
+        font-size: 3.5em;
+        margin-bottom: 15px;
+        display: block;
+      }
+
+      .podcast-header h1 {
+        font-size: 2.2em;
+        color: #dfd0b8;
+        margin-bottom: 10px;
+      }
+
+      .podcast-header p {
+        color: #948979;
+        font-size: 1.1em;
+      }
+
+      /* Search Bar */
+      .podcast-search-wrapper {
+        max-width: 550px;
+        margin: 0 auto 40px;
+        position: relative;
+      }
+
+      .podcast-search-wrapper input {
+        width: 100%;
+        padding: 16px 55px 16px 20px;
+        border: 2px solid rgba(148, 137, 121, 0.3);
+        border-radius: 50px;
+        background: rgba(34, 40, 49, 0.85);
+        color: #eeeeee;
+        font-size: 1.05em;
+        font-family: inherit;
+        outline: none;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(8px);
+      }
+
+      .podcast-search-wrapper input::placeholder {
+        color: #948979;
+      }
+
+      .podcast-search-wrapper input:focus {
+        border-color: #948979;
+        box-shadow: 0 0 20px rgba(148, 137, 121, 0.25);
+      }
+
+      .podcast-search-icon {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.3em;
+        pointer-events: none;
+        color: #a09789;
+      }
+
+      .search-count {
+        text-align: center;
+        color: #948979;
+        font-size: 0.9em;
+        margin-top: 10px;
+        display: none;
+      }
+
+      /* Podcast Grid */
+      .podcast-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 22px;
+      }
+
+      .podcast-card {
+        background: linear-gradient(
+          145deg,
+          rgba(57, 62, 70, 0.7),
+          rgba(34, 40, 49, 0.9)
+        );
+        border: 1px solid rgba(148, 137, 121, 0.2);
+        border-radius: 18px;
+        overflow: hidden;
+        transition: all 0.35s ease;
+        display: flex;
+        flex-direction: column;
+        backdrop-filter: blur(6px);
+      }
+
+      .podcast-card:hover {
+        transform: translateY(-6px);
+        border-color: rgba(148, 137, 121, 0.5);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+      }
+
+      .podcast-card a {
+        display: flex;
+        flex-direction: column;
+        text-decoration: none;
+        color: inherit;
+        flex: 1;
+      }
+
+      .podcast-card-thumb {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        display: block;
+        background: rgba(148, 137, 121, 0.1);
+        border-bottom: 1px solid rgba(148, 137, 121, 0.15);
+        transition:
+          transform 0.35s ease,
+          filter 0.35s ease;
+      }
+
+      .podcast-card:hover .podcast-card-thumb {
+        transform: scale(1.03);
+        filter: brightness(1.1);
+      }
+
+      .podcast-card-body {
+        padding: 16px 18px 20px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        min-height: 80vh;
-        text-align: center;
-        padding: 40px 20px;
+        gap: 6px;
       }
-      .coming-soon-icon {
-        font-size: 5em;
-        margin-bottom: 30px;
-        animation: float 3s ease-in-out infinite;
-      }
-      .coming-soon-title {
-        font-size: 2.5em;
+
+      .podcast-card-number {
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        background: rgba(0, 0, 0, 0.7);
         color: #dfd0b8;
-        margin-bottom: 20px;
+        font-size: 1em;
+        padding: 3px 10px;
+        border-radius: 20px;
+        z-index: 2;
+        backdrop-filter: blur(4px);
       }
-      .coming-soon-text {
-        font-size: 1.2em;
-        color: #948979;
-        margin-bottom: 40px;
+
+      .podcast-card {
+        position: relative;
       }
-      .back-button {
-        display: inline-block;
-        padding: 15px 40px;
-        background: linear-gradient(135deg, #948979, #dfd0b8);
-        color: #222831;
-        text-decoration: none;
-        border-radius: 50px;
+
+      .podcast-card-title {
         font-size: 1.1em;
-        font-weight: bold;
-        transition: all 0.3s ease;
-        box-shadow: 0 8px 20px rgba(148, 137, 121, 0.3);
+        color: #dfd0b8;
+        text-align: center;
+        line-height: 1.5;
+        font-weight: 600;
       }
-      .back-button:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 12px 30px rgba(148, 137, 121, 0.5);
+
+      .podcast-card-subtitle {
+        font-size: 0.82em;
+        color: #948979;
+        text-align: center;
+      }
+
+      /* Play overlay on hover */
+      .podcast-card a {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .podcast-thumb-wrapper {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .podcast-play-overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.35);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        font-size: 2.5em;
+        pointer-events: none;
+      }
+
+      .podcast-card:hover .podcast-play-overlay {
+        opacity: 1;
+      }
+
+      /* No Results */
+      .no-results {
+        display: none;
+        text-align: center;
+        padding: 60px 20px;
+        grid-column: 1 / -1;
+      }
+
+      .no-results-icon {
+        font-size: 3em;
+        margin-bottom: 15px;
+      }
+
+      .no-results-text {
+        color: #948979;
+        font-size: 1.15em;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .podcast-header h1 {
+          font-size: 1.7em;
+        }
+        .podcast-grid {
+          grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+          gap: 16px;
+        }
+        .podcast-card-body {
+          padding: 14px 14px 16px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .podcast-grid {
+          grid-template-columns: 1fr;
+        }
       }
     </style>
   </head>
@@ -119,14 +316,158 @@
 
     <div class="overlay" id="overlay"></div>
 
-    <div class="container coming-soon">
-      <div class="coming-soon-icon">🎙️</div>
-      <h1 class="coming-soon-title">بودكاست إسلامي</h1>
-      <p class="coming-soon-text">
-        هذه الميزة قيد التطوير<br />
-        ستكون متاحة قريباً إن شاء الله
-      </p>
-      <a href="index.html" class="back-button">← العودة للرئيسية</a>
+    <div class="podcast-page">
+      <div class="podcast-header">
+        <span class="podcast-header-icon">🎙️</span>
+        <h1>بودكاست إسلامي</h1>
+        <p>استمع لأفضل البودكاستات الإسلامية</p>
+      </div>
+
+      <!-- Search -->
+      <div class="podcast-search-wrapper">
+        <span class="podcast-search-icon">🔍</span>
+        <input
+          type="text"
+          id="podcastSearch"
+          placeholder="ابحث عن بودكاست..."
+          autocomplete="off"
+        />
+        <div class="search-count" id="searchCount"></div>
+      </div>
+
+      <!-- Podcast Grid -->
+      <div class="podcast-grid" id="podcastGrid">
+        <div class="podcast-card" data-name="بودكاست 1">
+          <span class="podcast-card-number">#1</span>
+          <a href="https://youtu.be/gryUFL3jAc4?si=5Stp21iz0dMkH_nq" target="_blank" rel="noopener">
+            <div class="podcast-thumb-wrapper">
+              <img class="podcast-card-thumb" src="assets/images/podcast1.avif" alt="بودكاست 1" />
+              <div class="podcast-play-overlay">▶</div>
+            </div>
+            <div class="podcast-card-body">
+              <span class="podcast-card-title">نحو معايشة القرآن | الشيخ محمد نصير </span>
+              <span class="podcast-card-subtitle">فاهم بودكاست</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="podcast-card" data-name="بودكاست 2">
+          <span class="podcast-card-number">#2</span>
+          <a href="https://www.youtube.com/watch?v=35dxmgthnPM" target="_blank" rel="noopener">
+            <div class="podcast-thumb-wrapper">
+              <img class="podcast-card-thumb" src="assets/images/podcast2.jpg" alt="بودكاست 2" />
+              <div class="podcast-play-overlay">▶</div>
+            </div>
+            <div class="podcast-card-body">
+              <span class="podcast-card-title"> ماذا أريد من رمضان؟ | د. أحمد العربي</span>
+              <span class="podcast-card-subtitle">Ahmad alnufais | أحمد النفيس </span>
+            </div>
+          </a>
+        </div>
+
+        <div class="podcast-card" data-name="بودكاست 3">
+          <span class="podcast-card-number">#3</span>
+          <a href="https://youtu.be/qoiMDzxlImE?si=0dtiijtMTCeyg4WG" target="_blank" rel="noopener">
+            <div class="podcast-thumb-wrapper">
+              <img class="podcast-card-thumb" src="assets/images/podcast3.avif" alt="بودكاست 3" />
+              <div class="podcast-play-overlay">▶</div>
+            </div>
+            <div class="podcast-card-body">
+              <span class="podcast-card-title"> الحسد | الشيخ أسد الدين الأيوبي</span>
+              <span class="podcast-card-subtitle">فاهم بودكاست</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="podcast-card" data-name="بودكاست 4">
+          <span class="podcast-card-number">#4</span>
+          <a href="https://youtu.be/_85D3CqkoxA?si=oYP5FPt5QmiQM99g" target="_blank" rel="noopener">
+            <div class="podcast-thumb-wrapper">
+              <img class="podcast-card-thumb" src="assets/images/podcast4.avif" alt="بودكاست 4" />
+              <div class="podcast-play-overlay">▶</div>
+            </div>
+            <div class="podcast-card-body">
+              <span class="podcast-card-title"> فقه التعامل مع النعم | الشيخ هيثم سمير</span>
+              <span class="podcast-card-subtitle">فاهم بودكاست</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="podcast-card" data-name="بودكاست 5">
+          <span class="podcast-card-number">#5</span>
+          <a href="#">
+            <div class="podcast-thumb-wrapper">
+              <img class="podcast-card-thumb" src="assets/images/podcast5.avif" alt="بودكاست 5" />
+              <div class="podcast-play-overlay">▶</div>
+            </div>
+            <div class="podcast-card-body">
+              <span class="podcast-card-title"> الصلاة | د. أحمد العربي</span>
+              <span class="podcast-card-subtitle">فاهم بودكاست</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="podcast-card" data-name="بودكاست 6">
+          <span class="podcast-card-number">#6</span>
+          <a href="https://youtu.be/ngyY6spCHjk?si=NfgEYLuvqOns461k" target="_blank" rel="noopener">
+            <div class="podcast-thumb-wrapper">
+              <img class="podcast-card-thumb" src="assets/images/podcast6.avif" alt="بودكاست 6" />
+              <div class="podcast-play-overlay">▶</div>
+            </div>
+            <div class="podcast-card-body">
+              <span class="podcast-card-title"> الخوف من الله | الشيخ ناجي أبو عمر</span>
+              <span class="podcast-card-subtitle">فاهم بودكاست</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="podcast-card" data-name="بودكاست 7">
+          <span class="podcast-card-number">#7</span>
+          <a href="https://youtu.be/G7438SrOcqM?si=T6qBJ0FODJrb0zm9" target="_blank" rel="noopener">
+            <div class="podcast-thumb-wrapper">
+              <img class="podcast-card-thumb" src="assets/images/podcast7.avif" alt="بودكاست 7" />
+              <div class="podcast-play-overlay">▶</div>
+            </div>
+            <div class="podcast-card-body">
+              <span class="podcast-card-title">الإيمان وأثره على القلب والسلوك | الشيخ إسلام مصطفى عبد المجيد</span>
+              <span class="podcast-card-subtitle">فاهم بودكاست</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="podcast-card" data-name="بودكاست 8">
+          <span class="podcast-card-number">#8</span>
+          <a href="https://www.youtube.com/watch?v=pJ0auP7dbcY&t=2183s" target="_blank" rel="noopener">
+            <div class="podcast-thumb-wrapper">
+              <img class="podcast-card-thumb" src="assets/images/podcast8.avif" alt="بودكاست 8" />
+              <div class="podcast-play-overlay">▶</div>
+            </div>
+            <div class="podcast-card-body">
+              <span class="podcast-card-title">كيف تنجح العلاقات | الشيخ ياسر الحزيمي </span>
+              <span class="podcast-card-subtitle">بودكاست فنجان</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="podcast-card" data-name="بودكاست 9">
+          <span class="podcast-card-number">#9</span>
+          <a href="https://youtu.be/FMSn_XMd2O4?si=yCICvVZGuZAX91og" target="_blank" rel="noopener">
+            <div class="podcast-thumb-wrapper">
+              <img class="podcast-card-thumb" src="assets/images/podcast9.jpg" alt="بودكاست 9" />
+              <div class="podcast-play-overlay">▶</div>
+            </div>
+            <div class="podcast-card-body">
+              <span class="podcast-card-title">كيف خرج رجل واحد فغيّر العالم كله؟ | الشيخ علاء جابر</span>
+              <span class="podcast-card-subtitle">بودكاست لعله خير</span>
+            </div>
+          </a>
+        </div>
+        <!-- No Results Message -->
+        <div class="no-results" id="noResults">
+          <div class="no-results-icon">🔍</div>
+          <p class="no-results-text">لا توجد نتائج مطابقة للبحث</p>
+        </div>
+      </div>
     </div>
 
     <footer class="main-footer">
@@ -136,5 +477,38 @@
     </footer>
 
     <script src="assets/js/navbar.js"></script>
+    <script>
+      // Podcast Search
+      const searchInput = document.getElementById("podcastSearch");
+      const podcastGrid = document.getElementById("podcastGrid");
+      const cards = podcastGrid.querySelectorAll(".podcast-card");
+      const noResults = document.getElementById("noResults");
+      const searchCount = document.getElementById("searchCount");
+
+      searchInput.addEventListener("input", function () {
+        const query = this.value.trim().toLowerCase();
+        let visibleCount = 0;
+
+        cards.forEach((card) => {
+          const name = card.getAttribute("data-name").toLowerCase();
+          const title = card
+            .querySelector(".podcast-card-title")
+            .textContent.toLowerCase();
+          const match = name.includes(query) || title.includes(query);
+          card.style.display = match ? "" : "none";
+          if (match) visibleCount++;
+        });
+
+        if (query.length > 0) {
+          searchCount.style.display = "block";
+          searchCount.textContent = `عدد النتائج: ${visibleCount}`;
+        } else {
+          searchCount.style.display = "none";
+        }
+
+        noResults.style.display =
+          visibleCount === 0 && query.length > 0 ? "block" : "none";
+      });
+    </script>
   </body>
 </html>

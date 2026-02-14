@@ -306,6 +306,7 @@ body {
     position: relative;
     overflow: hidden;
     cursor: pointer;
+    border: var(--primary-color) solid 2px;
 }
 
 .feature-card::before {
