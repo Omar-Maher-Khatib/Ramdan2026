@@ -38,7 +38,7 @@ body {
     gap: 20px;
     background: rgba(34, 40, 49, 0.95);
     padding: 15px 30px;
-    border-radius: 50px;
+    border-radius: 10px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
     z-index: 1000;
     backdrop-filter: blur(10px);
