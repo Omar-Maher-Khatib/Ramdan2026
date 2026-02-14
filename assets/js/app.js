@@ -286,6 +286,24 @@ function addHour(timeStr) {
   return `${h}:${m.toString().padStart(2, "0")}`;
 }
 
+// Add 30 minutes to time
+function addHalfHour(timeStr) {
+  let minutes = timeToMinutes(timeStr) + 30;
+  if (minutes >= 24 * 60) minutes -= 24 * 60;
+  const h = Math.floor(minutes / 60);
+  const m = minutes % 60;
+  return `${h}:${m.toString().padStart(2, "0")}`;
+}
+
+// Subtract 30 minutes from time
+function subtractHalfHour(timeStr) {
+  let minutes = timeToMinutes(timeStr) - 30;
+  if (minutes < 0) minutes += 24 * 60;
+  const h = Math.floor(minutes / 60);
+  const m = minutes % 60;
+  return `${h}:${m.toString().padStart(2, "0")}`;
+}
+
 // Format time for display
 function formatTime(timeStr) {
   const [hours, minutes] = timeStr.split(":").map(Number);
@@ -311,40 +329,45 @@ function updatePrayerTimes() {
     formatTime(times.isha);
 
   // Update time badges
-  document.querySelector(
+  // Fajr: before (1 hour), after (30 min after)
+  const fajrBefore = document.querySelector(
     '[data-prayer="fajr"][data-time="before"] .time-badge',
-  ).textContent = formatTime(subtractHour(times.fajr));
-  document.querySelector(
+  );
+  const fajrAfter = document.querySelector(
     '[data-prayer="fajr"][data-time="after"] .time-badge',
-  ).textContent = formatTime(times.fajr);
+  );
+  if (fajrBefore) fajrBefore.textContent = formatTime(subtractHour(times.fajr));
+  if (fajrAfter) fajrAfter.textContent = formatTime(addHalfHour(times.fajr));
 
-  document.querySelector(
-    '[data-prayer="dhuhr"][data-time="before"] .time-badge',
-  ).textContent = formatTime(subtractHour(times.dhuhr));
-  document.querySelector(
+  // Dhuhr: after only
+  const dhuhrAfter = document.querySelector(
     '[data-prayer="dhuhr"][data-time="after"] .time-badge',
-  ).textContent = formatTime(times.dhuhr);
+  );
+  if (dhuhrAfter) dhuhrAfter.textContent = formatTime(times.dhuhr);
 
-  document.querySelector(
+  // Asr: before (30 min), after
+  const asrBefore = document.querySelector(
     '[data-prayer="asr"][data-time="before"] .time-badge',
-  ).textContent = formatTime(subtractHour(times.asr));
-  document.querySelector(
+  );
+  const asrAfter = document.querySelector(
     '[data-prayer="asr"][data-time="after"] .time-badge',
-  ).textContent = formatTime(times.asr);
+  );
+  if (asrBefore)
+    asrBefore.textContent = formatTime(subtractHalfHour(times.asr));
+  if (asrAfter) asrAfter.textContent = formatTime(times.asr);
 
-  document.querySelector(
+  // Maghrib: before only (1 hour)
+  const maghribBefore = document.querySelector(
     '[data-prayer="maghrib"][data-time="before"] .time-badge',
-  ).textContent = formatTime(subtractHour(times.maghrib));
-  document.querySelector(
-    '[data-prayer="maghrib"][data-time="after"] .time-badge',
-  ).textContent = formatTime(times.maghrib);
+  );
+  if (maghribBefore)
+    maghribBefore.textContent = formatTime(subtractHour(times.maghrib));
 
-  document.querySelector(
-    '[data-prayer="isha"][data-time="before"] .time-badge',
-  ).textContent = formatTime(subtractHour(times.isha));
-  document.querySelector(
+  // Isha: after only
+  const ishaAfter = document.querySelector(
     '[data-prayer="isha"][data-time="after"] .time-badge',
-  ).textContent = formatTime(times.isha);
+  );
+  if (ishaAfter) ishaAfter.textContent = formatTime(times.isha);
 }
 
 // Highlight current activity based on time
@@ -363,17 +386,60 @@ function highlightCurrentActivity() {
     card.classList.remove("current-prayer");
   });
 
-  // Check each prayer time window
-  const prayers = ["fajr", "dhuhr", "asr", "maghrib", "isha"];
+  // Define time windows for each prayer based on new structure
+  const prayerWindows = {
+    fajr: {
+      before: {
+        start: timeToMinutes(times.fajr) - 60,
+        end: timeToMinutes(times.fajr),
+      },
+      after: {
+        start: timeToMinutes(times.fajr),
+        end: timeToMinutes(times.fajr) + 60, // 30 min activity + 30 min window
+      },
+    },
+    dhuhr: {
+      after: {
+        start: timeToMinutes(times.dhuhr),
+        end: timeToMinutes(times.dhuhr) + 30,
+      },
+    },
+    asr: {
+      before: {
+        start: timeToMinutes(times.asr) - 30,
+        end: timeToMinutes(times.asr),
+      },
+      after: {
+        start: timeToMinutes(times.asr),
+        end: timeToMinutes(times.asr) + 30,
+      },
+    },
+    maghrib: {
+      before: {
+        start: timeToMinutes(times.maghrib) - 60,
+        end: timeToMinutes(times.maghrib),
+      },
+    },
+    isha: {
+      after: {
+        start: timeToMinutes(times.isha),
+        end: timeToMinutes(times.isha) + 30,
+      },
+    },
+  };
+
   let currentPrayer = null;
 
-  for (const prayer of prayers) {
-    const prayerTime = timeToMinutes(times[prayer]);
-    const beforeTime = prayerTime - 60;
-    const afterTime = prayerTime + 30; // 30 minutes after prayer
+  // Check each prayer
+  for (const prayer in prayerWindows) {
+    const windows = prayerWindows[prayer];
 
-    // Check if we're in "before" window
-    if (currentMinutes >= beforeTime && currentMinutes < prayerTime) {
+    // Check "before" window if exists
+    if (
+      windows.before &&
+      currentMinutes >= windows.before.start &&
+      currentMinutes < windows.before.end
+    ) {
       const beforeItem = document.querySelector(
         `[data-prayer="${prayer}"][data-time="before"]`,
       );
@@ -382,8 +448,12 @@ function highlightCurrentActivity() {
       break;
     }
 
-    // Check if we're in "after" window (30 minutes after prayer starts)
-    if (currentMinutes >= prayerTime && currentMinutes < afterTime) {
+    // Check "after" window if exists
+    if (
+      windows.after &&
+      currentMinutes >= windows.after.start &&
+      currentMinutes < windows.after.end
+    ) {
       const afterItem = document.querySelector(
         `[data-prayer="${prayer}"][data-time="after"]`,
       );
@@ -419,55 +489,77 @@ function markExpiredActivities(currentMinutes, times) {
     return;
   }
 
-  const prayers = ["fajr", "dhuhr", "asr", "maghrib", "isha"];
+  // Define end times for each prayer's activities
+  const expiryTimes = {
+    fajr: {
+      before: timeToMinutes(times.fajr), // Ends at prayer time
+      after: timeToMinutes(times.fajr) + 60, // Ends 1 hour after prayer
+    },
+    dhuhr: {
+      after: timeToMinutes(times.dhuhr) + 30, // Ends 30 min after prayer
+    },
+    asr: {
+      before: timeToMinutes(times.asr), // Ends at prayer time
+      after: timeToMinutes(times.asr) + 30, // Ends 30 min after prayer
+    },
+    maghrib: {
+      before: timeToMinutes(times.maghrib), // Ends at prayer time
+    },
+    isha: {
+      after: timeToMinutes(times.isha) + 30, // Ends 30 min after prayer
+    },
+  };
 
-  prayers.forEach((prayer) => {
-    const prayerTime = timeToMinutes(times[prayer]);
-    const beforeEndTime = prayerTime;
-    const afterEndTime = prayerTime + 30;
+  // Check each prayer's activities
+  for (const prayer in expiryTimes) {
+    const expiryTime = expiryTimes[prayer];
 
-    // Check "before" activity
-    const beforeItem = document.querySelector(
-      `[data-prayer="${prayer}"][data-time="before"]`,
-    );
-    const beforeCheckbox = beforeItem?.querySelector(".activity-checkbox");
+    // Check "before" activity if exists
+    if (expiryTime.before !== undefined) {
+      const beforeItem = document.querySelector(
+        `[data-prayer="${prayer}"][data-time="before"]`,
+      );
+      const beforeCheckbox = beforeItem?.querySelector(".activity-checkbox");
 
-    if (beforeItem && beforeCheckbox && currentMinutes >= beforeEndTime) {
-      // Time has passed - mark as expired and disable checkbox
-      if (!beforeCheckbox.checked) {
-        beforeItem.classList.add("expired");
-        beforeCheckbox.disabled = true;
-        addMissedMessage(beforeItem);
-      } else {
+      if (beforeItem && beforeCheckbox && currentMinutes >= expiryTime.before) {
+        // Time has passed - mark as expired and disable checkbox
+        if (!beforeCheckbox.checked) {
+          beforeItem.classList.add("expired");
+          beforeCheckbox.disabled = true;
+          addMissedMessage(beforeItem);
+        } else {
+          beforeItem.classList.remove("expired");
+        }
+      } else if (beforeItem) {
         beforeItem.classList.remove("expired");
+        if (beforeCheckbox) beforeCheckbox.disabled = false;
+        removeMissedMessage(beforeItem);
       }
-    } else if (beforeItem) {
-      beforeItem.classList.remove("expired");
-      if (beforeCheckbox) beforeCheckbox.disabled = false;
-      removeMissedMessage(beforeItem);
     }
 
-    // Check "after" activity
-    const afterItem = document.querySelector(
-      `[data-prayer="${prayer}"][data-time="after"]`,
-    );
-    const afterCheckbox = afterItem?.querySelector(".activity-checkbox");
+    // Check "after" activity if exists
+    if (expiryTime.after !== undefined) {
+      const afterItem = document.querySelector(
+        `[data-prayer="${prayer}"][data-time="after"]`,
+      );
+      const afterCheckbox = afterItem?.querySelector(".activity-checkbox");
 
-    if (afterItem && afterCheckbox && currentMinutes >= afterEndTime) {
-      // Time has passed - mark as expired and disable checkbox
-      if (!afterCheckbox.checked) {
-        afterItem.classList.add("expired");
-        afterCheckbox.disabled = true;
-        addMissedMessage(afterItem);
-      } else {
+      if (afterItem && afterCheckbox && currentMinutes >= expiryTime.after) {
+        // Time has passed - mark as expired and disable checkbox
+        if (!afterCheckbox.checked) {
+          afterItem.classList.add("expired");
+          afterCheckbox.disabled = true;
+          addMissedMessage(afterItem);
+        } else {
+          afterItem.classList.remove("expired");
+        }
+      } else if (afterItem) {
         afterItem.classList.remove("expired");
+        if (afterCheckbox) afterCheckbox.disabled = false;
+        removeMissedMessage(afterItem);
       }
-    } else if (afterItem) {
-      afterItem.classList.remove("expired");
-      if (afterCheckbox) afterCheckbox.disabled = false;
-      removeMissedMessage(afterItem);
     }
-  });
+  }
 }
 
 // Add missed message to activity item
@@ -582,7 +674,10 @@ function saveCheckboxState(prayer, time, checked) {
 
 // Load checkbox states for current day
 function loadCheckboxStates() {
-  const checkboxes = document.querySelectorAll(".activity-checkbox");
+  // Load only fixed activities (before/after)
+  const checkboxes = document.querySelectorAll(
+    ".fixed-activity .activity-checkbox",
+  );
   checkboxes.forEach((checkbox) => {
     const activityItem = checkbox.closest(".activity-item");
     const prayer = activityItem.dataset.prayer;
@@ -602,33 +697,41 @@ function updateCardCompletionStatus() {
   const prayers = ["fajr", "dhuhr", "asr", "maghrib", "isha"];
 
   prayers.forEach((prayer) => {
-    const beforeKey = `day${currentDay}_${prayer}_before`;
-    const afterKey = `day${currentDay}_${prayer}_after`;
-
-    const beforeChecked = localStorage.getItem(beforeKey) === "true";
-    const afterChecked = localStorage.getItem(afterKey) === "true";
-
     const card = document.querySelector(`.prayer-card.${prayer}`);
-    if (card) {
-      if (beforeChecked && afterChecked) {
-        card.classList.add("completed");
-      } else {
-        card.classList.remove("completed");
+    if (!card) return;
+
+    // Get all checkboxes in this card (fixed + custom)
+    const allCheckboxes = card.querySelectorAll(".activity-checkbox");
+    let allChecked = true;
+
+    // Check if all checkboxes are checked
+    allCheckboxes.forEach((checkbox) => {
+      if (!checkbox.checked) {
+        allChecked = false;
       }
+    });
+
+    // Only mark as completed if there are checkboxes and all are checked
+    if (allCheckboxes.length > 0 && allChecked) {
+      card.classList.add("completed");
+    } else {
+      card.classList.remove("completed");
     }
   });
 }
 
-// Add event listeners to all checkboxes
-document.querySelectorAll(".activity-checkbox").forEach((checkbox) => {
-  checkbox.addEventListener("change", (e) => {
-    const activityItem = e.target.closest(".activity-item");
-    const prayer = activityItem.dataset.prayer;
-    const time = activityItem.dataset.time;
-    saveCheckboxState(prayer, time, e.target.checked);
-    updateCardCompletionStatus();
+// Add event listeners to all fixed activity checkboxes
+document
+  .querySelectorAll(".fixed-activity .activity-checkbox")
+  .forEach((checkbox) => {
+    checkbox.addEventListener("change", (e) => {
+      const activityItem = e.target.closest(".activity-item");
+      const prayer = activityItem.dataset.prayer;
+      const time = activityItem.dataset.time;
+      saveCheckboxState(prayer, time, e.target.checked);
+      updateCardCompletionStatus();
+    });
   });
-});
 
 // Update current activity every minute
 setInterval(highlightCurrentActivity, 60000);
@@ -678,3 +781,210 @@ datePicker.addEventListener("change", (e) => {
 // Initialize on page load
 loadDay();
 updateDatePicker();
+
+// ============================================
+// CUSTOM ACTIVITIES MANAGEMENT
+// ============================================
+
+// Store custom activities per day and prayer
+let customActivitiesCounter = 0;
+
+// Load custom activities from localStorage
+function loadCustomActivities() {
+  const prayers = ["fajr", "dhuhr", "asr", "maghrib", "isha"];
+  prayers.forEach((prayer) => {
+    const key = `customActivities_day${currentDay}_${prayer}`;
+    const savedActivities = localStorage.getItem(key);
+
+    const container = document.querySelector(
+      `.custom-activities-container[data-prayer="${prayer}"]`,
+    );
+
+    if (container) {
+      container.innerHTML = ""; // Clear existing
+    }
+
+    if (savedActivities) {
+      const activities = JSON.parse(savedActivities);
+      activities.forEach((activity) => {
+        addCustomActivityToDOM(prayer, activity.text, activity.id);
+      });
+    }
+  });
+}
+
+// Save custom activities to localStorage
+function saveCustomActivities(prayer) {
+  const container = document.querySelector(
+    `.custom-activities-container[data-prayer="${prayer}"]`,
+  );
+  const activities = [];
+
+  container.querySelectorAll(".custom-activity-item").forEach((item) => {
+    const id = item.dataset.activityId;
+    const text = item.querySelector(".activity-text").textContent;
+    const checked = item.querySelector(".activity-checkbox").checked;
+    activities.push({ id, text, checked });
+  });
+
+  const key = `customActivities_day${currentDay}_${prayer}`;
+  localStorage.setItem(key, JSON.stringify(activities));
+}
+
+// Add custom activity to DOM
+function addCustomActivityToDOM(prayer, text, activityId = null) {
+  const id = activityId || `custom_${Date.now()}_${customActivitiesCounter++}`;
+  const container = document.querySelector(
+    `.custom-activities-container[data-prayer="${prayer}"]`,
+  );
+
+  const activityDiv = document.createElement("div");
+  activityDiv.className = "custom-activity-item activity-item";
+  activityDiv.dataset.activityId = id;
+  activityDiv.dataset.prayer = prayer;
+  activityDiv.dataset.time = "custom";
+
+  const checkboxId = `${prayer}_custom_${id}`;
+
+  activityDiv.innerHTML = `
+    <button class="delete-activity-btn" onclick="deleteCustomActivity('${prayer}', '${id}')">
+      ✕
+    </button>
+    <input type="checkbox" class="activity-checkbox" id="${checkboxId}" />
+    <label for="${checkboxId}" class="activity-content">
+      <span class="activity-text">${text}</span>
+    </label>
+  `;
+
+  container.appendChild(activityDiv);
+
+  // Load checkbox state
+  const checkboxStateKey = `day${currentDay}_${prayer}_custom_${id}`;
+  const savedState = localStorage.getItem(checkboxStateKey);
+  if (savedState === "true") {
+    activityDiv.querySelector(".activity-checkbox").checked = true;
+  }
+
+  // Add checkbox event listener
+  const checkbox = activityDiv.querySelector(".activity-checkbox");
+  checkbox.addEventListener("change", (e) => {
+    const key = `day${currentDay}_${prayer}_custom_${id}`;
+    localStorage.setItem(key, e.target.checked ? "true" : "false");
+    updateCardCompletionStatus();
+  });
+}
+
+// Delete custom activity
+function deleteCustomActivity(prayer, activityId) {
+  const container = document.querySelector(
+    `.custom-activities-container[data-prayer="${prayer}"]`,
+  );
+  const activityItem = container.querySelector(
+    `.custom-activity-item[data-activity-id="${activityId}"]`,
+  );
+
+  if (activityItem) {
+    activityItem.remove();
+    saveCustomActivities(prayer);
+
+    // Remove checkbox state from localStorage
+    const checkboxStateKey = `day${currentDay}_${prayer}_custom_${activityId}`;
+    localStorage.removeItem(checkboxStateKey);
+
+    updateCardCompletionStatus();
+  }
+}
+
+// Show modal to add activity
+function showAddActivityModal(prayer) {
+  const overlay = document.createElement("div");
+  overlay.className = "modal-overlay";
+  overlay.innerHTML = `
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>➕ إضافة نشاط جديد</h2>
+      </div>
+      <div class="modal-body">
+        <label for="activityInput">اسم النشاط:</label>
+        <input type="text" id="activityInput" placeholder="مثال: قراءة جزء من القرآن" autofocus />
+      </div>
+      <div class="modal-footer">
+        <button class="modal-btn modal-btn-primary" id="saveActivityBtn">
+          حفظ
+        </button>
+        <button class="modal-btn modal-btn-secondary" id="cancelActivityBtn">
+          إلغاء
+        </button>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+
+  const input = overlay.querySelector("#activityInput");
+  const saveBtn = overlay.querySelector("#saveActivityBtn");
+  const cancelBtn = overlay.querySelector("#cancelActivityBtn");
+
+  // Focus input
+  setTimeout(() => input.focus(), 100);
+
+  // Save on Enter key
+  input.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      saveBtn.click();
+    }
+  });
+
+  // Save button
+  saveBtn.addEventListener("click", () => {
+    const text = input.value.trim();
+    if (text) {
+      addCustomActivityToDOM(prayer, text);
+      saveCustomActivities(prayer);
+      overlay.remove();
+    } else {
+      input.focus();
+    }
+  });
+
+  // Cancel button
+  cancelBtn.addEventListener("click", () => {
+    overlay.remove();
+  });
+
+  // Close on overlay click
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) {
+      overlay.remove();
+    }
+  });
+
+  // Close on Escape key
+  document.addEventListener(
+    "keydown",
+    (e) => {
+      if (e.key === "Escape") {
+        overlay.remove();
+      }
+    },
+    { once: true },
+  );
+}
+
+// Add event listeners to all "Add Activity" buttons
+document.querySelectorAll(".add-activity-btn").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const prayer = btn.dataset.prayer;
+    showAddActivityModal(prayer);
+  });
+});
+
+// Override updateDayDisplay to include loading custom activities
+const originalUpdateDayDisplay = updateDayDisplay;
+updateDayDisplay = function () {
+  originalUpdateDayDisplay();
+  loadCustomActivities();
+};
+
+// Load custom activities on initial load
+loadCustomActivities();
