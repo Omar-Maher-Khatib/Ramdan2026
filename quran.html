@@ -51,6 +51,68 @@
   <body>
     <div class="background-overlay"></div>
 
+    <!-- Side Navbar -->
+    <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="side-navbar" id="sideNavbar">
+      <div class="navbar-header">
+        <div class="navbar-logo">🌙</div>
+        <h2 class="navbar-title">القائمة الرئيسية</h2>
+        <button class="close-btn" id="closeBtn" aria-label="إغلاق القائمة">
+          ✕
+        </button>
+      </div>
+
+      <ul class="navbar-menu">
+        <li>
+          <a href="index.html">
+            <span class="menu-icon">🏠</span>
+            <span class="menu-text">الرئيسية</span>
+          </a>
+        </li>
+        <li>
+          <a href="schedule.html">
+            <span class="menu-icon">📅</span>
+            <span class="menu-text">جدولي الرمضاني</span>
+          </a>
+        </li>
+        <li>
+          <a href="azkar.html">
+            <span class="menu-icon">📿</span>
+            <span class="menu-text">الأذكار</span>
+          </a>
+        </li>
+        <li>
+          <a href="quran.html" class="active">
+            <span class="menu-icon">📖</span>
+            <span class="menu-text">وِردي القرآني</span>
+          </a>
+        </li>
+        <li>
+          <a href="podcast.html">
+            <span class="menu-icon">🎙️</span>
+            <span class="menu-text">بودكاست إسلامي</span>
+          </a>
+        </li>
+        <li>
+          <a href="programs.html">
+            <span class="menu-icon">📺</span>
+            <span class="menu-text">برامج إسلامية</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="navbar-footer">
+        <p class="navbar-verse">﴿ رَبِّ اشْرَحْ لِي صَدْرِي ﴾</p>
+      </div>
+    </nav>
+
+    <div class="overlay" id="overlay"></div>
+
     <div class="container coming-soon">
       <div class="coming-soon-icon">📖</div>
       <h1 class="coming-soon-title">وِردي القرآني</h1>
@@ -60,5 +122,13 @@
       </p>
       <a href="index.html" class="back-button">← العودة للرئيسية</a>
     </div>
+
+    <footer class="main-footer">
+      <p>﴿ وَمَا خَلَقْتُ الْجِنَّ وَالْإِنسَ إِلَّا لِيَعْبُدُونِ ﴾</p>
+      <p class="footer-year">1447 هـ - 2026 م</p>
+      <p class="made-by">Made with ❤️ by <strong>Omar Maher Khatib</strong></p>
+    </footer>
+
+    <script src="assets/js/navbar.js"></script>
   </body>
 </html>

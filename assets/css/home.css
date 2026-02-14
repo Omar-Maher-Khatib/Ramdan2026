@@ -46,6 +46,195 @@ body {
 }
 
 /* ==========================================
+   زر القائمة الجانبية (Hamburger Menu)
+   ========================================== */
+.menu-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: rgba(148, 137, 121, 0.9);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.menu-toggle:hover {
+    background: rgba(148, 137, 121, 1);
+    transform: scale(1.05);
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: #EEEEEE;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* ==========================================
+   القائمة الجانبية (Side Navbar)
+   ========================================== */
+.side-navbar {
+    position: fixed;
+    top: 0;
+    right: -320px;
+    width: 300px;
+    height: 100vh;
+    background: linear-gradient(180deg, #222831 0%, #1a1f26 100%);
+    box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
+    z-index: 1002;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.side-navbar.active {
+    right: 0;
+}
+
+.navbar-header {
+    padding: 25px 20px;
+    background: rgba(148, 137, 121, 0.15);
+    border-bottom: 2px solid rgba(148, 137, 121, 0.3);
+    position: relative;
+}
+
+.navbar-logo {
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 0 10px rgba(223, 208, 184, 0.5));
+}
+
+.navbar-title {
+    font-size: 1.3em;
+    color: var(--secondary-color);
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 35px;
+    height: 35px;
+    background: rgba(148, 137, 121, 0.3);
+    border: none;
+    border-radius: 8px;
+    color: #EEEEEE;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-btn:hover {
+    background: rgba(148, 137, 121, 0.5);
+    transform: rotate(90deg);
+}
+
+.navbar-menu {
+    list-style: none;
+    padding: 20px 0;
+    flex: 1;
+}
+
+.navbar-menu li {
+    margin: 0;
+}
+
+.navbar-menu a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 16px 25px;
+    color: var(--text-light);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-right: 3px solid transparent;
+}
+
+.navbar-menu a:hover {
+    background: rgba(148, 137, 121, 0.15);
+    border-right-color: var(--primary-color);
+}
+
+.navbar-menu a.active {
+    background: rgba(148, 137, 121, 0.2);
+    border-right-color: var(--accent-gold);
+    color: var(--secondary-color);
+}
+
+.menu-icon {
+    font-size: 1.5em;
+    min-width: 30px;
+}
+
+.menu-text {
+    font-size: 1.05em;
+    font-weight: 500;
+}
+
+.navbar-footer {
+    padding: 20px;
+    background: rgba(148, 137, 121, 0.1);
+    border-top: 1px solid rgba(148, 137, 121, 0.2);
+}
+
+.navbar-verse {
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 1em;
+    font-style: italic;
+    margin: 0;
+}
+
+/* Overlay للخلفية */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ==========================================
    الحاوية الرئيسية
    ========================================== */
 .container {
@@ -242,6 +431,19 @@ body {
     color: var(--text-dim);
 }
 
+.made-by {
+    font-size: 0.9em;
+    color: var(--text-dim);
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(148, 137, 121, 0.1);
+}
+
+.made-by strong {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
 /* ==========================================
    الرسوم المتحركة (Animations)
    ========================================== */
@@ -316,6 +518,18 @@ body {
 
     .card-icon {
         font-size: 3em;
+    }
+
+    .side-navbar {
+        width: 280px;
+        right: -280px;
+    }
+
+    .menu-toggle {
+        width: 45px;
+        height: 45px;
+        top: 15px;
+        right: 15px;
     }
 }
 

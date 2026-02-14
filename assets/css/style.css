@@ -1141,3 +1141,37 @@ header p {
         padding: 12px;
     }
 }
+
+/* ==========================================
+   التذييل (Footer)
+   ========================================== */
+.main-footer {
+    text-align: center;
+    padding: 30px 20px;
+    border-top: 1px solid rgba(148, 137, 121, 0.2);
+    margin-top: 40px;
+}
+
+.main-footer p {
+    font-size: 1.2em;
+    color: #948979;
+    margin-bottom: 10px;
+}
+
+.footer-year {
+    font-size: 0.95em;
+    color: #948979;
+}
+
+.made-by {
+    font-size: 0.9em;
+    color: #948979;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(148, 137, 121, 0.1);
+}
+
+.made-by strong {
+    color: #DFD0B8;
+    font-weight: 600;
+}
