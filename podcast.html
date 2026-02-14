@@ -224,6 +224,23 @@
         font-size: 1.15em;
       }
 
+      .back-button {
+        display: inline-block;
+        padding: 15px 40px;
+        background: linear-gradient(135deg, #948979, #dfd0b8);
+        color: #222831;
+        text-decoration: none;
+        border-radius: 50px;
+        font-size: 1.1em;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 20px rgba(148, 137, 121, 0.3);
+      }
+      .back-button:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(148, 137, 121, 0.5);
+      }
+
       /* Responsive */
       @media (max-width: 768px) {
         .podcast-header h1 {
@@ -339,13 +356,23 @@
       <div class="podcast-grid" id="podcastGrid">
         <div class="podcast-card" data-name="بودكاست 1">
           <span class="podcast-card-number">#1</span>
-          <a href="https://youtu.be/gryUFL3jAc4?si=5Stp21iz0dMkH_nq" target="_blank" rel="noopener">
+          <a
+            href="https://youtu.be/gryUFL3jAc4?si=5Stp21iz0dMkH_nq"
+            target="_blank"
+            rel="noopener"
+          >
             <div class="podcast-thumb-wrapper">
-              <img class="podcast-card-thumb" src="assets/images/podcast1.avif" alt="بودكاست 1" />
+              <img
+                class="podcast-card-thumb"
+                src="assets/images/podcast1.avif"
+                alt="بودكاست 1"
+              />
               <div class="podcast-play-overlay">▶</div>
             </div>
             <div class="podcast-card-body">
-              <span class="podcast-card-title">نحو معايشة القرآن | الشيخ محمد نصير </span>
+              <span class="podcast-card-title"
+                >نحو معايشة القرآن | الشيخ محمد نصير
+              </span>
               <span class="podcast-card-subtitle">فاهم بودكاست</span>
             </div>
           </a>
@@ -353,27 +380,49 @@
 
         <div class="podcast-card" data-name="بودكاست 2">
           <span class="podcast-card-number">#2</span>
-          <a href="https://www.youtube.com/watch?v=35dxmgthnPM" target="_blank" rel="noopener">
+          <a
+            href="https://www.youtube.com/watch?v=35dxmgthnPM"
+            target="_blank"
+            rel="noopener"
+          >
             <div class="podcast-thumb-wrapper">
-              <img class="podcast-card-thumb" src="assets/images/podcast2.jpg" alt="بودكاست 2" />
+              <img
+                class="podcast-card-thumb"
+                src="assets/images/podcast2.jpg"
+                alt="بودكاست 2"
+              />
               <div class="podcast-play-overlay">▶</div>
             </div>
             <div class="podcast-card-body">
-              <span class="podcast-card-title"> ماذا أريد من رمضان؟ | د. أحمد العربي</span>
-              <span class="podcast-card-subtitle">Ahmad alnufais | أحمد النفيس </span>
+              <span class="podcast-card-title">
+                ماذا أريد من رمضان؟ | د. أحمد العربي</span
+              >
+              <span class="podcast-card-subtitle"
+                >Ahmad alnufais | أحمد النفيس
+              </span>
             </div>
           </a>
         </div>
 
         <div class="podcast-card" data-name="بودكاست 3">
           <span class="podcast-card-number">#3</span>
-          <a href="https://youtu.be/qoiMDzxlImE?si=0dtiijtMTCeyg4WG" target="_blank" rel="noopener">
+          <a
+            href="https://youtu.be/qoiMDzxlImE?si=0dtiijtMTCeyg4WG"
+            target="_blank"
+            rel="noopener"
+          >
             <div class="podcast-thumb-wrapper">
-              <img class="podcast-card-thumb" src="assets/images/podcast3.avif" alt="بودكاست 3" />
+              <img
+                class="podcast-card-thumb"
+                src="assets/images/podcast3.avif"
+                alt="بودكاست 3"
+              />
               <div class="podcast-play-overlay">▶</div>
             </div>
             <div class="podcast-card-body">
-              <span class="podcast-card-title"> الحسد | الشيخ أسد الدين الأيوبي</span>
+              <span class="podcast-card-title">
+                الحسد | الشيخ أسد الدين الأيوبي</span
+              >
               <span class="podcast-card-subtitle">فاهم بودكاست</span>
             </div>
           </a>
@@ -381,13 +430,23 @@
 
         <div class="podcast-card" data-name="بودكاست 4">
           <span class="podcast-card-number">#4</span>
-          <a href="https://youtu.be/_85D3CqkoxA?si=oYP5FPt5QmiQM99g" target="_blank" rel="noopener">
+          <a
+            href="https://youtu.be/_85D3CqkoxA?si=oYP5FPt5QmiQM99g"
+            target="_blank"
+            rel="noopener"
+          >
             <div class="podcast-thumb-wrapper">
-              <img class="podcast-card-thumb" src="assets/images/podcast4.avif" alt="بودكاست 4" />
+              <img
+                class="podcast-card-thumb"
+                src="assets/images/podcast4.avif"
+                alt="بودكاست 4"
+              />
               <div class="podcast-play-overlay">▶</div>
             </div>
             <div class="podcast-card-body">
-              <span class="podcast-card-title"> فقه التعامل مع النعم | الشيخ هيثم سمير</span>
+              <span class="podcast-card-title">
+                فقه التعامل مع النعم | الشيخ هيثم سمير</span
+              >
               <span class="podcast-card-subtitle">فاهم بودكاست</span>
             </div>
           </a>
@@ -397,7 +456,11 @@
           <span class="podcast-card-number">#5</span>
           <a href="#">
             <div class="podcast-thumb-wrapper">
-              <img class="podcast-card-thumb" src="assets/images/podcast5.avif" alt="بودكاست 5" />
+              <img
+                class="podcast-card-thumb"
+                src="assets/images/podcast5.avif"
+                alt="بودكاست 5"
+              />
               <div class="podcast-play-overlay">▶</div>
             </div>
             <div class="podcast-card-body">
@@ -409,13 +472,23 @@
 
         <div class="podcast-card" data-name="بودكاست 6">
           <span class="podcast-card-number">#6</span>
-          <a href="https://youtu.be/ngyY6spCHjk?si=NfgEYLuvqOns461k" target="_blank" rel="noopener">
+          <a
+            href="https://youtu.be/ngyY6spCHjk?si=NfgEYLuvqOns461k"
+            target="_blank"
+            rel="noopener"
+          >
             <div class="podcast-thumb-wrapper">
-              <img class="podcast-card-thumb" src="assets/images/podcast6.avif" alt="بودكاست 6" />
+              <img
+                class="podcast-card-thumb"
+                src="assets/images/podcast6.avif"
+                alt="بودكاست 6"
+              />
               <div class="podcast-play-overlay">▶</div>
             </div>
             <div class="podcast-card-body">
-              <span class="podcast-card-title"> الخوف من الله | الشيخ ناجي أبو عمر</span>
+              <span class="podcast-card-title">
+                الخوف من الله | الشيخ ناجي أبو عمر</span
+              >
               <span class="podcast-card-subtitle">فاهم بودكاست</span>
             </div>
           </a>
@@ -423,13 +496,24 @@
 
         <div class="podcast-card" data-name="بودكاست 7">
           <span class="podcast-card-number">#7</span>
-          <a href="https://youtu.be/G7438SrOcqM?si=T6qBJ0FODJrb0zm9" target="_blank" rel="noopener">
+          <a
+            href="https://youtu.be/G7438SrOcqM?si=T6qBJ0FODJrb0zm9"
+            target="_blank"
+            rel="noopener"
+          >
             <div class="podcast-thumb-wrapper">
-              <img class="podcast-card-thumb" src="assets/images/podcast7.avif" alt="بودكاست 7" />
+              <img
+                class="podcast-card-thumb"
+                src="assets/images/podcast7.avif"
+                alt="بودكاست 7"
+              />
               <div class="podcast-play-overlay">▶</div>
             </div>
             <div class="podcast-card-body">
-              <span class="podcast-card-title">الإيمان وأثره على القلب والسلوك | الشيخ إسلام مصطفى عبد المجيد</span>
+              <span class="podcast-card-title"
+                >الإيمان وأثره على القلب والسلوك | الشيخ إسلام مصطفى عبد
+                المجيد</span
+              >
               <span class="podcast-card-subtitle">فاهم بودكاست</span>
             </div>
           </a>
@@ -437,13 +521,23 @@
 
         <div class="podcast-card" data-name="بودكاست 8">
           <span class="podcast-card-number">#8</span>
-          <a href="https://www.youtube.com/watch?v=pJ0auP7dbcY&t=2183s" target="_blank" rel="noopener">
+          <a
+            href="https://www.youtube.com/watch?v=pJ0auP7dbcY&t=2183s"
+            target="_blank"
+            rel="noopener"
+          >
             <div class="podcast-thumb-wrapper">
-              <img class="podcast-card-thumb" src="assets/images/podcast8.avif" alt="بودكاست 8" />
+              <img
+                class="podcast-card-thumb"
+                src="assets/images/podcast8.avif"
+                alt="بودكاست 8"
+              />
               <div class="podcast-play-overlay">▶</div>
             </div>
             <div class="podcast-card-body">
-              <span class="podcast-card-title">كيف تنجح العلاقات | الشيخ ياسر الحزيمي </span>
+              <span class="podcast-card-title"
+                >كيف تنجح العلاقات | الشيخ ياسر الحزيمي
+              </span>
               <span class="podcast-card-subtitle">بودكاست فنجان</span>
             </div>
           </a>
@@ -451,13 +545,23 @@
 
         <div class="podcast-card" data-name="بودكاست 9">
           <span class="podcast-card-number">#9</span>
-          <a href="https://youtu.be/FMSn_XMd2O4?si=yCICvVZGuZAX91og" target="_blank" rel="noopener">
+          <a
+            href="https://youtu.be/FMSn_XMd2O4?si=yCICvVZGuZAX91og"
+            target="_blank"
+            rel="noopener"
+          >
             <div class="podcast-thumb-wrapper">
-              <img class="podcast-card-thumb" src="assets/images/podcast9.jpg" alt="بودكاست 9" />
+              <img
+                class="podcast-card-thumb"
+                src="assets/images/podcast9.jpg"
+                alt="بودكاست 9"
+              />
               <div class="podcast-play-overlay">▶</div>
             </div>
             <div class="podcast-card-body">
-              <span class="podcast-card-title">كيف خرج رجل واحد فغيّر العالم كله؟ | الشيخ علاء جابر</span>
+              <span class="podcast-card-title"
+                >كيف خرج رجل واحد فغيّر العالم كله؟ | الشيخ علاء جابر</span
+              >
               <span class="podcast-card-subtitle">بودكاست لعله خير</span>
             </div>
           </a>
@@ -467,6 +571,10 @@
           <div class="no-results-icon">🔍</div>
           <p class="no-results-text">لا توجد نتائج مطابقة للبحث</p>
         </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 40px">
+        <a href="index.html" class="back-button">← العودة للرئيسية</a>
       </div>
     </div>
 
