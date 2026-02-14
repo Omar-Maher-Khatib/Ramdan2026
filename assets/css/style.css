@@ -87,7 +87,7 @@ body {
     margin-right: 15px;
 }
 
-.date-picker {
+.day-selector-dropdown {
     background: rgba(57, 62, 70, 0.9);
     border: 2px solid rgba(148, 137, 121, 0.4);
     border-radius: 10px;
@@ -100,22 +100,26 @@ body {
     outline: none;
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
+    min-width: 150px;
+    text-align: center;
+    direction: rtl;
 }
 
-.date-picker:hover {
+.day-selector-dropdown:hover {
     border-color: #948979;
     background: rgba(57, 62, 70, 1);
 }
 
-.date-picker:focus {
+.day-selector-dropdown:focus {
     border-color: #948979;
     box-shadow: 0 0 10px rgba(148, 137, 121, 0.3);
 }
 
-/* Style for date picker calendar icon */
-.date-picker::-webkit-calendar-picker-indicator {
-    filter: invert(85%) sepia(10%) saturate(500%) hue-rotate(360deg);
-    cursor: pointer;
+.day-selector-dropdown option {
+    background: #393E46;
+    color: #DFD0B8;
+    padding: 10px;
+    direction: rtl;
 }
 
 .container {
@@ -491,7 +495,7 @@ header p {
         margin: 10px 0 0 0;
     }
     
-    .date-picker {
+    .day-selector-dropdown {
         width: 100%;
         text-align: center;
     }
@@ -569,7 +573,7 @@ header p {
         font-size: 1em;
     }
     
-    .date-picker {
+    .day-selector-dropdown {
         font-size: 0.9em;
         padding: 6px 10px;
     }

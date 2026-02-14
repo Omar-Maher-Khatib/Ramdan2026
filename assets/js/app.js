@@ -1464,7 +1464,7 @@ document.getElementById("prevDay").addEventListener("click", () => {
     currentDay--;
     saveDay();
     updateDayDisplay();
-    updateDatePicker();
+    updateDaySelector();
   }
 });
 
@@ -1474,7 +1474,7 @@ document.getElementById("nextDay").addEventListener("click", () => {
     currentDay++;
     saveDay();
     updateDayDisplay();
-    updateDatePicker();
+    updateDaySelector();
   }
 });
 
@@ -1548,51 +1548,27 @@ document
 // Update current activity every minute
 setInterval(highlightCurrentActivity, 60000);
 
-// Date Picker functionality
-const datePicker = document.getElementById("datePicker");
+// Day Selector Dropdown functionality
+const daySelector = document.getElementById("daySelector");
 
-// Function to convert Ramadan day to actual date
-function ramadanDayToDate(day) {
-  const date = new Date(ramadanStartDate);
-  date.setDate(date.getDate() + (day - 1));
-  return date;
+// Update day selector when day changes
+function updateDaySelector() {
+  daySelector.value = currentDay.toString();
 }
 
-// Function to format date for input[type="date"]
-function formatDateForInput(date) {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-  return `${year}-${month}-${day}`;
-}
-
-// Update date picker when day changes
-function updateDatePicker() {
-  const selectedDate = ramadanDayToDate(currentDay);
-  datePicker.value = formatDateForInput(selectedDate);
-}
-
-// Handle date picker change
-datePicker.addEventListener("change", (e) => {
-  const selectedDate = new Date(e.target.value + "T00:00:00");
-  const ramadanStart = new Date(ramadanStartDate);
-  ramadanStart.setHours(0, 0, 0, 0);
-  selectedDate.setHours(0, 0, 0, 0);
-
-  const diffTime = selectedDate - ramadanStart;
-  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-
-  if (diffDays >= 0 && diffDays < maxDays) {
-    currentDay = diffDays + 1;
+// Handle day selector change
+daySelector.addEventListener("change", (e) => {
+  const selectedDay = parseInt(e.target.value);
+  if (selectedDay >= 1 && selectedDay <= maxDays) {
+    currentDay = selectedDay;
     saveDay();
     updateDayDisplay();
-    updateDatePicker();
   }
 });
 
 // Initialize on page load
 loadDay();
-updateDatePicker();
+updateDaySelector();
 
 // ============================================
 // CUSTOM ACTIVITIES MANAGEMENT
