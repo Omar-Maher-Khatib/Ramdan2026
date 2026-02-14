@@ -327,52 +327,6 @@ function updatePrayerTimes() {
     formatTime(times.maghrib);
   document.querySelector(".prayer-card.isha .prayer-time").textContent =
     formatTime(times.isha);
-
-  // Update time badges
-  // Fajr: before (1 hour), after (30 min after)
-  const fajrBefore = document.querySelector(
-    '[data-prayer="fajr"][data-time="before"] .time-badge',
-  );
-  const fajrAfter = document.querySelector(
-    '[data-prayer="fajr"][data-time="after"] .time-badge',
-  );
-  if (fajrBefore) fajrBefore.textContent = formatTime(subtractHour(times.fajr));
-  if (fajrAfter) fajrAfter.textContent = formatTime(addHalfHour(times.fajr));
-
-  // Dhuhr: before (1 hour), after
-  const dhuhrBefore = document.querySelector(
-    '[data-prayer="dhuhr"][data-time="before"] .time-badge',
-  );
-  const dhuhrAfter = document.querySelector(
-    '[data-prayer="dhuhr"][data-time="after"] .time-badge',
-  );
-  if (dhuhrBefore)
-    dhuhrBefore.textContent = formatTime(subtractHour(times.dhuhr));
-  if (dhuhrAfter) dhuhrAfter.textContent = formatTime(times.dhuhr);
-
-  // Asr: before (30 min), after
-  const asrBefore = document.querySelector(
-    '[data-prayer="asr"][data-time="before"] .time-badge',
-  );
-  const asrAfter = document.querySelector(
-    '[data-prayer="asr"][data-time="after"] .time-badge',
-  );
-  if (asrBefore)
-    asrBefore.textContent = formatTime(subtractHalfHour(times.asr));
-  if (asrAfter) asrAfter.textContent = formatTime(times.asr);
-
-  // Maghrib: before only (1 hour)
-  const maghribBefore = document.querySelector(
-    '[data-prayer="maghrib"][data-time="before"] .time-badge',
-  );
-  if (maghribBefore)
-    maghribBefore.textContent = formatTime(subtractHour(times.maghrib));
-
-  // Isha: after only
-  const ishaAfter = document.querySelector(
-    '[data-prayer="isha"][data-time="after"] .time-badge',
-  );
-  if (ishaAfter) ishaAfter.textContent = formatTime(times.isha);
 }
 
 // Highlight current activity based on time
@@ -850,9 +804,14 @@ function loadCustomActivities() {
     if (savedActivities) {
       const activities = JSON.parse(savedActivities);
       activities.forEach((activity) => {
+        // تنظيف النص من "قبل الصلاة:" و "بعد الصلاة:" إذا كان محفوظاً بالصيغة القديمة
+        let cleanText = activity.text;
+        if (cleanText.includes(": ")) {
+          cleanText = cleanText.split(": ")[1] || cleanText;
+        }
         addCustomActivityToDOM(
           prayer,
-          activity.text,
+          cleanText,
           activity.id,
           activity.timing || "after",
         );
@@ -870,7 +829,11 @@ function saveCustomActivities(prayer) {
 
   container.querySelectorAll(".custom-activity-item").forEach((item) => {
     const id = item.dataset.activityId;
-    const text = item.querySelector(".activity-text").textContent;
+    let text = item.querySelector(".activity-text").textContent;
+    // تنظيف النص من "قبل الصلاة:" و "بعد الصلاة:" عند الحفظ
+    if (text.includes(": ")) {
+      text = text.split(": ")[1] || text;
+    }
     const checked = item.querySelector(".activity-checkbox").checked;
     const timing = item.dataset.timing || "after"; // قبل أو بعد
     activities.push({ id, text, checked, timing });
@@ -901,17 +864,6 @@ function addCustomActivityToDOM(
 
   const checkboxId = `${prayer}_custom_${id}`;
 
-  // حساب الوقت لعرضه
-  const times = prayerTimes[currentDay];
-  let timeText = "";
-  if (timing === "before") {
-    timeText = formatTime(subtractHour(times[prayer]));
-  } else {
-    timeText = formatTime(times[prayer]);
-  }
-
-  const timingLabel = timing === "before" ? "قبل الصلاة" : "بعد الصلاة";
-
   activityDiv.innerHTML = `
     <div class="activity-actions">
       <button class="edit-activity-btn" onclick="editCustomActivity('${prayer}', '${id}')" title="تعديل">
@@ -923,8 +875,7 @@ function addCustomActivityToDOM(
     </div>
     <input type="checkbox" class="activity-checkbox" id="${checkboxId}" />
     <label for="${checkboxId}" class="activity-content">
-      <span class="time-badge">${timeText}</span>
-      <span class="activity-text">${timingLabel}: ${text}</span>
+      <span class="activity-text">${text}</span>
     </label>
   `;
 
@@ -978,9 +929,7 @@ function editCustomActivity(prayer, activityId) {
 
   if (activityItem) {
     const activityTextElement = activityItem.querySelector(".activity-text");
-    const fullText = activityTextElement.textContent;
-    // Extract text without timing label (after ": ")
-    const text = fullText.includes(": ") ? fullText.split(": ")[1] : fullText;
+    const text = activityTextElement.textContent;
     const timing = activityItem.dataset.timing || "after";
 
     showAddActivityModal(prayer, activityId, text, timing);

@@ -359,11 +359,6 @@ header p {
     color: #10b981;
 }
 
-.activity-item:has(.activity-checkbox:checked) .time-badge {
-    background: rgba(16, 185, 129, 0.2);
-    color: #10b981;
-}
-
 /* Expired (missed) state - NOT checked */
 .activity-item.expired:not(:has(.activity-checkbox:checked)) {
     background: rgba(107, 114, 128, 0.15);
@@ -372,11 +367,6 @@ header p {
 }
 
 .activity-item.expired:not(:has(.activity-checkbox:checked)) .activity-text {
-    color: #9ca3af;
-}
-
-.activity-item.expired:not(:has(.activity-checkbox:checked)) .time-badge {
-    background: rgba(107, 114, 128, 0.2);
     color: #9ca3af;
 }
 
@@ -422,12 +412,6 @@ header p {
     animation: none;
 }
 
-.activity-item.current-activity .time-badge {
-    background: rgba(251, 191, 36, 0.3);
-    color: #fbbf24;
-    font-weight: bold;
-}
-
 .activity-item.current-activity .activity-text {
     color: #fbbf24;
     font-weight: bold;
@@ -440,17 +424,6 @@ header p {
     50% {
         box-shadow: 0 0 0 10px rgba(251, 191, 36, 0);
     }
-}
-
-.time-badge {
-    display: inline-block;
-    padding: 4px 12px;
-    background: rgba(148, 137, 121, 0.2);
-    border-radius: 20px;
-    font-size: 0.9em;
-    color: #948979;
-    margin-left: 8px;
-    font-weight: bold;
 }
 
 .moon-icon {
@@ -675,14 +648,6 @@ header p {
     
     .activity-text {
         font-size: 0.95em;
-    }
-    
-    .time-badge {
-        font-size: 0.85em;
-        padding: 3px 10px;
-        margin-left: 0;
-        margin-bottom: 5px;
-        display: inline-block;
     }
     
     .activity-checkbox {
