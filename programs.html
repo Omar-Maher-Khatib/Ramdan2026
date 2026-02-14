@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>برامج إسلامية - التطبيق الإسلامي</title>
+    <link rel="stylesheet" href="assets/css/home.css" />
+    <style>
+      .coming-soon {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 80vh;
+        text-align: center;
+        padding: 40px 20px;
+      }
+      .coming-soon-icon {
+        font-size: 5em;
+        margin-bottom: 30px;
+        animation: float 3s ease-in-out infinite;
+      }
+      .coming-soon-title {
+        font-size: 2.5em;
+        color: #dfd0b8;
+        margin-bottom: 20px;
+      }
+      .coming-soon-text {
+        font-size: 1.2em;
+        color: #948979;
+        margin-bottom: 40px;
+      }
+      .back-button {
+        display: inline-block;
+        padding: 15px 40px;
+        background: linear-gradient(135deg, #948979, #dfd0b8);
+        color: #222831;
+        text-decoration: none;
+        border-radius: 50px;
+        font-size: 1.1em;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 20px rgba(148, 137, 121, 0.3);
+      }
+      .back-button:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(148, 137, 121, 0.5);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="background-overlay"></div>
+
+    <div class="container coming-soon">
+      <div class="coming-soon-icon">📺</div>
+      <h1 class="coming-soon-title">برامج إسلامية</h1>
+      <p class="coming-soon-text">
+        هذه الميزة قيد التطوير<br />
+        ستكون متاحة قريباً إن شاء الله
+      </p>
+      <a href="index.html" class="back-button">← العودة للرئيسية</a>
+    </div>
+  </body>
+</html>

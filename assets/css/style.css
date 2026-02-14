@@ -136,6 +136,27 @@ header {
     border-radius: 15px;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(148, 137, 121, 0.2);
+    position: relative;
+}
+
+.back-home-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #948979, #DFD0B8);
+    color: #222831;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 0.95em;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(148, 137, 121, 0.3);
+}
+
+.back-home-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(148, 137, 121, 0.5);
 }
 
 header h1 {
@@ -292,6 +313,7 @@ header p {
     border-radius: 12px;
     border: 2px solid rgba(148, 137, 121, 0.3);
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 10px;
 }
@@ -306,6 +328,20 @@ header p {
     color: #DFD0B8;
     font-size: 1.05em;
     flex: 1;
+}
+
+.reminder-evidence {
+    width: 100%;
+    color: #948979;
+    font-size: 0.9em;
+    font-style: italic;
+    margin-top: 8px;
+    padding: 8px 12px;
+    background: rgba(148, 137, 121, 0.15);
+    border-radius: 8px;
+    border-right: 3px solid #948979;
+    line-height: 1.6;
+    display: block;
 }
 
 /* Activity Item with Checkbox */
@@ -508,6 +544,15 @@ header p {
         padding: 15px;
     }
     
+    .back-home-btn {
+        position: static;
+        display: block;
+        margin: 0 auto 15px;
+        width: fit-content;
+        font-size: 0.9em;
+        padding: 8px 16px;
+    }
+    
     header h1 {
         font-size: 1.8em;
     }
@@ -639,6 +684,12 @@ header p {
         font-size: 0.95em;
     }
     
+    .reminder-evidence {
+        font-size: 0.85em;
+        padding: 6px 10px;
+        margin-top: 6px;
+    }
+    
     .activity-item {
         padding: 12px;
         flex-direction: column;
@@ -716,6 +767,12 @@ header p {
     
     .reminder-text {
         font-size: 0.85em;
+    }
+    
+    .reminder-evidence {
+        font-size: 0.75em;
+        padding: 5px 8px;
+        margin-top: 5px;
     }
     
     .activity-text {

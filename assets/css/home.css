@@ -1,0 +1,363 @@
+/* ==========================================
+   الأساسيات والمتغيرات
+   ========================================== */
+:root {
+    --primary-color: #948979;
+    --secondary-color: #DFD0B8;
+    --dark-bg: #222831;
+    --darker-bg: #1a1f26;
+    --text-light: #EEEEEE;
+    --text-dim: #b0b0b0;
+    --accent-gold: #d4af37;
+    --accent-green: #4a9d5f;
+    --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --hover-shadow: 0 12px 48px rgba(148, 137, 121, 0.4);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a1f26 0%, #222831 50%, #2d3642 100%);
+    color: var(--text-light);
+    min-height: 100vh;
+    direction: rtl;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* خلفية متحركة */
+.background-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 80%, rgba(148, 137, 121, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(223, 208, 184, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(74, 157, 95, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ==========================================
+   الحاوية الرئيسية
+   ========================================== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ==========================================
+   الرأس (Header)
+   ========================================== */
+.main-header {
+    text-align: center;
+    padding: 40px 20px;
+    margin-bottom: 40px;
+    animation: fadeInDown 0.8s ease-out;
+}
+
+.header-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.moon-icon {
+    font-size: 4em;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 20px rgba(223, 208, 184, 0.5));
+    animation: float 3s ease-in-out infinite;
+}
+
+.main-title {
+    font-size: 2.8em;
+    font-weight: bold;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.subtitle {
+    font-size: 1.3em;
+    color: var(--primary-color);
+    font-weight: 300;
+}
+
+/* ==========================================
+   البطاقات (Cards)
+   ========================================== */
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+    animation: fadeInUp 1s ease-out;
+}
+
+.feature-card {
+    background: rgba(34, 40, 49, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 35px 30px;
+    text-decoration: none;
+    color: var(--text-light);
+    border: 2px solid transparent;
+    box-shadow: var(--card-shadow);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent 0%, rgba(148, 137, 121, 0.1) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.feature-card:hover::before {
+    opacity: 1;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: var(--hover-shadow);
+    border-color: var(--primary-color);
+}
+
+.card-icon {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    text-align: center;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover .card-icon {
+    transform: scale(1.2) rotate(5deg);
+}
+
+.card-title {
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: var(--secondary-color);
+    text-align: center;
+}
+
+.card-description {
+    font-size: 1.05em;
+    color: var(--text-dim);
+    line-height: 1.6;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.card-arrow {
+    font-size: 1.5em;
+    text-align: center;
+    color: var(--primary-color);
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover .card-arrow {
+    transform: translateX(-10px);
+}
+
+/* ألوان مميزة لكل بطاقة */
+.ramadan-schedule:hover {
+    border-color: #d4af37;
+}
+
+.ramadan-schedule .card-icon {
+    color: #d4af37;
+}
+
+.azkar:hover {
+    border-color: #4a9d5f;
+}
+
+.azkar .card-icon {
+    color: #4a9d5f;
+}
+
+.quran:hover {
+    border-color: #5b8c8f;
+}
+
+.quran .card-icon {
+    color: #5b8c8f;
+}
+
+.podcast:hover {
+    border-color: #c77a6f;
+}
+
+.podcast .card-icon {
+    color: #c77a6f;
+}
+
+.programs:hover {
+    border-color: #8a6ba8;
+}
+
+.programs .card-icon {
+    color: #8a6ba8;
+}
+
+/* ==========================================
+   التذييل (Footer)
+   ========================================== */
+.main-footer {
+    text-align: center;
+    padding: 30px 20px;
+    border-top: 1px solid rgba(148, 137, 121, 0.2);
+    margin-top: 40px;
+    animation: fadeIn 1.5s ease-out;
+}
+
+.main-footer p {
+    font-size: 1.2em;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.footer-year {
+    font-size: 0.95em;
+    color: var(--text-dim);
+}
+
+/* ==========================================
+   الرسوم المتحركة (Animations)
+   ========================================== */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+/* ==========================================
+   الاستجابة للشاشات المختلفة
+   ========================================== */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 2em;
+    }
+
+    .subtitle {
+        font-size: 1.1em;
+    }
+
+    .cards-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .feature-card {
+        padding: 25px 20px;
+    }
+
+    .card-title {
+        font-size: 1.5em;
+    }
+
+    .card-description {
+        font-size: 0.95em;
+    }
+
+    .card-icon {
+        font-size: 3em;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+    }
+
+    .main-header {
+        padding: 30px 15px;
+        margin-bottom: 30px;
+    }
+
+    .main-title {
+        font-size: 1.6em;
+    }
+
+    .subtitle {
+        font-size: 1em;
+    }
+
+    .moon-icon {
+        font-size: 3em;
+    }
+
+    .feature-card {
+        padding: 20px 15px;
+    }
+
+    .card-title {
+        font-size: 1.3em;
+    }
+
+    .card-description {
+        font-size: 0.9em;
+    }
+}
+
+/* تحسينات للأداء */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}

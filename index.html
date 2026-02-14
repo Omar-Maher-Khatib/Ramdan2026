@@ -3,305 +3,73 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>جدول رمضان 2026</title>
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <title>التطبيق الإسلامي الشامل - رمضان 2026</title>
+    <link rel="stylesheet" href="assets/css/home.css" />
   </head>
   <body>
-    <!-- Day Selector -->
-    <div class="day-selector">
-      <button id="prevDay" class="nav-btn">❮</button>
-      <div class="day-display">
-        <span class="day-label">اليوم</span>
-        <span id="currentDay" class="day-number">1</span>
-        <span class="day-label">من رمضان</span>
-      </div>
-      <button id="nextDay" class="nav-btn">❯</button>
-      <div class="date-picker-container">
-        <select
-          id="daySelector"
-          class="day-selector-dropdown"
-          title="اختر يوم رمضان"
-        >
-          <option value="1">1 رمضان</option>
-          <option value="2">2 رمضان</option>
-          <option value="3">3 رمضان</option>
-          <option value="4">4 رمضان</option>
-          <option value="5">5 رمضان</option>
-          <option value="6">6 رمضان</option>
-          <option value="7">7 رمضان</option>
-          <option value="8">8 رمضان</option>
-          <option value="9">9 رمضان</option>
-          <option value="10">10 رمضان</option>
-          <option value="11">11 رمضان</option>
-          <option value="12">12 رمضان</option>
-          <option value="13">13 رمضان</option>
-          <option value="14">14 رمضان</option>
-          <option value="15">15 رمضان</option>
-          <option value="16">16 رمضان</option>
-          <option value="17">17 رمضان</option>
-          <option value="18">18 رمضان</option>
-          <option value="19">19 رمضان</option>
-          <option value="20">20 رمضان</option>
-          <option value="21">21 رمضان</option>
-          <option value="22">22 رمضان</option>
-          <option value="23">23 رمضان</option>
-          <option value="24">24 رمضان</option>
-          <option value="25">25 رمضان</option>
-          <option value="26">26 رمضان</option>
-          <option value="27">27 رمضان</option>
-          <option value="28">28 رمضان</option>
-          <option value="29">29 رمضان</option>
-          <option value="30">30 رمضان</option>
-        </select>
-      </div>
-    </div>
+    <div class="background-overlay"></div>
 
     <div class="container">
-      <header>
-        <div class="moon-icon">🌙</div>
-        <h1>جدولي الرمضاني 2026</h1>
+      <header class="main-header">
+        <div class="header-content">
+          <div class="moon-icon">🌙</div>
+          <h1 class="main-title">التطبيق الإسلامي الشامل</h1>
+          <p class="subtitle">رمضان مبارك 1447 - 2026</p>
+        </div>
       </header>
 
-      <div class="view-controls">
-        <button id="toggleView" class="toggle-btn">
-          <span id="viewIcon">📋</span>
-          <span id="viewText">عرض الجميع</span>
-        </button>
-      </div>
+      <main class="cards-container">
+        <!-- بطاقة جدولي الرمضاني -->
+        <a href="schedule.html" class="feature-card ramadan-schedule">
+          <div class="card-icon">📅</div>
+          <h2 class="card-title">جدولي الرمضاني</h2>
+          <p class="card-description">
+            تنظيم أوقات الصلاة والأنشطة اليومية في رمضان
+          </p>
+          <div class="card-arrow">←</div>
+        </a>
 
-      <div class="prayer-cards" id="prayerCards">
-        <!-- صلاة الفجر -->
-        <div class="prayer-card fajr">
-          <div class="prayer-header">
-            <div class="prayer-name">🌅 صلاة الفجر</div>
-            <div class="prayer-time">5:15 ص</div>
-          </div>
+        <!-- بطاقة الأذكار -->
+        <a href="azkar.html" class="feature-card azkar">
+          <div class="card-icon">📿</div>
+          <h2 class="card-title">الأذكار</h2>
+          <p class="card-description">
+            أذكار الصباح والمساء وأذكار ما بعد الصلاة
+          </p>
+          <div class="card-arrow">←</div>
+        </a>
 
-          <!-- تذكير بدون checkbox -->
-          <div class="reminder-item">
-            <span class="reminder-label">📌 تذكير:</span>
-            <span class="reminder-text">(أضف التذكير هنا)</span>
-          </div>
-          <span class="activities-label">الأنشطة:</span>
+        <!-- بطاقة وردي القرآني -->
+        <a href="quran.html" class="feature-card quran">
+          <div class="card-icon">📖</div>
+          <h2 class="card-title">وِردي القرآني</h2>
+          <p class="card-description">تتبع ختم القرآن الكريم وحفظ السور</p>
+          <div class="card-arrow">←</div>
+        </a>
 
-          <!-- نشاط قبل الصلاة بساعة -->
-          <div
-            class="activity-item fixed-activity"
-            data-prayer="fajr"
-            data-time="before"
-          >
-            <input type="checkbox" class="activity-checkbox" id="fajr-before" />
-            <label for="fajr-before" class="activity-content">
-              <span class="activity-text"
-                >نشاط قبل الصلاة: (أضف النشاط هنا)</span
-              >
-            </label>
-          </div>
+        <!-- بطاقة بودكاست إسلامي -->
+        <a href="podcast.html" class="feature-card podcast">
+          <div class="card-icon">🎙️</div>
+          <h2 class="card-title">بودكاست إسلامي</h2>
+          <p class="card-description">استمع إلى محاضرات وبرامج إسلامية نافعة</p>
+          <div class="card-arrow">←</div>
+        </a>
 
-          <!-- نشاط بعد الصلاة بنصف ساعة -->
-          <div
-            class="activity-item fixed-activity"
-            data-prayer="fajr"
-            data-time="after"
-          >
-            <input type="checkbox" class="activity-checkbox" id="fajr-after" />
-            <label for="fajr-after" class="activity-content">
-              <span class="activity-text"
-                >نشاط بعد الصلاة: (أضف النشاط هنا)</span
-              >
-            </label>
-          </div>
+        <!-- بطاقة برامج إسلامية -->
+        <a href="programs.html" class="feature-card programs">
+          <div class="card-icon">📺</div>
+          <h2 class="card-title">برامج إسلامية</h2>
+          <p class="card-description">مشاهدة برامج وسلاسل دينية مفيدة</p>
+          <div class="card-arrow">←</div>
+        </a>
+      </main>
 
-          <!-- Custom Activities Container -->
-          <div class="custom-activities-container" data-prayer="fajr"></div>
-
-          <button class="add-activity-btn" data-prayer="fajr">
-            <span>➕</span> إضافة نشاط
-          </button>
-        </div>
-
-        <!-- صلاة الظهر -->
-        <div class="prayer-card dhuhr">
-          <div class="prayer-header">
-            <div class="prayer-name">☀️ صلاة الظهر</div>
-            <div class="prayer-time">12:30 م</div>
-          </div>
-
-          <!-- تذكير بدون checkbox -->
-          <div class="reminder-item">
-            <span class="reminder-label">📌 تذكير:</span>
-            <span class="reminder-text">(أضف التذكير هنا)</span>
-          </div>
-          <span class="activities-label">الأنشطة:</span>
-          <!-- نشاط قبل الصلاة -->
-          <div
-            class="activity-item fixed-activity"
-            data-prayer="dhuhr"
-            data-time="before"
-          >
-            <input
-              type="checkbox"
-              class="activity-checkbox"
-              id="dhuhr-before"
-            />
-            <label for="dhuhr-before" class="activity-content">
-              <span class="activity-text"
-                >نشاط قبل الصلاة: (أضف النشاط هنا)</span
-              >
-            </label>
-          </div>
-
-          <!-- نشاط بعد الصلاة -->
-          <div
-            class="activity-item fixed-activity"
-            data-prayer="dhuhr"
-            data-time="after"
-          >
-            <input type="checkbox" class="activity-checkbox" id="dhuhr-after" />
-            <label for="dhuhr-after" class="activity-content">
-              <span class="activity-text"
-                >نشاط بعد الصلاة: (أضف النشاط هنا)</span
-              >
-            </label>
-          </div>
-
-          <!-- Custom Activities Container -->
-          <div class="custom-activities-container" data-prayer="dhuhr"></div>
-
-          <button class="add-activity-btn" data-prayer="dhuhr">
-            <span>➕</span> إضافة نشاط
-          </button>
-        </div>
-
-        <!-- صلاة العصر -->
-        <div class="prayer-card asr">
-          <div class="prayer-header">
-            <div class="prayer-name">🌤️ صلاة العصر</div>
-            <div class="prayer-time">3:45 م</div>
-          </div>
-
-          <!-- تذكير بدون checkbox -->
-          <div class="reminder-item">
-            <span class="reminder-label">📌 تذكير:</span>
-            <span class="reminder-text">(أضف التذكير هنا)</span>
-          </div>
-          <span class="activities-label">الأنشطة:</span>
-          <!-- نشاط قبل الصلاة بنصف ساعة -->
-          <div
-            class="activity-item fixed-activity"
-            data-prayer="asr"
-            data-time="before"
-          >
-            <input type="checkbox" class="activity-checkbox" id="asr-before" />
-            <label for="asr-before" class="activity-content">
-              <span class="activity-text"
-                >نشاط قبل الصلاة: (أضف النشاط هنا)</span
-              >
-            </label>
-          </div>
-
-          <!-- نشاط بعد الصلاة -->
-          <div
-            class="activity-item fixed-activity"
-            data-prayer="asr"
-            data-time="after"
-          >
-            <input type="checkbox" class="activity-checkbox" id="asr-after" />
-            <label for="asr-after" class="activity-content">
-              <span class="activity-text"
-                >نشاط بعد الصلاة: (أضف النشاط هنا)</span
-              >
-            </label>
-          </div>
-
-          <!-- Custom Activities Container -->
-          <div class="custom-activities-container" data-prayer="asr"></div>
-
-          <button class="add-activity-btn" data-prayer="asr">
-            <span>➕</span> إضافة نشاط
-          </button>
-        </div>
-
-        <!-- صلاة المغرب -->
-        <div class="prayer-card maghrib">
-          <div class="prayer-header">
-            <div class="prayer-name">🌆 صلاة المغرب</div>
-            <div class="prayer-time">6:15 م</div>
-          </div>
-
-          <!-- تذكير بدون checkbox -->
-          <div class="reminder-item">
-            <span class="reminder-label">📌 تذكير:</span>
-            <span class="reminder-text">(أضف التذكير هنا)</span>
-          </div>
-          <span class="activities-label">الأنشطة:</span>
-          <!-- نشاط قبل الصلاة -->
-          <div
-            class="activity-item fixed-activity"
-            data-prayer="maghrib"
-            data-time="before"
-          >
-            <input
-              type="checkbox"
-              class="activity-checkbox"
-              id="maghrib-before"
-            />
-            <label for="maghrib-before" class="activity-content">
-              <span class="activity-text"
-                >نشاط قبل الصلاة: (أضف النشاط هنا)</span
-              >
-            </label>
-          </div>
-
-          <!-- Custom Activities Container -->
-          <div class="custom-activities-container" data-prayer="maghrib"></div>
-
-          <button class="add-activity-btn" data-prayer="maghrib">
-            <span>➕</span> إضافة نشاط
-          </button>
-        </div>
-
-        <!-- صلاة العشاء -->
-        <div class="prayer-card isha">
-          <div class="prayer-header">
-            <div class="prayer-name">🌙 صلاة العشاء والتراويح</div>
-            <div class="prayer-time">7:30 م</div>
-          </div>
-
-          <!-- تذكير بدون checkbox -->
-          <div class="reminder-item">
-            <span class="reminder-label">📌 تذكير:</span>
-            <span class="reminder-text">(أضف التذكير هنا)</span>
-          </div>
-          <span class="activities-label">الأنشطة:</span>
-          <!-- نشاط بعد الصلاة -->
-          <div
-            class="activity-item fixed-activity"
-            data-prayer="isha"
-            data-time="after"
-          >
-            <input type="checkbox" class="activity-checkbox" id="isha-after" />
-            <label for="isha-after" class="activity-content">
-              <span class="activity-text"
-                >نشاط بعد الصلاة: (أضف النشاط هنا)</span
-              >
-            </label>
-          </div>
-
-          <!-- Custom Activities Container -->
-          <div class="custom-activities-container" data-prayer="isha"></div>
-
-          <button class="add-activity-btn" data-prayer="isha">
-            <span>➕</span> إضافة نشاط
-          </button>
-        </div>
-      </div>
-
-      <footer class="footer">
-        <p>❤️ Made by Omar Maher Khatib</p>
+      <footer class="main-footer">
+        <p>﴿ وَمَا خَلَقْتُ الْجِنَّ وَالْإِنسَ إِلَّا لِيَعْبُدُونِ ﴾</p>
+        <p class="footer-year">1447 هـ - 2026 م</p>
       </footer>
     </div>
 
-    <script src="assets/js/app.js"></script>
+    <script src="assets/js/home.js"></script>
   </body>
 </html>
