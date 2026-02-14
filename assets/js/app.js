@@ -262,6 +262,698 @@ const prayerTimes = {
   },
 };
 
+// Activities and reminders for each day of Ramadan
+// يمكنك تعديل النصوص حسب رغبتك
+const dailyActivities = {
+  1: {
+    fajr: {
+      reminder: "استيقظ مبكراً وصلي قيام الليل",
+      before: "قراءة أذكار الاستيقاظ والوضوء",
+      after: "قراءة ورد القرآن الصباحي",
+    },
+    dhuhr: {
+      reminder: "لا تنس صلاة الظهر في وقتها",
+      before: "الاستعداد للصلاة والوضوء",
+      after: "الدعاء والاستغفار",
+    },
+    asr: {
+      reminder: "وقت صلاة العصر",
+      before: "قراءة أذكار ما بعد الظهر",
+      after: "مراجعة حفظ القرآن",
+    },
+    maghrib: {
+      reminder: "موعد الإفطار وصلاة المغرب",
+      before: "الإفطار بالتمر والماء",
+    },
+    isha: {
+      reminder: "صلاة العشاء والتراويح",
+      after: "صلاة التراويح والقيام",
+    },
+  },
+  2: {
+    fajr: {
+      reminder: "استيقظ مبكراً وصلي قيام الليل",
+      before: "قراءة أذكار الاستيقاظ والوضوء",
+      after: "قراءة ورد القرآن الصباحي",
+    },
+    dhuhr: {
+      reminder: "لا تنس صلاة الظهر في وقتها",
+      before: "الاستعداد للصلاة والوضوء",
+      after: "الدعاء والاستغفار",
+    },
+    asr: {
+      reminder: "وقت صلاة العصر",
+      before: "قراءة أذكار ما بعد الظهر",
+      after: "مراجعة حفظ القرآن",
+    },
+    maghrib: {
+      reminder: "موعد الإفطار وصلاة المغرب",
+      before: "الإفطار بالتمر والماء",
+    },
+    isha: {
+      reminder: "صلاة العشاء والتراويح",
+      after: "صلاة التراويح والقيام",
+    },
+  },
+  3: {
+    fajr: {
+      reminder: "استيقظ مبكراً وصلي قيام الليل",
+      before: "قراءة أذكار الاستيقاظ والوضوء",
+      after: "قراءة ورد القرآن الصباحي",
+    },
+    dhuhr: {
+      reminder: "لا تنس صلاة الظهر في وقتها",
+      before: "الاستعداد للصلاة والوضوء",
+      after: "الدعاء والاستغفار",
+    },
+    asr: {
+      reminder: "وقت صلاة العصر",
+      before: "قراءة أذكار ما بعد الظهر",
+      after: "مراجعة حفظ القرآن",
+    },
+    maghrib: {
+      reminder: "موعد الإفطار وصلاة المغرب",
+      before: "الإفطار بالتمر والماء",
+    },
+    isha: {
+      reminder: "صلاة العشاء والتراويح",
+      after: "صلاة التراويح والقيام",
+    },
+  },
+  4: {
+    fajr: {
+      reminder: "استيقظ مبكراً وصلي قيام الليل",
+      before: "قراءة أذكار الاستيقاظ والوضوء",
+      after: "قراءة ورد القرآن الصباحي",
+    },
+    dhuhr: {
+      reminder: "لا تنس صلاة الظهر في وقتها",
+      before: "الاستعداد للصلاة الوضوء",
+      after: "الدعاء والاستغفار",
+    },
+    asr: {
+      reminder: "وقت صلاة العصر",
+      before: "قراءة أذكار ما بعد الظهر",
+      after: "مراجعة حفظ القرآن",
+    },
+    maghrib: {
+      reminder: "موعد الإفطار وصلاة المغرب",
+      before: "الإفطار بالتمر والماء",
+    },
+    isha: { reminder: "صلاة العشاء والتراويح", after: "صلاة التراويح والقيام" },
+  },
+  5: {
+    fajr: {
+      reminder: "استيقظ مبكراً وصلي قيام الليل",
+      before: "قراءة أذكار الاستيقاظ والوضوء",
+      after: "قراءة ورد القرآن الصباحي",
+    },
+    dhuhr: {
+      reminder: "لا تنس صلاة الظهر في وقتها",
+      before: "الاستعداد للصلاة والوضوء",
+      after: "الدعاء والاستغفار",
+    },
+    asr: {
+      reminder: "وقت صلاة العصر",
+      before: "قراءة أذكار ما بعد الظهر",
+      after: "مراجعة حفظ القرآن",
+    },
+    maghrib: {
+      reminder: "موعد الإفطار وصلاة المغرب",
+      before: "الإفطار بالتمر والماء",
+    },
+    isha: { reminder: "صلاة العشاء والتراويح", after: "صلاة التراويح والقيام" },
+  },
+  6: {
+    fajr: {
+      reminder: "استيقظ مبكراً وصلي قيام الليل",
+      before: "قراءة أذكار الاستيقاظ والوضوء",
+      after: "قراءة ورد القرآن الصباحي",
+    },
+    dhuhr: {
+      reminder: "لا تنس صلاة الظهر في وقتها",
+      before: "الاستعداد للصلاة والوضوء",
+      after: "الدعاء والاستغفار",
+    },
+    asr: {
+      reminder: "وقت صلاة العصر",
+      before: "قراءة أذكار ما بعد الظهر",
+      after: "مراجعة حفظ القرآن",
+    },
+    maghrib: {
+      reminder: "موعد الإفطار وصلاة المغرب",
+      before: "الإفطار بالتمر والماء",
+    },
+    isha: { reminder: "صلاة العشاء والتراويح", after: "صلاة التراويح والقيام" },
+  },
+  7: {
+    fajr: {
+      reminder: "استيقظ مبكراً وصلي قيام الليل",
+      before: "قراءة أذكار الاستيقاظ والوضوء",
+      after: "قراءة ورد القرآن الصباحي",
+    },
+    dhuhr: {
+      reminder: "لا تنس صلاة الظهر في وقتها",
+      before: "الاستعداد للصلاة والوضوء",
+      after: "الدعاء والاستغفار",
+    },
+    asr: {
+      reminder: "وقت صلاة العصر",
+      before: "قراءة أذكار ما بعد الظهر",
+      after: "مراجعة حفظ القرآن",
+    },
+    maghrib: {
+      reminder: "موعد الإفطار وصلاة المغرب",
+      before: "الإفطار بالتمر والماء",
+    },
+    isha: { reminder: "صلاة العشاء والتراويح", after: "صلاة التراويح والقيام" },
+  },
+  8: {
+    fajr: {
+      reminder: "استيقظ مبكراً وصلي قيام الليل",
+      before: "قراءة أذكار الاستيقاظ والوضوء",
+      after: "قراءة ورد القرآن الصباحي",
+    },
+    dhuhr: {
+      reminder: "لا تنس صلاة الظهر في وقتها",
+      before: "الاستعداد للصلاة والوضوء",
+      after: "الدعاء والاستغفار",
+    },
+    asr: {
+      reminder: "وقت صلاة العصر",
+      before: "قراءة أذكار ما بعد الظهر",
+      after: "مراجعة حفظ القرآن",
+    },
+    maghrib: {
+      reminder: "موعد الإفطار وصلاة المغرب",
+      before: "الإفطار بالتمر والماء",
+    },
+    isha: { reminder: "صلاة العشاء والتراويح", after: "صلاة التراويح والقيام" },
+  },
+  9: {
+    fajr: {
+      reminder: "استيقظ مبكراً وصلي قيام الليل",
+      before: "قراءة أذكار الاستيقاظ والوضوء",
+      after: "قراءة ورد القرآن الصباحي",
+    },
+    dhuhr: {
+      reminder: "لا تنس صلاة الظهر في وقتها",
+      before: "الاستعداد للصلاة والوضوء",
+      after: "الدعاء والاستغفار",
+    },
+    asr: {
+      reminder: "وقت صلاة العصر",
+      before: "قراءة أذكار ما بعد الظهر",
+      after: "مراجعة حفظ القرآن",
+    },
+    maghrib: {
+      reminder: "موعد الإفطار وصلاة المغرب",
+      before: "الإفطار بالتمر والماء",
+    },
+    isha: { reminder: "صلاة العشاء والتراويح", after: "صلاة التراويح والقيام" },
+  },
+  10: {
+    fajr: {
+      reminder: "استيقظ مبكراً وصلي قيام الليل",
+      before: "قراءة أذكار الاستيقاظ والوضوء",
+      after: "قراءة ورد القرآن الصباحي",
+    },
+    dhuhr: {
+      reminder: "لا تنس صلاة الظهر في وقتها",
+      before: "الاستعداد للصلاة والوضوء",
+      after: "الدعاء والاستغفار",
+    },
+    asr: {
+      reminder: "وقت صلاة العصر",
+      before: "قراءة أذكار ما بعد الظهر",
+      after: "مراجعة حفظ القرآن",
+    },
+    maghrib: {
+      reminder: "موعد الإفطار وصلاة المغرب",
+      before: "الإفطار بالتمر والماء",
+    },
+    isha: { reminder: "صلاة العشاء والتراويح", after: "صلاة التراويح والقيام" },
+  },
+  11: {
+    fajr: {
+      reminder: "استيقظ مبكراً وصلي قيام الليل",
+      before: "قراءة أذكار الاستيقاظ والوضوء",
+      after: "قراءة ورد القرآن الصباحي",
+    },
+    dhuhr: {
+      reminder: "لا تنس صلاة الظهر في وقتها",
+      before: "الاستعداد للصلاة والوضوء",
+      after: "الدعاء والاستغفار",
+    },
+    asr: {
+      reminder: "وقت صلاة العصر",
+      before: "قراءة أذكار ما بعد الظهر",
+      after: "مراجعة حفظ القرآن",
+    },
+    maghrib: {
+      reminder: "موعد الإفطار وصلاة المغرب",
+      before: "الإفطار بالتمر والماء",
+    },
+    isha: { reminder: "صلاة العشاء والتراويح", after: "صلاة التراويح والقيام" },
+  },
+  12: {
+    fajr: {
+      reminder: "استيقظ مبكراً وصلي قيام الليل",
+      before: "قراءة أذكار الاستيقاظ والوضوء",
+      after: "قراءة ورد القرآن الصباحي",
+    },
+    dhuhr: {
+      reminder: "لا تنس صلاة الظهر في وقتها",
+      before: "الاستعداد للصلاة والوضوء",
+      after: "الدعاء والاستغفار",
+    },
+    asr: {
+      reminder: "وقت صلاة العصر",
+      before: "قراءة أذكار ما بعد الظهر",
+      after: "مراجعة حفظ القرآن",
+    },
+    maghrib: {
+      reminder: "موعد الإفطار وصلاة المغرب",
+      before: "الإفطار بالتمر والماء",
+    },
+    isha: { reminder: "صلاة العشاء والتراويح", after: "صلاة التراويح والقيام" },
+  },
+  13: {
+    fajr: {
+      reminder: "استيقظ مبكراً وصلي قيام الليل",
+      before: "قراءة أذكار الاستيقاظ والوضوء",
+      after: "قراءة ورد القرآن الصباحي",
+    },
+    dhuhr: {
+      reminder: "لا تنس صلاة الظهر في وقتها",
+      before: "الاستعداد للصلاة والوضوء",
+      after: "الدعاء والاستغفار",
+    },
+    asr: {
+      reminder: "وقت صلاة العصر",
+      before: "قراءة أذكار ما بعد الظهر",
+      after: "مراجعة حفظ القرآن",
+    },
+    maghrib: {
+      reminder: "موعد الإفطار وصلاة المغرب",
+      before: "الإفطار بالتمر والماء",
+    },
+    isha: { reminder: "صلاة العشاء والتراويح", after: "صلاة التراويح والقيام" },
+  },
+  14: {
+    fajr: {
+      reminder: "استيقظ مبكراً وصلي قيام الليل",
+      before: "قراءة أذكار الاستيقاظ والوضوء",
+      after: "قراءة ورد القرآن الصباحي",
+    },
+    dhuhr: {
+      reminder: "لا تنس صلاة الظهر في وقتها",
+      before: "الاستعداد للصلاة والوضوء",
+      after: "الدعاء والاستغفار",
+    },
+    asr: {
+      reminder: "وقت صلاة العصر",
+      before: "قراءة أذكار ما بعد الظهر",
+      after: "مراجعة حفظ القرآن",
+    },
+    maghrib: {
+      reminder: "موعد الإفطار وصلاة المغرب",
+      before: "الإفطار بالتمر والماء",
+    },
+    isha: { reminder: "صلاة العشاء والتراويح", after: "صلاة التراويح والقيام" },
+  },
+  15: {
+    fajr: {
+      reminder: "استيقظ مبكراً وصلي قيام الليل",
+      before: "قراءة أذكار الاستيقاظ والوضوء",
+      after: "قراءة ورد القرآن الصباحي",
+    },
+    dhuhr: {
+      reminder: "لا تنس صلاة الظهر في وقتها",
+      before: "الاستعداد للصلاة والوضوء",
+      after: "الدعاء والاستغفار",
+    },
+    asr: {
+      reminder: "وقت صلاة العصر",
+      before: "قراءة أذكار ما بعد الظهر",
+      after: "مراجعة حفظ القرآن",
+    },
+    maghrib: {
+      reminder: "موعد الإفطار وصلاة المغرب",
+      before: "الإفطار بالتمر والماء",
+    },
+    isha: { reminder: "صلاة العشاء والتراويح", after: "صلاة التراويح والقيام" },
+  },
+  16: {
+    fajr: {
+      reminder: "استيقظ مبكراً وصلي قيام الليل",
+      before: "قراءة أذكار الاستيقاظ والوضوء",
+      after: "قراءة ورد القرآن الصباحي",
+    },
+    dhuhr: {
+      reminder: "لا تنس صلاة الظهر في وقتها",
+      before: "الاستعداد للصلاة والوضوء",
+      after: "الدعاء والاستغفار",
+    },
+    asr: {
+      reminder: "وقت صلاة العصر",
+      before: "قراءة أذكار ما بعد الظهر",
+      after: "مراجعة حفظ القرآن",
+    },
+    maghrib: {
+      reminder: "موعد الإفطار وصلاة المغرب",
+      before: "الإفطار بالتمر والماء",
+    },
+    isha: { reminder: "صلاة العشاء والتراويح", after: "صلاة التراويح والقيام" },
+  },
+  17: {
+    fajr: {
+      reminder: "استيقظ مبكراً وصلي قيام الليل",
+      before: "قراءة أذكار الاستيقاظ والوضوء",
+      after: "قراءة ورد القرآن الصباحي",
+    },
+    dhuhr: {
+      reminder: "لا تنس صلاة الظهر في وقتها",
+      before: "الاستعداد للصلاة والوضوء",
+      after: "الدعاء والاستغفار",
+    },
+    asr: {
+      reminder: "وقت صلاة العصر",
+      before: "قراءة أذكار ما بعد الظهر",
+      after: "مراجعة حفظ القرآن",
+    },
+    maghrib: {
+      reminder: "موعد الإفطار وصلاة المغرب",
+      before: "الإفطار بالتمر والماء",
+    },
+    isha: { reminder: "صلاة العشاء والتراويح", after: "صلاة التراويح والقيام" },
+  },
+  18: {
+    fajr: {
+      reminder: "استيقظ مبكراً وصلي قيام الليل",
+      before: "قراءة أذكار الاستيقاظ والوضوء",
+      after: "قراءة ورد القرآن الصباحي",
+    },
+    dhuhr: {
+      reminder: "لا تنس صلاة الظهر في وقتها",
+      before: "الاستعداد للصلاة والوضوء",
+      after: "الدعاء والاستغفار",
+    },
+    asr: {
+      reminder: "وقت صلاة العصر",
+      before: "قراءة أذكار ما بعد الظهر",
+      after: "مراجعة حفظ القرآن",
+    },
+    maghrib: {
+      reminder: "موعد الإفطار وصلاة المغرب",
+      before: "الإفطار بالتمر والماء",
+    },
+    isha: { reminder: "صلاة العشاء والتراويح", after: "صلاة التراويح والقيام" },
+  },
+  19: {
+    fajr: {
+      reminder: "استيقظ مبكراً وصلي قيام الليل",
+      before: "قراءة أذكار الاستيقاظ والوضوء",
+      after: "قراءة ورد القرآن الصباحي",
+    },
+    dhuhr: {
+      reminder: "لا تنس صلاة الظهر في وقتها",
+      before: "الاستعداد للصلاة والوضوء",
+      after: "الدعاء والاستغفار",
+    },
+    asr: {
+      reminder: "وقت صلاة العصر",
+      before: "قراءة أذكار ما بعد الظهر",
+      after: "مراجعة حفظ القرآن",
+    },
+    maghrib: {
+      reminder: "موعد الإفطار وصلاة المغرب",
+      before: "الإفطار بالتمر والماء",
+    },
+    isha: { reminder: "صلاة العشاء والتراويح", after: "صلاة التراويح والقيام" },
+  },
+  20: {
+    fajr: {
+      reminder: "استيقظ مبكراً وصلي قيام الليل",
+      before: "قراءة أذكار الاستيقاظ والوضوء",
+      after: "قراءة ورد القرآن الصباحي",
+    },
+    dhuhr: {
+      reminder: "لا تنس صلاة الظهر في وقتها",
+      before: "الاستعداد للصلاة والوضوء",
+      after: "الدعاء والاستغفار",
+    },
+    asr: {
+      reminder: "وقت صلاة العصر",
+      before: "قراءة أذكار ما بعد الظهر",
+      after: "مراجعة حفظ القرآن",
+    },
+    maghrib: {
+      reminder: "موعد الإفطار وصلاة المغرب",
+      before: "الإفطار بالتمر والماء",
+    },
+    isha: { reminder: "صلاة العشاء والتراويح", after: "صلاة التراويح والقيام" },
+  },
+  21: {
+    fajr: {
+      reminder: "ليلة القدر - استيقظ للقيام",
+      before: "قراءة أذكار الاستيقاظ والوضوء",
+      after: "قراءة ورد القرآن الصباحي",
+    },
+    dhuhr: {
+      reminder: "لا تنس صلاة الظهر في وقتها",
+      before: "الاستعداد للصلاة والوضوء",
+      after: "الدعاء والاستغفار",
+    },
+    asr: {
+      reminder: "وقت صلاة العصر",
+      before: "قراءة أذكار ما بعد الظهر",
+      after: "مراجعة حفظ القرآن",
+    },
+    maghrib: {
+      reminder: "موعد الإفطار وصلاة المغرب",
+      before: "الإفطار بالتمر والماء",
+    },
+    isha: {
+      reminder: "صلاة العشاء والتراويح - ليلة القدر",
+      after: "صلاة التراويح والقيام وطلب ليلة القدر",
+    },
+  },
+  22: {
+    fajr: {
+      reminder: "استيقظ مبكراً وصلي قيام الليل",
+      before: "قراءة أذكار الاستيقاظ والوضوء",
+      after: "قراءة ورد القرآن الصباحي",
+    },
+    dhuhr: {
+      reminder: "لا تنس صلاة الظهر في وقتها",
+      before: "الاستعداد للصلاة والوضوء",
+      after: "الدعاء والاستغفار",
+    },
+    asr: {
+      reminder: "وقت صلاة العصر",
+      before: "قراءة أذكار ما بعد الظهر",
+      after: "مراجعة حفظ القرآن",
+    },
+    maghrib: {
+      reminder: "موعد الإفطار وصلاة المغرب",
+      before: "الإفطار بالتمر والماء",
+    },
+    isha: { reminder: "صلاة العشاء والتراويح", after: "صلاة التراويح والقيام" },
+  },
+  23: {
+    fajr: {
+      reminder: "ليلة القدر - استيقظ للقيام",
+      before: "قراءة أذكار الاستيقاظ والوضوء",
+      after: "قراءة ورد القرآن الصباحي",
+    },
+    dhuhr: {
+      reminder: "لا تنس صلاة الظهر في وقتها",
+      before: "الاستعداد للصلاة والوضوء",
+      after: "الدعاء والاستغفار",
+    },
+    asr: {
+      reminder: "وقت صلاة العصر",
+      before: "قراءة أذكار ما بعد الظهر",
+      after: "مراجعة حفظ القرآن",
+    },
+    maghrib: {
+      reminder: "موعد الإفطار وصلاة المغرب",
+      before: "الإفطار بالتمر والماء",
+    },
+    isha: {
+      reminder: "صلاة العشاء والتراويح - ليلة القدر",
+      after: "صلاة التراويح والقيام وطلب ليلة القدر",
+    },
+  },
+  24: {
+    fajr: {
+      reminder: "استيقظ مبكراً وصلي قيام الليل",
+      before: "قراءة أذكار الاستيقاظ والوضوء",
+      after: "قراءة ورد القرآن الصباحي",
+    },
+    dhuhr: {
+      reminder: "لا تنس صلاة الظهر في وقتها",
+      before: "الاستعداد للصلاة والوضوء",
+      after: "الدعاء والاستغفار",
+    },
+    asr: {
+      reminder: "وقت صلاة العصر",
+      before: "قراءة أذكار ما بعد الظهر",
+      after: "مراجعة حفظ القرآن",
+    },
+    maghrib: {
+      reminder: "موعد الإفطار وصلاة المغرب",
+      before: "الإفطار بالتمر والماء",
+    },
+    isha: { reminder: "صلاة العشاء والتراويح", after: "صلاة التراويح والقيام" },
+  },
+  25: {
+    fajr: {
+      reminder: "ليلة القدر - استيقظ للقيام",
+      before: "قراءة أذكار الاستيقاظ والوضوء",
+      after: "قراءة ورد القرآن الصباحي",
+    },
+    dhuhr: {
+      reminder: "لا تنس صلاة الظهر في وقتها",
+      before: "الاستعداد للصلاة والوضوء",
+      after: "الدعاء والاستغفار",
+    },
+    asr: {
+      reminder: "وقت صلاة العصر",
+      before: "قراءة أذكار ما بعد الظهر",
+      after: "مراجعة حفظ القرآن",
+    },
+    maghrib: {
+      reminder: "موعد الإفطار وصلاة المغرب",
+      before: "الإفطار بالتمر والماء",
+    },
+    isha: {
+      reminder: "صلاة العشاء والتراويح - ليلة القدر",
+      after: "صلاة التراويح والقيام وطلب ليلة القدر",
+    },
+  },
+  26: {
+    fajr: {
+      reminder: "استيقظ مبكراً وصلي قيام الليل",
+      before: "قراءة أذكار الاستيقاظ والوضوء",
+      after: "قراءة ورد القرآن الصباحي",
+    },
+    dhuhr: {
+      reminder: "لا تنس صلاة الظهر في وقتها",
+      before: "الاستعداد للصلاة والوضوء",
+      after: "الدعاء والاستغفار",
+    },
+    asr: {
+      reminder: "وقت صلاة العصر",
+      before: "قراءة أذكار ما بعد الظهر",
+      after: "مراجعة حفظ القرآن",
+    },
+    maghrib: {
+      reminder: "موعد الإفطار وصلاة المغرب",
+      before: "الإفطار بالتمر والماء",
+    },
+    isha: { reminder: "صلاة العشاء والتراويح", after: "صلاة التراويح والقيام" },
+  },
+  27: {
+    fajr: {
+      reminder: "ليلة القدر - استيقظ للقيام",
+      before: "قراءة أذكار الاستيقاظ والوضوء",
+      after: "قراءة ورد القرآن الصباحي",
+    },
+    dhuhr: {
+      reminder: "لا تنس صلاة الظهر في وقتها",
+      before: "الاستعداد للصلاة والوضوء",
+      after: "الدعاء والاستغفار",
+    },
+    asr: {
+      reminder: "وقت صلاة العصر",
+      before: "قراءة أذكار ما بعد الظهر",
+      after: "مراجعة حفظ القرآن",
+    },
+    maghrib: {
+      reminder: "موعد الإفطار وصلاة المغرب",
+      before: "الإفطار بالتمر والماء",
+    },
+    isha: {
+      reminder: "صلاة العشاء والتراويح - ليلة القدر",
+      after: "صلاة التراويح والقيام وطلب ليلة القدر",
+    },
+  },
+  28: {
+    fajr: {
+      reminder: "استيقظ مبكراً وصلي قيام الليل",
+      before: "قراءة أذكار الاستيقاظ والوضوء",
+      after: "قراءة ورد القرآن الصباحي",
+    },
+    dhuhr: {
+      reminder: "لا تنس صلاة الظهر في وقتها",
+      before: "الاستعداد للصلاة والوضوء",
+      after: "الدعاء والاستغفار",
+    },
+    asr: {
+      reminder: "وقت صلاة العصر",
+      before: "قراءة أذكار ما بعد الظهر",
+      after: "مراجعة حفظ القرآن",
+    },
+    maghrib: {
+      reminder: "موعد الإفطار وصلاة المغرب",
+      before: "الإفطار بالتمر والماء",
+    },
+    isha: { reminder: "صلاة العشاء والتراويح", after: "صلاة التراويح والقيام" },
+  },
+  29: {
+    fajr: {
+      reminder: "ليلة القدر المحتملة - استيقظ للقيام",
+      before: "قراءة أذكار الاستيقاظ والوضوء",
+      after: "قراءة ورد القرآن الصباحي",
+    },
+    dhuhr: {
+      reminder: "لا تنس صلاة الظهر في وقتها",
+      before: "الاستعداد للصلاة والوضوء",
+      after: "الدعاء والاستغفار",
+    },
+    asr: {
+      reminder: "وقت صلاة العصر",
+      before: "قراءة أذكار ما بعد الظهر",
+      after: "مراجعة حفظ القرآن",
+    },
+    maghrib: {
+      reminder: "موعد الإفطار وصلاة المغرب",
+      before: "الإفطار بالتمر والماء",
+    },
+    isha: {
+      reminder: "صلاة العشاء والتراويح - ليلة القدر",
+      after: "صلاة التراويح والقيام وطلب ليلة القدر",
+    },
+  },
+  30: {
+    fajr: {
+      reminder: "آخر أيام رمضان - استيقظ مبكراً",
+      before: "قراءة أذكار الاستيقاظ والوضوء",
+      after: "قراءة ورد القرآن الصباحي",
+    },
+    dhuhr: {
+      reminder: "لا تنس صلاة الظهر في وقتها",
+      before: "الاستعداد للصلاة والوضوء",
+      after: "الدعاء والاستغفار",
+    },
+    asr: {
+      reminder: "وقت صلاة العصر",
+      before: "قراءة أذكار ما بعد الظهر",
+      after: "مراجعة حفظ القرآن",
+    },
+    maghrib: {
+      reminder: "موعد الإفطار وصلاة المغرب",
+      before: "الإفطار بالتمر والماء",
+    },
+    isha: {
+      reminder: "آخر ليلة من رمضان - صلاة العشاء والتراويح",
+      after: "صلاة التراويح والوداع",
+    },
+  },
+};
+
 // Convert time string to minutes since midnight
 function timeToMinutes(timeStr) {
   const [hours, minutes] = timeStr.split(":").map(Number);
@@ -310,6 +1002,128 @@ function formatTime(timeStr) {
   const period = hours >= 12 ? "م" : "ص";
   const displayHours = hours > 12 ? hours - 12 : hours === 0 ? 12 : hours;
   return `${displayHours}:${minutes.toString().padStart(2, "0")} ${period}`;
+}
+
+// Update activities and reminders text from dailyActivities
+function updateActivitiesText() {
+  const activities = dailyActivities[currentDay];
+
+  if (!activities) return; // إذا لم تكن هناك بيانات لهذا اليوم
+
+  // تحديث الفجر
+  if (activities.fajr) {
+    const fajrCard = document.querySelector(".prayer-card.fajr");
+    if (fajrCard) {
+      const reminderText = fajrCard.querySelector(".reminder-text");
+      if (reminderText && activities.fajr.reminder) {
+        reminderText.textContent = activities.fajr.reminder;
+      }
+
+      const beforeActivity = fajrCard.querySelector(
+        '[data-time="before"] .activity-text',
+      );
+      if (beforeActivity && activities.fajr.before) {
+        beforeActivity.textContent = activities.fajr.before;
+      }
+
+      const afterActivity = fajrCard.querySelector(
+        '[data-time="after"] .activity-text',
+      );
+      if (afterActivity && activities.fajr.after) {
+        afterActivity.textContent = activities.fajr.after;
+      }
+    }
+  }
+
+  // تحديث الظهر
+  if (activities.dhuhr) {
+    const dhuhrCard = document.querySelector(".prayer-card.dhuhr");
+    if (dhuhrCard) {
+      const reminderText = dhuhrCard.querySelector(".reminder-text");
+      if (reminderText && activities.dhuhr.reminder) {
+        reminderText.textContent = activities.dhuhr.reminder;
+      }
+
+      const beforeActivity = dhuhrCard.querySelector(
+        '[data-time="before"] .activity-text',
+      );
+      if (beforeActivity && activities.dhuhr.before) {
+        beforeActivity.textContent = activities.dhuhr.before;
+      }
+
+      const afterActivity = dhuhrCard.querySelector(
+        '[data-time="after"] .activity-text',
+      );
+      if (afterActivity && activities.dhuhr.after) {
+        afterActivity.textContent = activities.dhuhr.after;
+      }
+    }
+  }
+
+  // تحديث العصر
+  if (activities.asr) {
+    const asrCard = document.querySelector(".prayer-card.asr");
+    if (asrCard) {
+      const reminderText = asrCard.querySelector(".reminder-text");
+      if (reminderText && activities.asr.reminder) {
+        reminderText.textContent = activities.asr.reminder;
+      }
+
+      const beforeActivity = asrCard.querySelector(
+        '[data-time="before"] .activity-text',
+      );
+      if (beforeActivity && activities.asr.before) {
+        beforeActivity.textContent = activities.asr.before;
+      }
+
+      const afterActivity = asrCard.querySelector(
+        '[data-time="after"] .activity-text',
+      );
+      if (afterActivity && activities.asr.after) {
+        afterActivity.textContent = activities.asr.after;
+      }
+    }
+  }
+
+  // تحديث المغرب
+  if (activities.maghrib) {
+    const maghribCard = document.querySelector(".prayer-card.maghrib");
+    if (maghribCard) {
+      const reminderText = maghribCard.querySelector(".reminder-text");
+      if (reminderText && activities.maghrib.reminder) {
+        reminderText.textContent = activities.maghrib.reminder;
+      }
+
+      const beforeActivity = maghribCard.querySelector(
+        '[data-time="before"] .activity-text',
+      );
+      if (beforeActivity && activities.maghrib.before) {
+        beforeActivity.textContent = activities.maghrib.before;
+      }
+
+      // المغرب ليس لها نشاط after
+    }
+  }
+
+  // تحديث العشاء
+  if (activities.isha) {
+    const ishaCard = document.querySelector(".prayer-card.isha");
+    if (ishaCard) {
+      const reminderText = ishaCard.querySelector(".reminder-text");
+      if (reminderText && activities.isha.reminder) {
+        reminderText.textContent = activities.isha.reminder;
+      }
+
+      // العشاء ليس لها نشاط before
+
+      const afterActivity = ishaCard.querySelector(
+        '[data-time="after"] .activity-text',
+      );
+      if (afterActivity && activities.isha.after) {
+        afterActivity.textContent = activities.isha.after;
+      }
+    }
+  }
 }
 
 // Update prayer times on cards
@@ -639,6 +1453,7 @@ function saveDay() {
 function updateDayDisplay() {
   document.getElementById("currentDay").textContent = currentDay;
   updatePrayerTimes();
+  updateActivitiesText();
   loadCheckboxStates();
   highlightCurrentActivity();
 }
