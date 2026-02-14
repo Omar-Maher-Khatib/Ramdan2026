@@ -53,212 +53,212 @@ const prayerTimes = {
   1: {
     fajr: "4:59",
     dhuhr: "12:01",
-    asr: "3:11",
-    maghrib: "5:36",
-    isha: "7:06",
+    asr: "15:11",
+    maghrib: "17:36",
+    isha: "19:06",
   },
   2: {
     fajr: "4:58",
     dhuhr: "12:00",
-    asr: "3:11",
-    maghrib: "5:36",
-    isha: "7:06",
+    asr: "15:11",
+    maghrib: "17:36",
+    isha: "19:06",
   },
   3: {
     fajr: "4:57",
     dhuhr: "12:00",
-    asr: "3:12",
-    maghrib: "5:37",
-    isha: "7:07",
+    asr: "15:12",
+    maghrib: "17:37",
+    isha: "19:07",
   },
   4: {
     fajr: "4:56",
     dhuhr: "12:00",
-    asr: "3:12",
-    maghrib: "5:38",
-    isha: "7:08",
+    asr: "15:12",
+    maghrib: "17:38",
+    isha: "19:08",
   },
   5: {
     fajr: "4:55",
     dhuhr: "12:00",
-    asr: "3:13",
-    maghrib: "5:39",
-    isha: "7:09",
+    asr: "15:13",
+    maghrib: "17:39",
+    isha: "19:09",
   },
   6: {
     fajr: "4:54",
     dhuhr: "12:00",
-    asr: "3:13",
-    maghrib: "5:40",
-    isha: "7:10",
+    asr: "15:13",
+    maghrib: "17:40",
+    isha: "19:10",
   },
   7: {
     fajr: "4:53",
     dhuhr: "12:00",
-    asr: "3:14",
-    maghrib: "5:41",
-    isha: "7:11",
+    asr: "15:14",
+    maghrib: "17:41",
+    isha: "19:11",
   },
   8: {
     fajr: "4:52",
     dhuhr: "12:00",
-    asr: "3:14",
-    maghrib: "5:41",
-    isha: "7:11",
+    asr: "15:14",
+    maghrib: "17:41",
+    isha: "19:11",
   },
   9: {
     fajr: "4:51",
     dhuhr: "12:00",
-    asr: "3:15",
-    maghrib: "5:42",
-    isha: "7:12",
+    asr: "15:15",
+    maghrib: "17:42",
+    isha: "19:12",
   },
   10: {
     fajr: "4:50",
     dhuhr: "11:59",
-    asr: "3:15",
-    maghrib: "5:43",
-    isha: "7:13",
+    asr: "15:15",
+    maghrib: "17:43",
+    isha: "19:13",
   },
   11: {
     fajr: "4:49",
     dhuhr: "11:59",
-    asr: "3:16",
-    maghrib: "5:44",
-    isha: "7:14",
+    asr: "15:16",
+    maghrib: "17:44",
+    isha: "19:14",
   },
   12: {
     fajr: "4:48",
     dhuhr: "11:59",
-    asr: "3:16",
-    maghrib: "5:44",
-    isha: "7:14",
+    asr: "15:16",
+    maghrib: "17:44",
+    isha: "19:14",
   },
   13: {
     fajr: "4:47",
     dhuhr: "11:59",
-    asr: "3:16",
-    maghrib: "5:45",
-    isha: "7:15",
+    asr: "15:16",
+    maghrib: "17:45",
+    isha: "19:15",
   },
   14: {
     fajr: "4:46",
     dhuhr: "11:59",
-    asr: "3:17",
-    maghrib: "5:46",
-    isha: "7:16",
+    asr: "15:17",
+    maghrib: "17:46",
+    isha: "19:16",
   },
   15: {
     fajr: "4:44",
     dhuhr: "11:58",
-    asr: "3:17",
-    maghrib: "5:47",
-    isha: "7:17",
+    asr: "15:17",
+    maghrib: "17:47",
+    isha: "19:17",
   },
   16: {
     fajr: "4:43",
     dhuhr: "11:58",
-    asr: "3:17",
-    maghrib: "5:47",
-    isha: "7:17",
+    asr: "15:17",
+    maghrib: "17:47",
+    isha: "19:17",
   },
   17: {
     fajr: "4:42",
     dhuhr: "11:58",
-    asr: "3:18",
-    maghrib: "5:48",
-    isha: "7:18",
+    asr: "15:18",
+    maghrib: "17:48",
+    isha: "19:18",
   },
   18: {
     fajr: "4:41",
     dhuhr: "11:58",
-    asr: "3:18",
-    maghrib: "5:49",
-    isha: "7:19",
+    asr: "15:18",
+    maghrib: "17:49",
+    isha: "19:19",
   },
   19: {
     fajr: "4:40",
     dhuhr: "11:57",
-    asr: "3:18",
-    maghrib: "5:50",
-    isha: "7:20",
+    asr: "15:18",
+    maghrib: "17:50",
+    isha: "19:20",
   },
   20: {
     fajr: "4:38",
     dhuhr: "11:57",
-    asr: "3:19",
-    maghrib: "5:50",
-    isha: "7:20",
+    asr: "15:19",
+    maghrib: "17:50",
+    isha: "19:20",
   },
   21: {
     fajr: "4:37",
     dhuhr: "11:57",
-    asr: "3:19",
-    maghrib: "5:51",
-    isha: "7:21",
+    asr: "15:19",
+    maghrib: "17:51",
+    isha: "19:21",
   },
   22: {
     fajr: "4:36",
     dhuhr: "11:57",
-    asr: "3:19",
-    maghrib: "5:52",
-    isha: "7:22",
+    asr: "15:19",
+    maghrib: "17:52",
+    isha: "19:22",
   },
   23: {
     fajr: "4:35",
     dhuhr: "11:56",
-    asr: "3:20",
-    maghrib: "5:52",
-    isha: "7:22",
+    asr: "15:20",
+    maghrib: "17:52",
+    isha: "19:22",
   },
   24: {
     fajr: "4:33",
     dhuhr: "11:56",
-    asr: "3:20",
-    maghrib: "5:53",
-    isha: "7:23",
+    asr: "15:20",
+    maghrib: "17:53",
+    isha: "19:23",
   },
   25: {
     fajr: "4:32",
     dhuhr: "11:56",
-    asr: "3:20",
-    maghrib: "5:54",
-    isha: "7:24",
+    asr: "15:20",
+    maghrib: "17:54",
+    isha: "19:24",
   },
   26: {
     fajr: "4:31",
     dhuhr: "11:56",
-    asr: "3:20",
-    maghrib: "5:55",
-    isha: "7:25",
+    asr: "15:20",
+    maghrib: "17:55",
+    isha: "19:25",
   },
   27: {
     fajr: "4:29",
     dhuhr: "11:55",
-    asr: "3:21",
-    maghrib: "5:55",
-    isha: "7:25",
+    asr: "15:21",
+    maghrib: "17:55",
+    isha: "19:25",
   },
   28: {
     fajr: "4:28",
     dhuhr: "11:55",
-    asr: "3:21",
-    maghrib: "5:56",
-    isha: "7:26",
+    asr: "15:21",
+    maghrib: "17:56",
+    isha: "19:26",
   },
   29: {
     fajr: "4:27",
     dhuhr: "11:55",
-    asr: "3:21",
-    maghrib: "5:57",
-    isha: "7:27",
+    asr: "15:21",
+    maghrib: "17:57",
+    isha: "19:27",
   },
   30: {
     fajr: "4:25",
     dhuhr: "11:54",
-    asr: "3:21",
-    maghrib: "5:57",
-    isha: "7:27",
+    asr: "15:21",
+    maghrib: "17:57",
+    isha: "19:27",
   },
 };
 
@@ -560,6 +560,7 @@ document.getElementById("prevDay").addEventListener("click", () => {
     currentDay--;
     saveDay();
     updateDayDisplay();
+    updateDatePicker();
   }
 });
 
@@ -569,6 +570,7 @@ document.getElementById("nextDay").addEventListener("click", () => {
     currentDay++;
     saveDay();
     updateDayDisplay();
+    updateDatePicker();
   }
 });
 
@@ -631,5 +633,48 @@ document.querySelectorAll(".activity-checkbox").forEach((checkbox) => {
 // Update current activity every minute
 setInterval(highlightCurrentActivity, 60000);
 
+// Date Picker functionality
+const datePicker = document.getElementById("datePicker");
+
+// Function to convert Ramadan day to actual date
+function ramadanDayToDate(day) {
+  const date = new Date(ramadanStartDate);
+  date.setDate(date.getDate() + (day - 1));
+  return date;
+}
+
+// Function to format date for input[type="date"]
+function formatDateForInput(date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
+// Update date picker when day changes
+function updateDatePicker() {
+  const selectedDate = ramadanDayToDate(currentDay);
+  datePicker.value = formatDateForInput(selectedDate);
+}
+
+// Handle date picker change
+datePicker.addEventListener("change", (e) => {
+  const selectedDate = new Date(e.target.value + "T00:00:00");
+  const ramadanStart = new Date(ramadanStartDate);
+  ramadanStart.setHours(0, 0, 0, 0);
+  selectedDate.setHours(0, 0, 0, 0);
+
+  const diffTime = selectedDate - ramadanStart;
+  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+  if (diffDays >= 0 && diffDays < maxDays) {
+    currentDay = diffDays + 1;
+    saveDay();
+    updateDayDisplay();
+    updateDatePicker();
+  }
+});
+
 // Initialize on page load
 loadDay();
+updateDatePicker();
