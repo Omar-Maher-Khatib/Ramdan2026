@@ -339,10 +339,15 @@ function updatePrayerTimes() {
   if (fajrBefore) fajrBefore.textContent = formatTime(subtractHour(times.fajr));
   if (fajrAfter) fajrAfter.textContent = formatTime(addHalfHour(times.fajr));
 
-  // Dhuhr: after only
+  // Dhuhr: before (1 hour), after
+  const dhuhrBefore = document.querySelector(
+    '[data-prayer="dhuhr"][data-time="before"] .time-badge',
+  );
   const dhuhrAfter = document.querySelector(
     '[data-prayer="dhuhr"][data-time="after"] .time-badge',
   );
+  if (dhuhrBefore)
+    dhuhrBefore.textContent = formatTime(subtractHour(times.dhuhr));
   if (dhuhrAfter) dhuhrAfter.textContent = formatTime(times.dhuhr);
 
   // Asr: before (30 min), after
@@ -399,6 +404,10 @@ function highlightCurrentActivity() {
       },
     },
     dhuhr: {
+      before: {
+        start: timeToMinutes(times.dhuhr) - 60,
+        end: timeToMinutes(times.dhuhr),
+      },
       after: {
         start: timeToMinutes(times.dhuhr),
         end: timeToMinutes(times.dhuhr) + 30,
@@ -496,6 +505,7 @@ function markExpiredActivities(currentMinutes, times) {
       after: timeToMinutes(times.fajr) + 60, // Ends 1 hour after prayer
     },
     dhuhr: {
+      before: timeToMinutes(times.dhuhr), // Ends at prayer time
       after: timeToMinutes(times.dhuhr) + 30, // Ends 30 min after prayer
     },
     asr: {
@@ -559,6 +569,39 @@ function markExpiredActivities(currentMinutes, times) {
         removeMissedMessage(afterItem);
       }
     }
+
+    // Check custom activities for this prayer
+    const customActivities = document.querySelectorAll(
+      `[data-prayer="${prayer}"].custom-activity-item`,
+    );
+    customActivities.forEach((customItem) => {
+      const timing = customItem.dataset.timing || "after";
+      const checkbox = customItem.querySelector(".activity-checkbox");
+
+      let expiryMinutes;
+      if (timing === "before") {
+        expiryMinutes = expiryTime.before;
+      } else {
+        expiryMinutes = expiryTime.after;
+      }
+
+      if (expiryMinutes !== undefined && checkbox) {
+        if (currentMinutes >= expiryMinutes) {
+          // Time has passed
+          if (!checkbox.checked) {
+            customItem.classList.add("expired");
+            checkbox.disabled = true;
+            addMissedMessage(customItem);
+          } else {
+            customItem.classList.remove("expired");
+          }
+        } else {
+          customItem.classList.remove("expired");
+          checkbox.disabled = false;
+          removeMissedMessage(customItem);
+        }
+      }
+    });
   }
 }
 
@@ -807,7 +850,12 @@ function loadCustomActivities() {
     if (savedActivities) {
       const activities = JSON.parse(savedActivities);
       activities.forEach((activity) => {
-        addCustomActivityToDOM(prayer, activity.text, activity.id);
+        addCustomActivityToDOM(
+          prayer,
+          activity.text,
+          activity.id,
+          activity.timing || "after",
+        );
       });
     }
   });
@@ -824,7 +872,8 @@ function saveCustomActivities(prayer) {
     const id = item.dataset.activityId;
     const text = item.querySelector(".activity-text").textContent;
     const checked = item.querySelector(".activity-checkbox").checked;
-    activities.push({ id, text, checked });
+    const timing = item.dataset.timing || "after"; // قبل أو بعد
+    activities.push({ id, text, checked, timing });
   });
 
   const key = `customActivities_day${currentDay}_${prayer}`;
@@ -832,7 +881,12 @@ function saveCustomActivities(prayer) {
 }
 
 // Add custom activity to DOM
-function addCustomActivityToDOM(prayer, text, activityId = null) {
+function addCustomActivityToDOM(
+  prayer,
+  text,
+  activityId = null,
+  timing = "after",
+) {
   const id = activityId || `custom_${Date.now()}_${customActivitiesCounter++}`;
   const container = document.querySelector(
     `.custom-activities-container[data-prayer="${prayer}"]`,
@@ -843,16 +897,34 @@ function addCustomActivityToDOM(prayer, text, activityId = null) {
   activityDiv.dataset.activityId = id;
   activityDiv.dataset.prayer = prayer;
   activityDiv.dataset.time = "custom";
+  activityDiv.dataset.timing = timing; // حفظ التوقيت
 
   const checkboxId = `${prayer}_custom_${id}`;
 
+  // حساب الوقت لعرضه
+  const times = prayerTimes[currentDay];
+  let timeText = "";
+  if (timing === "before") {
+    timeText = formatTime(subtractHour(times[prayer]));
+  } else {
+    timeText = formatTime(times[prayer]);
+  }
+
+  const timingLabel = timing === "before" ? "قبل الصلاة" : "بعد الصلاة";
+
   activityDiv.innerHTML = `
-    <button class="delete-activity-btn" onclick="deleteCustomActivity('${prayer}', '${id}')">
-      ✕
-    </button>
+    <div class="activity-actions">
+      <button class="edit-activity-btn" onclick="editCustomActivity('${prayer}', '${id}')" title="تعديل">
+        ✎
+      </button>
+      <button class="delete-activity-btn" onclick="deleteCustomActivity('${prayer}', '${id}')" title="حذف">
+        ✕
+      </button>
+    </div>
     <input type="checkbox" class="activity-checkbox" id="${checkboxId}" />
     <label for="${checkboxId}" class="activity-content">
-      <span class="activity-text">${text}</span>
+      <span class="time-badge">${timeText}</span>
+      <span class="activity-text">${timingLabel}: ${text}</span>
     </label>
   `;
 
@@ -895,22 +967,60 @@ function deleteCustomActivity(prayer, activityId) {
   }
 }
 
+// Edit custom activity
+function editCustomActivity(prayer, activityId) {
+  const container = document.querySelector(
+    `.custom-activities-container[data-prayer="${prayer}"]`,
+  );
+  const activityItem = container.querySelector(
+    `.custom-activity-item[data-activity-id="${activityId}"]`,
+  );
+
+  if (activityItem) {
+    const activityTextElement = activityItem.querySelector(".activity-text");
+    const fullText = activityTextElement.textContent;
+    // Extract text without timing label (after ": ")
+    const text = fullText.includes(": ") ? fullText.split(": ")[1] : fullText;
+    const timing = activityItem.dataset.timing || "after";
+
+    showAddActivityModal(prayer, activityId, text, timing);
+  }
+}
+
 // Show modal to add activity
-function showAddActivityModal(prayer) {
+function showAddActivityModal(
+  prayer,
+  editId = null,
+  editText = "",
+  editTiming = "after",
+) {
+  const isEditMode = editId !== null;
   const overlay = document.createElement("div");
   overlay.className = "modal-overlay";
   overlay.innerHTML = `
     <div class="modal-content">
       <div class="modal-header">
-        <h2>➕ إضافة نشاط جديد</h2>
+        <h2>${isEditMode ? "✎ تعديل النشاط" : "➕ إضافة نشاط جديد"}</h2>
       </div>
       <div class="modal-body">
         <label for="activityInput">اسم النشاط:</label>
-        <input type="text" id="activityInput" placeholder="مثال: قراءة جزء من القرآن" autofocus />
+        <input type="text" id="activityInput" placeholder="مثال: قراءة جزء من القرآن" value="${editText}" autofocus />
+        
+        <label for="timingSelect" style="margin-top: 15px;">التوقيت:</label>
+        <div class="timing-options">
+          <label class="timing-option">
+            <input type="radio" name="timing" value="before" id="timingBefore" ${editTiming === "before" ? "checked" : ""} />
+            <span>قبل الصلاة</span>
+          </label>
+          <label class="timing-option">
+            <input type="radio" name="timing" value="after" id="timingAfter" ${editTiming === "after" ? "checked" : ""} />
+            <span>بعد الصلاة</span>
+          </label>
+        </div>
       </div>
       <div class="modal-footer">
         <button class="modal-btn modal-btn-primary" id="saveActivityBtn">
-          حفظ
+          ${isEditMode ? "تحديث" : "حفظ"}
         </button>
         <button class="modal-btn modal-btn-secondary" id="cancelActivityBtn">
           إلغاء
@@ -938,9 +1048,25 @@ function showAddActivityModal(prayer) {
   // Save button
   saveBtn.addEventListener("click", () => {
     const text = input.value.trim();
+    const timing = overlay.querySelector('input[name="timing"]:checked').value;
     if (text) {
-      addCustomActivityToDOM(prayer, text);
-      saveCustomActivities(prayer);
+      if (isEditMode) {
+        // Edit existing activity
+        const activityItem = document.querySelector(
+          `.custom-activity-item[data-activity-id="${editId}"]`,
+        );
+        if (activityItem) {
+          // Remove old activity
+          activityItem.remove();
+          // Add updated activity with same ID
+          addCustomActivityToDOM(prayer, text, editId, timing);
+          saveCustomActivities(prayer);
+        }
+      } else {
+        // Add new activity
+        addCustomActivityToDOM(prayer, text, null, timing);
+        saveCustomActivities(prayer);
+      }
       overlay.remove();
     } else {
       input.focus();

@@ -831,10 +831,46 @@ header p {
     border-color: #948979;
 }
 
-.delete-activity-btn {
+/* Activity actions container */
+.activity-actions {
     position: absolute;
     top: 10px;
     left: 10px;
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+/* Edit activity button */
+.edit-activity-btn {
+    background: rgba(148, 137, 121, 0.8);
+    border: none;
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
+}
+
+.edit-activity-btn:hover {
+    background: rgba(148, 137, 121, 1);
+    transform: scale(1.1);
+}
+
+.edit-activity-btn:active {
+    transform: scale(0.95);
+}
+
+/* Delete activity button */
+.delete-activity-btn {
     background: rgba(220, 38, 38, 0.8);
     border: none;
     color: white;
@@ -927,6 +963,46 @@ header p {
     box-shadow: 0 0 10px rgba(148, 137, 121, 0.3);
 }
 
+/* Timing Options */
+.timing-options {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.timing-option {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    background: rgba(57, 62, 70, 0.6);
+    border: 2px solid rgba(148, 137, 121, 0.3);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #DFD0B8;
+    font-size: 1em;
+}
+
+.timing-option:hover {
+    background: rgba(57, 62, 70, 0.9);
+    border-color: #948979;
+}
+
+.timing-option input[type="radio"] {
+    accent-color: #948979;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.timing-option:has(input[type="radio"]:checked) {
+    background: rgba(148, 137, 121, 0.2);
+    border-color: #948979;
+    box-shadow: 0 0 10px rgba(148, 137, 121, 0.3);
+}
+
 .modal-footer {
     display: flex;
     gap: 15px;
@@ -987,6 +1063,21 @@ header p {
         padding: 10px;
     }
 
+    .timing-options {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .timing-option {
+        padding: 10px 12px;
+        font-size: 0.95em;
+    }
+
+    .timing-option input[type="radio"] {
+        width: 18px;
+        height: 18px;
+    }
+
     .modal-footer {
         flex-direction: column;
     }
@@ -1001,10 +1092,15 @@ header p {
         padding: 10px 15px;
     }
 
+    .edit-activity-btn,
     .delete-activity-btn {
         width: 24px;
         height: 24px;
         font-size: 1em;
+    }
+
+    .activity-actions {
+        gap: 6px;
     }
 
     .custom-activity-item {
