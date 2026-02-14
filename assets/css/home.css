@@ -286,7 +286,8 @@ body {
    ========================================== */
 .cards-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 350px));
+    justify-content: center;
     gap: 30px;
     margin-bottom: 60px;
     animation: fadeInUp 1s ease-out;
@@ -409,6 +410,14 @@ body {
     color: #8a6ba8;
 }
 
+.about-app:hover {
+    border-color: #3a8fd4;
+}
+
+.about-app .card-icon {
+    color: #3a8fd4;
+}
+
 /* ==========================================
    التذييل (Footer)
    ========================================== */
@@ -500,7 +509,7 @@ body {
     }
 
     .cards-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 350px));
         gap: 20px;
     }
 
@@ -553,6 +562,10 @@ body {
 
     .moon-icon {
         font-size: 3em;
+    }
+
+    .cards-container {
+        grid-template-columns: minmax(0, 400px);
     }
 
     .feature-card {

@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>حول التطبيق - التطبيق الإسلامي</title>
+    <link rel="stylesheet" href="assets/css/home.css" />
+    <style>
+      .about-section {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        animation: fadeInUp 1s ease-out;
+      }
+      .about-header {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+      .about-header-icon {
+        font-size: 4em;
+        margin-bottom: 20px;
+        filter: drop-shadow(0 0 20px rgba(58, 143, 212, 0.5));
+        animation: float 3s ease-in-out infinite;
+      }
+      .about-header h1 {
+        font-size: 2.5em;
+        color: #dfd0b8;
+        margin-bottom: 15px;
+      }
+      .about-header p {
+        font-size: 1.2em;
+        color: #948979;
+      }
+      .about-card {
+        background: rgba(34, 40, 49, 0.8);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 35px 30px;
+        margin-bottom: 30px;
+        border: 2px solid transparent;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+      }
+      .about-card:hover {
+        border-color: rgba(148, 137, 121, 0.3);
+        transform: translateY(-3px);
+      }
+      .about-card h2 {
+        font-size: 1.6em;
+        color: #dfd0b8;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .about-card h2 span {
+        font-size: 1.3em;
+      }
+      .about-card p {
+        font-size: 1.05em;
+        color: #b0b0b0;
+        line-height: 1.8;
+      }
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        margin-top: 20px;
+      }
+      .feature-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 15px;
+        background: rgba(148, 137, 121, 0.08);
+        border-radius: 12px;
+        transition: all 0.3s ease;
+      }
+      .feature-item:hover {
+        background: rgba(148, 137, 121, 0.15);
+      }
+      .feature-item .icon {
+        font-size: 1.8em;
+        min-width: 40px;
+        text-align: center;
+      }
+      .feature-item .text {
+        font-size: 1em;
+        color: #b0b0b0;
+        line-height: 1.6;
+      }
+      .feature-item .text strong {
+        color: #dfd0b8;
+        display: block;
+        margin-bottom: 4px;
+      }
+      .dev-info {
+        text-align: center;
+        margin-top: 20px;
+      }
+      .dev-info .dev-name {
+        font-size: 1.4em;
+        color: #3a8fd4;
+        font-weight: bold;
+        margin-bottom: 8px;
+      }
+      .dev-info p {
+        color: #b0b0b0;
+        font-size: 1em;
+      }
+      .tech-tags {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 20px;
+      }
+      .tech-tag {
+        padding: 8px 18px;
+        background: rgba(148, 137, 121, 0.15);
+        border: 1px solid rgba(148, 137, 121, 0.3);
+        border-radius: 50px;
+        color: #dfd0b8;
+        font-size: 0.95em;
+        transition: all 0.3s ease;
+      }
+      .tech-tag:hover {
+        background: rgba(148, 137, 121, 0.25);
+        transform: translateY(-2px);
+      }
+      .back-button {
+        display: inline-block;
+        padding: 15px 40px;
+        background: linear-gradient(135deg, #948979, #dfd0b8);
+        color: #222831;
+        text-decoration: none;
+        border-radius: 50px;
+        font-size: 1.1em;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 20px rgba(148, 137, 121, 0.3);
+        margin-top: 40px;
+      }
+      .back-button:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(148, 137, 121, 0.5);
+      }
+
+      @media (max-width: 768px) {
+        .about-header h1 {
+          font-size: 2em;
+        }
+        .features-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .about-section {
+          padding: 30px 15px;
+        }
+        .about-header h1 {
+          font-size: 1.6em;
+        }
+        .about-header-icon {
+          font-size: 3em;
+        }
+        .about-card {
+          padding: 25px 20px;
+        }
+        .about-card h2 {
+          font-size: 1.3em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="background-overlay"></div>
+
+    <!-- Side Navbar -->
+    <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="side-navbar" id="sideNavbar">
+      <div class="navbar-header">
+        <div class="navbar-logo">🌙</div>
+        <h2 class="navbar-title">القائمة الرئيسية</h2>
+        <button class="close-btn" id="closeBtn" aria-label="إغلاق القائمة">
+          ✕
+        </button>
+      </div>
+
+      <ul class="navbar-menu">
+        <li>
+          <a href="index.html">
+            <span class="menu-icon">🏠</span>
+            <span class="menu-text">الرئيسية</span>
+          </a>
+        </li>
+        <li>
+          <a href="schedule.html">
+            <span class="menu-icon">📅</span>
+            <span class="menu-text">جدولي الرمضاني</span>
+          </a>
+        </li>
+        <li>
+          <a href="azkar.html">
+            <span class="menu-icon">📿</span>
+            <span class="menu-text">الأذكار</span>
+          </a>
+        </li>
+        <li>
+          <a href="quran.html">
+            <span class="menu-icon">📖</span>
+            <span class="menu-text">وِردي القرآني</span>
+          </a>
+        </li>
+        <li>
+          <a href="podcast.html">
+            <span class="menu-icon">🎙️</span>
+            <span class="menu-text">بودكاست إسلامي</span>
+          </a>
+        </li>
+        <li>
+          <a href="programs.html">
+            <span class="menu-icon">📺</span>
+            <span class="menu-text">برامج إسلامية</span>
+          </a>
+        </li>
+        <li>
+          <a href="about.html" class="active">
+            <span class="menu-icon">ℹ️</span>
+            <span class="menu-text">حول التطبيق</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="navbar-footer">
+        <p class="navbar-verse">﴿ رَبِّ اشْرَحْ لِي صَدْرِي ﴾</p>
+      </div>
+    </nav>
+
+    <div class="overlay" id="overlay"></div>
+
+    <div class="container">
+      <div class="about-section">
+        <div class="about-header">
+          <div class="about-header-icon">ℹ️</div>
+          <h1>حول التطبيق</h1>
+          <p>التطبيق الإسلامي الشامل - رمضان 1447 هـ / 2026 م</p>
+        </div>
+
+        <!-- الهدف -->
+        <div class="about-card">
+          <h2><span>🎯</span> هدف التطبيق</h2>
+          <p>
+            تطبيق إسلامي شامل صُمم خصيصاً لشهر رمضان المبارك، يهدف إلى مساعدة
+            المستخدم على تنظيم وقته واستغلال أيام الشهر الكريم بأفضل طريقة ممكنة
+            من خلال أدوات عملية ومحتوى نافع.
+          </p>
+        </div>
+
+        <!-- المميزات -->
+        <div class="about-card">
+          <h2><span>⭐</span> مميزات التطبيق</h2>
+          <div class="features-grid">
+            <div class="feature-item">
+              <div class="icon">📅</div>
+              <div class="text">
+                <strong>جدولي الرمضاني</strong>
+                تنظيم أوقات الصلاة والأنشطة اليومية
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="icon">📿</div>
+              <div class="text">
+                <strong>الأذكار</strong>
+                أذكار الصباح والمساء وما بعد الصلاة
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="icon">📖</div>
+              <div class="text">
+                <strong>وِردي القرآني</strong>
+                تتبع ختم القرآن الكريم يومياً
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="icon">🎙️</div>
+              <div class="text">
+                <strong>بودكاست إسلامي</strong>
+                محاضرات وبرامج إسلامية نافعة
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="icon">📺</div>
+              <div class="text">
+                <strong>برامج إسلامية</strong>
+                سلاسل ومقاطع دينية مفيدة
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="icon">🌙</div>
+              <div class="text">
+                <strong>تصميم عصري</strong>
+                واجهة سهلة الاستخدام ومتجاوبة
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- المطور -->
+        <div class="about-card">
+          <h2><span>👨‍💻</span> المطور</h2>
+          <div class="dev-info">
+            <div class="dev-name">Omar Maher Khatib</div>
+            <p>
+              تم تطوير هذا التطبيق لخدمتكم في شهر رمضان المبارك
+            </p>
+          </div>
+        </div>
+
+        <div style="text-align: center">
+          <a href="index.html" class="back-button">← العودة للرئيسية</a>
+        </div>
+      </div>
+    </div>
+
+    <footer class="main-footer">
+      <p>﴿ وَمَا خَلَقْتُ الْجِنَّ وَالْإِنسَ إِلَّا لِيَعْبُدُونِ ﴾</p>
+      <p class="footer-year">1447 هـ - 2026 م</p>
+      <p class="made-by">Made with ❤️ by <strong>Omar Maher Khatib</strong></p>
+    </footer>
+
+    <script src="assets/js/navbar.js"></script>
+  </body>
+</html>

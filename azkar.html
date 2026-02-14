@@ -6,29 +6,203 @@
     <title>الأذكار - التطبيق الإسلامي</title>
     <link rel="stylesheet" href="assets/css/home.css" />
     <style>
-      .coming-soon {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        min-height: 80vh;
+      .azkar-page {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .azkar-header {
         text-align: center;
         padding: 40px 20px;
-      }
-      .coming-soon-icon {
-        font-size: 5em;
         margin-bottom: 30px;
+        animation: fadeInDown 0.8s ease-out;
+      }
+      .azkar-header-icon {
+        font-size: 4em;
+        margin-bottom: 15px;
+        filter: drop-shadow(0 0 20px rgba(74, 157, 95, 0.5));
         animation: float 3s ease-in-out infinite;
       }
-      .coming-soon-title {
+      .azkar-header h1 {
         font-size: 2.5em;
         color: #dfd0b8;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
       }
-      .coming-soon-text {
-        font-size: 1.2em;
+      .azkar-header p {
+        font-size: 1.15em;
         color: #948979;
-        margin-bottom: 40px;
+      }
+
+      /* Tabs */
+      .azkar-tabs {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 35px;
+        animation: fadeInUp 0.8s ease-out;
+      }
+      .azkar-tab {
+        padding: 12px 28px;
+        background: rgba(34, 40, 49, 0.8);
+        border: 2px solid rgba(148, 137, 121, 0.2);
+        border-radius: 50px;
+        color: #b0b0b0;
+        font-size: 1.05em;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-family: inherit;
+      }
+      .azkar-tab:hover {
+        border-color: rgba(148, 137, 121, 0.5);
+        color: #dfd0b8;
+      }
+      .azkar-tab.active {
+        background: linear-gradient(135deg, #4a9d5f, #3a8a50);
+        border-color: #4a9d5f;
+        color: #fff;
+        box-shadow: 0 4px 20px rgba(74, 157, 95, 0.3);
+      }
+
+      /* Sections */
+      .azkar-section {
+        display: none;
+        animation: fadeInUp 0.6s ease-out;
+      }
+      .azkar-section.active {
+        display: block;
+      }
+      .section-title {
+        font-size: 1.5em;
+        color: #dfd0b8;
+        text-align: center;
+        margin-bottom: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      /* Zikr Card */
+      .zikr-card {
+        background: rgba(34, 40, 49, 0.85);
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+        padding: 25px;
+        margin-bottom: 20px;
+        border: 2px solid rgba(148, 137, 121, 0.1);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        position: relative;
+      }
+      .zikr-card:hover {
+        border-color: rgba(74, 157, 95, 0.3);
+        transform: translateY(-2px);
+      }
+      .zikr-text {
+        font-size: 1.15em;
+        color: #eeeeee;
+        line-height: 2;
+        text-align: center;
+        margin-bottom: 15px;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      .zikr-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding-top: 12px;
+        border-top: 1px solid rgba(148, 137, 121, 0.15);
+      }
+      .zikr-repeat {
+        padding: 6px 16px;
+        background: rgba(74, 157, 95, 0.15);
+        border: 1px solid rgba(74, 157, 95, 0.3);
+        border-radius: 50px;
+        color: #4a9d5f;
+        font-size: 0.9em;
+        font-weight: 600;
+      }
+      .zikr-source {
+        font-size: 0.85em;
+        color: #948979;
+        font-style: italic;
+      }
+      .zikr-benefit {
+        font-size: 0.92em;
+        color: #d4af37;
+        margin-top: 10px;
+        text-align: center;
+        line-height: 1.6;
+      }
+      .zikr-counter {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 12px;
+      }
+      .counter-btn {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: 2px solid rgba(74, 157, 95, 0.4);
+        background: rgba(74, 157, 95, 0.1);
+        color: #4a9d5f;
+        font-size: 1.5em;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: inherit;
+        user-select: none;
+      }
+      .counter-btn:hover {
+        background: rgba(74, 157, 95, 0.25);
+        transform: scale(1.05);
+      }
+      .counter-btn:active {
+        transform: scale(0.95);
+        background: rgba(74, 157, 95, 0.35);
+      }
+      .counter-display {
+        font-size: 1.4em;
+        font-weight: bold;
+        color: #4a9d5f;
+        min-width: 40px;
+        text-align: center;
+      }
+      .zikr-card.completed {
+        opacity: 0.6;
+        border-color: rgba(74, 157, 95, 0.4);
+      }
+      .zikr-card.completed .zikr-text {
+        color: #948979;
+      }
+      .zikr-card.locked {
+        display: none;
+      }
+      .zikr-card.completed + .zikr-card.locked {
+        display: block;
+        animation: fadeInUp 0.6s ease-out;
+      }
+
+      /* Quran verse styling */
+      .quran-verse {
+        font-size: 1.2em;
+        color: #d4af37;
+        line-height: 2.2;
+      }
+
+      /* Back button */
+      .back-section {
+        text-align: center;
+        margin-top: 40px;
+        margin-bottom: 20px;
       }
       .back-button {
         display: inline-block;
@@ -45,6 +219,67 @@
       .back-button:hover {
         transform: translateY(-5px);
         box-shadow: 0 12px 30px rgba(148, 137, 121, 0.5);
+      }
+
+      /* Progress */
+      .progress-bar {
+        width: 100%;
+        height: 6px;
+        background: rgba(148, 137, 121, 0.15);
+        border-radius: 3px;
+        margin-bottom: 30px;
+        overflow: hidden;
+      }
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #4a9d5f, #6abf7b);
+        border-radius: 3px;
+        width: 0%;
+        transition: width 0.5s ease;
+      }
+      .progress-text {
+        text-align: center;
+        color: #948979;
+        font-size: 0.95em;
+        margin-bottom: 10px;
+      }
+
+      @media (max-width: 768px) {
+        .azkar-header h1 {
+          font-size: 2em;
+        }
+        .zikr-text {
+          font-size: 1.05em;
+        }
+        .azkar-tab {
+          padding: 10px 20px;
+          font-size: 0.95em;
+        }
+      }
+      @media (max-width: 480px) {
+        .azkar-page {
+          padding: 15px;
+        }
+        .azkar-header {
+          padding: 30px 15px;
+        }
+        .azkar-header h1 {
+          font-size: 1.6em;
+        }
+        .azkar-header-icon {
+          font-size: 3em;
+        }
+        .zikr-card {
+          padding: 20px 15px;
+        }
+        .zikr-text {
+          font-size: 1em;
+          line-height: 1.9;
+        }
+        .zikr-meta {
+          flex-direction: column;
+          align-items: center;
+        }
       }
     </style>
   </head>
@@ -104,6 +339,12 @@
             <span class="menu-text">برامج إسلامية</span>
           </a>
         </li>
+        <li>
+          <a href="about.html">
+            <span class="menu-icon">ℹ️</span>
+            <span class="menu-text">حول التطبيق</span>
+          </a>
+        </li>
       </ul>
 
       <div class="navbar-footer">
@@ -113,14 +354,503 @@
 
     <div class="overlay" id="overlay"></div>
 
-    <div class="container coming-soon">
-      <div class="coming-soon-icon">📿</div>
-      <h1 class="coming-soon-title">الأذكار</h1>
-      <p class="coming-soon-text">
-        هذه الميزة قيد التطوير<br />
-        ستكون متاحة قريباً إن شاء الله
-      </p>
-      <a href="index.html" class="back-button">← العودة للرئيسية</a>
+    <div class="container azkar-page">
+      <div class="azkar-header">
+        <div class="azkar-header-icon">📿</div>
+        <h1>الأذكار</h1>
+        <p>حصّن نفسك بذكر الله تعالى</p>
+      </div>
+
+      <!-- Tabs -->
+      <div class="azkar-tabs">
+        <button class="azkar-tab active" data-tab="morning">
+          🌅 أذكار الصباح
+        </button>
+        <button class="azkar-tab" data-tab="evening">🌙 أذكار المساء</button>
+        <button class="azkar-tab" data-tab="afterprayer">🕌 بعد الصلاة</button>
+      </div>
+
+      <!-- ======== أذكار الصباح ======== -->
+      <div class="azkar-section active" id="morning">
+        <h2 class="section-title">🌅 أذكار الصباح</h2>
+
+        <div class="progress-text">
+          التقدم: <span id="morning-progress-text">0/0</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="morning-progress"></div>
+        </div>
+
+        <!-- آية الكرسي -->
+        <div class="zikr-card" data-count="1">
+          <p class="zikr-text quran-verse">
+            ﴿ اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا
+            تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ ۚ لَهُ مَا فِي السَّمَاوَاتِ وَمَا
+            فِي الْأَرْضِ ۗ مَنْ ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلَّا بِإِذْنِهِ
+            ۚ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ ۖ وَلَا
+            يُحِيطُونَ بِشَيْءٍ مِنْ عِلْمِهِ إِلَّا بِمَا شَاءَ ۚ وَسِعَ
+            كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ ۖ وَلَا يَئُودُهُ حِفْظُهُمَا
+            ۚ وَهُوَ الْعَلِيُّ الْعَظِيمُ ﴾
+          </p>
+          <div class="zikr-meta">
+            <span class="zikr-repeat">مرة واحدة</span>
+            <span class="zikr-source">سورة البقرة - آية 255</span>
+          </div>
+          <div class="zikr-counter">
+            <button class="counter-btn" onclick="countDown(this)">1</button>
+          </div>
+        </div>
+
+        <!-- سورة الإخلاص -->
+        <div class="zikr-card" data-count="3">
+          <p class="zikr-text quran-verse">
+            ﴿ قُلْ هُوَ اللَّهُ أَحَدٌ ۝ اللَّهُ الصَّمَدُ ۝ لَمْ يَلِدْ وَلَمْ
+            يُولَدْ ۝ وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ ﴾
+          </p>
+          <div class="zikr-meta">
+            <span class="zikr-repeat">3 مرات</span>
+            <span class="zikr-source">سورة الإخلاص</span>
+          </div>
+          <div class="zikr-benefit">يكفيك من كل شيء</div>
+          <div class="zikr-counter">
+            <button class="counter-btn" onclick="countDown(this)">3</button>
+          </div>
+        </div>
+
+        <!-- سورة الفلق -->
+        <div class="zikr-card" data-count="3">
+          <p class="zikr-text quran-verse">
+            ﴿ قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ ۝ مِن شَرِّ مَا خَلَقَ ۝ وَمِن
+            شَرِّ غَاسِقٍ إِذَا وَقَبَ ۝ وَمِن شَرِّ النَّفَّاثَاتِ فِي
+            الْعُقَدِ ۝ وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ ﴾
+          </p>
+          <div class="zikr-meta">
+            <span class="zikr-repeat">3 مرات</span>
+            <span class="zikr-source">سورة الفلق</span>
+          </div>
+          <div class="zikr-counter">
+            <button class="counter-btn" onclick="countDown(this)">3</button>
+          </div>
+        </div>
+
+        <!-- سورة الناس -->
+        <div class="zikr-card" data-count="3">
+          <p class="zikr-text quran-verse">
+            ﴿ قُلْ أَعُوذُ بِرَبِّ النَّاسِ ۝ مَلِكِ النَّاسِ ۝ إِلَٰهِ النَّاسِ
+            ۝ مِن شَرِّ الْوَسْوَاسِ الْخَنَّاسِ ۝ الَّذِي يُوَسْوِسُ فِي
+            صُدُورِ النَّاسِ ۝ مِنَ الْجِنَّةِ وَالنَّاسِ ﴾
+          </p>
+          <div class="zikr-meta">
+            <span class="zikr-repeat">3 مرات</span>
+            <span class="zikr-source">سورة الناس</span>
+          </div>
+          <div class="zikr-counter">
+            <button class="counter-btn" onclick="countDown(this)">3</button>
+          </div>
+        </div>
+
+        <!-- أصبحنا على فطرة الإسلام -->
+        <div class="zikr-card" data-count="1">
+          <p class="zikr-text">
+            أَصبَحْنا على فِطرةِ الإسلامِ، وعلى كَلِمةِ الإخلاصِ، وعلى دِينِ
+            نَبيِّنا محمَّدٍ صلَّى اللهُ عليه وسلَّمَ، وعلى مِلَّةِ أبِينا
+            إبراهيمَ، حَنيفًا مُسلِمًا، وما كان مِنَ المُشرِكينَ
+          </p>
+          <div class="zikr-meta">
+            <span class="zikr-repeat">مرة واحدة</span>
+            <span class="zikr-source">رواه أحمد</span>
+          </div>
+          <div class="zikr-counter">
+            <button class="counter-btn" onclick="countDown(this)">1</button>
+          </div>
+        </div>
+
+        <!-- أصبحنا وأصبح الملك لله -->
+        <div class="zikr-card" data-count="1">
+          <p class="zikr-text">
+            أَصْبَحْنا وَأَصْبَحَ المُلْكُ للهِ وَالحَمدُ للهِ، لا إلهَ إلّا
+            اللّهُ وَحدَهُ لا شَريكَ لهُ، لهُ المُلكُ ولهُ الحَمْدُ، وهُوَ على
+            كلّ شَيءٍ قدير، رَبِّ أسْأَلُكَ خَيرَ ما في هذا اليوم وَخَيرَ ما
+            بَعْدَه، وَأَعوذُ بِكَ مِنْ شَرِّ ما في هذا اليوم وَشَرِّ ما
+            بَعْدَه، رَبِّ أَعوذُ بِكَ مِنَ الْكَسَلِ وَسوءِ الْكِبَر، رَبِّ
+            أَعوذُ بِكَ مِنْ عَذابٍ في النّارِ وَعَذابٍ في القَبْر
+          </p>
+          <div class="zikr-meta">
+            <span class="zikr-repeat">مرة واحدة</span>
+            <span class="zikr-source">رواه مسلم</span>
+          </div>
+          <div class="zikr-counter">
+            <button class="counter-btn" onclick="countDown(this)">1</button>
+          </div>
+        </div>
+
+        <!-- سيد الاستغفار -->
+        <div class="zikr-card" data-count="1">
+          <p class="zikr-text">
+            اللَّهُمَّ أنْتَ رَبِّي لا إلَهَ إلَّا أنْتَ، خَلَقْتَنِي وأنا
+            عَبْدُكَ، وأنا علَى عَهْدِكَ ووَعْدِكَ ما اسْتَطَعْتُ، أعُوذُ بكَ
+            مِن شَرِّ ما صَنَعْتُ، أبُوءُ لكَ بنِعْمَتِكَ عَلَيَّ، وأَبُوءُ لكَ
+            بذَنْبِي فاغْفِرْ لِي، فإنَّه لا يَغْفِرُ الذُّنُوبَ إلَّا أنْتَ
+          </p>
+          <div class="zikr-meta">
+            <span class="zikr-repeat">مرة واحدة</span>
+            <span class="zikr-source">رواه البخاري</span>
+          </div>
+          <div class="zikr-benefit">
+            سيد الاستغفار — من قالها موقنًا بها حين يمسي فمات من ليلته دخل الجنة
+          </div>
+          <div class="zikr-counter">
+            <button class="counter-btn" onclick="countDown(this)">1</button>
+          </div>
+        </div>
+
+        <!-- اللهم بك أصبحنا -->
+        <div class="zikr-card" data-count="1">
+          <p class="zikr-text">
+            اللَّهمَّ بِكَ أصبَحنا، وبِكَ أمسَينا، وبِكَ نحيا وبِكَ نموتُ وإليكَ
+            المصيرُ
+          </p>
+          <div class="zikr-meta">
+            <span class="zikr-repeat">مرة واحدة</span>
+            <span class="zikr-source">رواه الترمذي</span>
+          </div>
+          <div class="zikr-counter">
+            <button class="counter-btn" onclick="countDown(this)">1</button>
+          </div>
+        </div>
+
+        <!-- بسم الله الذي لا يضر -->
+        <div class="zikr-card" data-count="3">
+          <p class="zikr-text">
+            بسمِ اللهِ الذي لا يَضرُّ مع اسمِه شيءٌ في الأرضِ ولا في السماءِ وهو
+            السميعُ العليمُ
+          </p>
+          <div class="zikr-meta">
+            <span class="zikr-repeat">3 مرات</span>
+            <span class="zikr-source">رواه أبو داود والترمذي</span>
+          </div>
+          <div class="zikr-counter">
+            <button class="counter-btn" onclick="countDown(this)">3</button>
+          </div>
+        </div>
+
+        <!-- رضيت بالله ربا -->
+        <div class="zikr-card" data-count="3">
+          <p class="zikr-text">
+            رَضيتُ باللَّهِ ربًّا، وبالإسلامِ دينًا، وبِمُحمَّدٍ صلَّى اللهُ
+            عليه وسلَّمَ رسولًا
+          </p>
+          <div class="zikr-meta">
+            <span class="zikr-repeat">3 مرات</span>
+            <span class="zikr-source">رواه أبو داود والترمذي</span>
+          </div>
+          <div class="zikr-benefit">من قالها وجبت له الجنة</div>
+          <div class="zikr-counter">
+            <button class="counter-btn" onclick="countDown(this)">3</button>
+          </div>
+        </div>
+
+        <!-- اللهم عالم الغيب والشهادة -->
+        <div class="zikr-card" data-count="1">
+          <p class="zikr-text">
+            اللَّهمَّ عالِمَ الغَيبِ والشَّهادةِ، فاطرَ السَّمواتِ والأرضِ،
+            رَبَّ كلِّ شيءٍ ومَليكَهُ، أشهدُ أن لا إلَهَ إلَّا أنتَ، أعوذُ بِكَ
+            مِن شرِّ نفسي وشرِّ الشَّيطانِ وشِركِهِ
+          </p>
+          <div class="zikr-meta">
+            <span class="zikr-repeat">مرة واحدة</span>
+            <span class="zikr-source">رواه الترمذي وأبو داود</span>
+          </div>
+          <div class="zikr-counter">
+            <button class="counter-btn" onclick="countDown(this)">1</button>
+          </div>
+        </div>
+
+        <!-- اللهم ما أصبح بي من نعمة -->
+        <div class="zikr-card" data-count="1">
+          <p class="zikr-text">
+            اللَّهمَّ ما أصبحَ بي من نعمةٍ أو بأحدٍ من خلقِكَ فمنكَ وحدَكَ لا
+            شريكَ لكَ، فلكَ الحمدُ ولكَ الشُّكرُ
+          </p>
+          <div class="zikr-meta">
+            <span class="zikr-repeat">مرة واحدة</span>
+            <span class="zikr-source">رواه أبو داود</span>
+          </div>
+          <div class="zikr-benefit">من قالها حين يصبح فقد أدّى شكر يومه</div>
+          <div class="zikr-counter">
+            <button class="counter-btn" onclick="countDown(this)">1</button>
+          </div>
+        </div>
+
+        <!-- حسبي الله -->
+        <div class="zikr-card" data-count="7">
+          <p class="zikr-text">
+            حَسبيَ اللهُ لا إلهَ إلَّا هو، عليه تَوكَّلْتُ، وهو ربُّ العَرشِ
+            العَظيمِ
+          </p>
+          <div class="zikr-meta">
+            <span class="zikr-repeat">7 مرات</span>
+            <span class="zikr-source">سورة التوبة - 129</span>
+          </div>
+          <div class="zikr-benefit">
+            من قالها كَفاه اللهُ ما أهَمَّه من أمرِ الدُّنيا والآخِرةِ
+          </div>
+          <div class="zikr-counter">
+            <button class="counter-btn" onclick="countDown(this)">7</button>
+          </div>
+        </div>
+
+        <!-- اللهم إني أصبحت أشهدك -->
+        <div class="zikr-card" data-count="4">
+          <p class="zikr-text">
+            اللَّهُمَّ إنِّي أصبَحتُ أُشهِدُكَ، وأُشهِدُ حَمَلةَ عَرشِكَ،
+            ومَلائِكَتَكَ، وجميعَ خَلقِكَ: أنَّكَ أنتَ اللهُ لا إلهَ إلَّا أنتَ،
+            وأنَّ مُحمَّدًا عبدُكَ ورسولُكَ
+          </p>
+          <div class="zikr-meta">
+            <span class="zikr-repeat">4 مرات</span>
+            <span class="zikr-source">رواه أبو داود</span>
+          </div>
+          <div class="zikr-counter">
+            <button class="counter-btn" onclick="countDown(this)">4</button>
+          </div>
+        </div>
+
+        <!-- سبحان الله وبحمده لا قوة إلا بالله -->
+        <div class="zikr-card" data-count="1">
+          <p class="zikr-text">
+            سبحانَ اللَّهِ وبحمدِه، لا قوَّةَ إلَّا باللَّهِ، ما شاءَ اللَّهُ
+            كانَ وما لم يشأ لم يَكن، أعلمُ أنَّ اللَّهَ على كلِّ شيءٍ قديرٌ
+            وأنَّ اللَّهَ قد أحاطَ بِكلِّ شيءٍ علمًا
+          </p>
+          <div class="zikr-meta">
+            <span class="zikr-repeat">مرة واحدة</span>
+            <span class="zikr-source">رواه أبو داود</span>
+          </div>
+          <div class="zikr-benefit">من قالها حين يصبح حُفظ حتى يمسي</div>
+          <div class="zikr-counter">
+            <button class="counter-btn" onclick="countDown(this)">1</button>
+          </div>
+        </div>
+
+        <!-- سبحان الله وبحمده عدد خلقه -->
+        <div class="zikr-card" data-count="3">
+          <p class="zikr-text">
+            سُبْحَانَ اللهِ وَبِحَمْدِهِ، عَدَدَ خَلْقِهِ وَرِضَا نَفْسِهِ
+            وَزِنَةَ عَرْشِهِ وَمِدَادَ كَلِمَاتِهِ
+          </p>
+          <div class="zikr-meta">
+            <span class="zikr-repeat">3 مرات</span>
+            <span class="zikr-source">رواه مسلم</span>
+          </div>
+          <div class="zikr-counter">
+            <button class="counter-btn" onclick="countDown(this)">3</button>
+          </div>
+        </div>
+
+        <!-- سبحان الله وبحمده مئة مرة -->
+        <div class="zikr-card" data-count="100">
+          <p class="zikr-text">سبحانَ اللَّهِ وبحمدِهِ</p>
+          <div class="zikr-meta">
+            <span class="zikr-repeat">100 مرة</span>
+            <span class="zikr-source">رواه مسلم</span>
+          </div>
+          <div class="zikr-benefit">
+            من قالها مئة مرة حين يصبح وحين يمسي لم يأتِ أحد يوم القيامة بأفضل
+            مما جاء به
+          </div>
+          <div class="zikr-counter">
+            <button class="counter-btn" onclick="countDown(this)">100</button>
+          </div>
+        </div>
+
+        <!-- لا إله إلا الله وحده -->
+        <div class="zikr-card" data-count="10">
+          <p class="zikr-text">
+            لا إلهَ إلَّا اللهُ وحدَه لا شريكَ له، له الملكُ وله الحمدُ وهو على
+            كلِّ شيءٍ قديرٌ
+          </p>
+          <div class="zikr-meta">
+            <span class="zikr-repeat">10 مرات</span>
+            <span class="zikr-source">متفق عليه</span>
+          </div>
+          <div class="zikr-counter">
+            <button class="counter-btn" onclick="countDown(this)">10</button>
+          </div>
+        </div>
+
+        <!-- الصلاة على النبي -->
+        <div class="zikr-card" data-count="10">
+          <p class="zikr-text">
+            اللَّهُمَّ صَلِّ وَسَلِّمْ وَبَارِكْ على نَبِيِّنَا مُحمَّد
+          </p>
+          <div class="zikr-meta">
+            <span class="zikr-repeat">10 مرات</span>
+            <span class="zikr-source">رواه الطبراني</span>
+          </div>
+          <div class="zikr-benefit">
+            من صلى عليّ حين يصبح عشرًا وحين يمسي عشرًا أدركته شفاعتي يوم القيامة
+          </div>
+          <div class="zikr-counter">
+            <button class="counter-btn" onclick="countDown(this)">10</button>
+          </div>
+        </div>
+
+        <!-- الاستغفار -->
+        <div class="zikr-card" data-count="3">
+          <p class="zikr-text">
+            أستغفرُ اللهَ العظيمَ الذي لا إلهَ إلَّا هو الحيَّ القيومَ وأتوبُ
+            إليه
+          </p>
+          <div class="zikr-meta">
+            <span class="zikr-repeat">3 مرات</span>
+            <span class="zikr-source">رواه أبو داود والترمذي</span>
+          </div>
+          <div class="zikr-counter">
+            <button class="counter-btn" onclick="countDown(this)">3</button>
+          </div>
+        </div>
+
+        <!-- أدعية الصباح -->
+        <div class="zikr-card" data-count="1">
+          <p class="zikr-text">
+            اللهمَّ إني أسألُك العفوَ والعافيةَ في الدنيا والآخرةِ، اللهمَّ إني
+            أسألُك العفوَ والعافيةَ في دِيني ودنيايَ وأهلي ومالي، اللهمَّ استُرْ
+            عوراتي وآمِنْ روعاتي، واحفظني من بين يديَّ ومن خلفي وعن يميني وعن
+            شمالي ومن فوقي، وأعوذُ بعظمتِك أن أُغتالَ من تحتي
+          </p>
+          <div class="zikr-meta">
+            <span class="zikr-repeat">مرة واحدة</span>
+            <span class="zikr-source">رواه أبو داود وابن ماجه</span>
+          </div>
+          <div class="zikr-counter">
+            <button class="counter-btn" onclick="countDown(this)">1</button>
+          </div>
+        </div>
+
+        <div class="zikr-card" data-count="1">
+          <p class="zikr-text">
+            اللهمَّ إنِّي أعوذُ بك من الهمِّ والحزنِ، والعجزِ والكسلِ، والبُخلِ
+            والجُبنِ، وضَلَعِ الدَّينِ وغَلَبَةِ الرجالِ
+          </p>
+          <div class="zikr-meta">
+            <span class="zikr-repeat">مرة واحدة</span>
+            <span class="zikr-source">رواه البخاري</span>
+          </div>
+          <div class="zikr-counter">
+            <button class="counter-btn" onclick="countDown(this)">1</button>
+          </div>
+        </div>
+
+        <div class="zikr-card" data-count="1">
+          <p class="zikr-text">
+            يا حيُّ يا قيُّومُ، برَحمتِكَ أستَغيثُ، أصلِح لي شأني كُلَّهُ، ولا
+            تَكِلني إلى نَفسي طرفةَ عينٍ
+          </p>
+          <div class="zikr-meta">
+            <span class="zikr-repeat">مرة واحدة</span>
+            <span class="zikr-source">رواه الحاكم</span>
+          </div>
+          <div class="zikr-counter">
+            <button class="counter-btn" onclick="countDown(this)">1</button>
+          </div>
+        </div>
+
+        <div class="zikr-card" data-count="3">
+          <p class="zikr-text">
+            اللَّهمَّ عافِني في بدَني، اللَّهمَّ عافِني في سمعي، اللَّهمَّ
+            عافِني في بصري، لا إلهَ إلَّا أنت. اللَّهمَّ إنِّي أعوذُ بِكَ مِنَ
+            الكُفرِ والفقرِ، اللَّهمَّ إنِّي أعوذُ بكَ من عذابِ القبرِ، لا إلهَ
+            إلَّا أنت
+          </p>
+          <div class="zikr-meta">
+            <span class="zikr-repeat">3 مرات</span>
+            <span class="zikr-source">رواه أبو داود</span>
+          </div>
+          <div class="zikr-counter">
+            <button class="counter-btn" onclick="countDown(this)">3</button>
+          </div>
+        </div>
+
+        <div class="zikr-card" data-count="1">
+          <p class="zikr-text">
+            اللَّهمَّ إنِّي أسألُكَ خيرَ هذا اليومِ: فتحَه ونصرَه ونورَه
+            وبرَكتَه وهدايتَه، وأعوذُ بِكَ من شرِّ ما فيهِ وشرِّ ما بعدَه
+          </p>
+          <div class="zikr-meta">
+            <span class="zikr-repeat">مرة واحدة</span>
+            <span class="zikr-source">رواه أبو داود</span>
+          </div>
+          <div class="zikr-counter">
+            <button class="counter-btn" onclick="countDown(this)">1</button>
+          </div>
+        </div>
+
+        <div class="zikr-card" data-count="1">
+          <p class="zikr-text">
+            اللَّهمَّ إنِّي أسألُكَ عِلمًا نافعًا، ورزقًا طيِّبًا، وعملًا
+            متقبَّلًا
+          </p>
+          <div class="zikr-meta">
+            <span class="zikr-repeat">مرة واحدة</span>
+            <span class="zikr-source">رواه ابن ماجه</span>
+          </div>
+          <div class="zikr-counter">
+            <button class="counter-btn" onclick="countDown(this)">1</button>
+          </div>
+        </div>
+
+        <div class="zikr-card" data-count="3">
+          <p class="zikr-text">
+            أعوذُ بكلماتِ اللهِ التَّامَّاتِ مِن شرِّ ما خلَق
+          </p>
+          <div class="zikr-meta">
+            <span class="zikr-repeat">3 مرات</span>
+            <span class="zikr-source">رواه مسلم</span>
+          </div>
+          <div class="zikr-counter">
+            <button class="counter-btn" onclick="countDown(this)">3</button>
+          </div>
+        </div>
+
+        <div class="zikr-card" data-count="3">
+          <p class="zikr-text">
+            اللهمَّ إنّا نعوذُ بك من أن نُشرِكَ بك شيئًا نعلَمُه، ونستغفرُك لما
+            لا نعلمُه
+          </p>
+          <div class="zikr-meta">
+            <span class="zikr-repeat">3 مرات</span>
+            <span class="zikr-source">رواه أحمد</span>
+          </div>
+          <div class="zikr-counter">
+            <button class="counter-btn" onclick="countDown(this)">3</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======== أذكار المساء ======== -->
+      <div class="azkar-section" id="evening">
+        <h2 class="section-title">🌙 أذكار المساء</h2>
+        <div class="zikr-card">
+          <p class="zikr-text" style="color: #948979; font-size: 1.3em">
+            قريباً إن شاء الله...
+          </p>
+        </div>
+      </div>
+
+      <!-- ======== أذكار بعد الصلاة ======== -->
+      <div class="azkar-section" id="afterprayer">
+        <h2 class="section-title">🕌 أذكار ما بعد الصلاة</h2>
+        <div class="zikr-card">
+          <p class="zikr-text" style="color: #948979; font-size: 1.3em">
+            قريباً إن شاء الله...
+          </p>
+        </div>
+      </div>
+
+      <div class="back-section">
+        <a href="index.html" class="back-button">← العودة للرئيسية</a>
+      </div>
     </div>
 
     <footer class="main-footer">
@@ -130,5 +860,84 @@
     </footer>
 
     <script src="assets/js/navbar.js"></script>
+    <script>
+      // Tab switching
+      document.querySelectorAll(".azkar-tab").forEach((tab) => {
+        tab.addEventListener("click", () => {
+          document
+            .querySelectorAll(".azkar-tab")
+            .forEach((t) => t.classList.remove("active"));
+          document
+            .querySelectorAll(".azkar-section")
+            .forEach((s) => s.classList.remove("active"));
+          tab.classList.add("active");
+          document.getElementById(tab.dataset.tab).classList.add("active");
+        });
+      });
+
+      // Counter functionality
+      function updateProgress(section) {
+        const sectionEl = document.getElementById(section);
+        if (!sectionEl) return;
+        const cards = sectionEl.querySelectorAll(".zikr-card[data-count]");
+        const total = cards.length;
+        const completed = sectionEl.querySelectorAll(
+          ".zikr-card.completed",
+        ).length;
+        const progressBar = document.getElementById(section + "-progress");
+        const progressText = document.getElementById(
+          section + "-progress-text",
+        );
+        if (progressBar)
+          progressBar.style.width =
+            (total > 0 ? (completed / total) * 100 : 0) + "%";
+        if (progressText) progressText.textContent = completed + "/" + total;
+      }
+
+      function countDown(btn) {
+        const card = btn.closest(".zikr-card");
+        let count = parseInt(btn.textContent);
+        if (count > 0) {
+          count--;
+          btn.textContent = count;
+          if (count === 0) {
+            card.classList.add("completed");
+            btn.disabled = true;
+            btn.style.opacity = "0.4";
+            // Reveal the next locked card
+            const section = card.closest(".azkar-section");
+            const cards = Array.from(
+              section.querySelectorAll(".zikr-card[data-count]"),
+            );
+            const idx = cards.indexOf(card);
+            if (idx >= 0 && idx < cards.length - 1) {
+              const nextCard = cards[idx + 1];
+              nextCard.classList.remove("locked");
+              // Smooth scroll to next card
+              setTimeout(() => {
+                nextCard.scrollIntoView({
+                  behavior: "smooth",
+                  block: "center",
+                });
+              }, 300);
+            }
+            if (section) updateProgress(section.id);
+          }
+        }
+      }
+
+      // Initialize: hide all cards except the first, set progress
+      function initSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        if (!section) return;
+        const cards = section.querySelectorAll(".zikr-card[data-count]");
+        cards.forEach((card, i) => {
+          if (i > 0) card.classList.add("locked");
+        });
+        updateProgress(sectionId);
+      }
+
+      initSection("morning");
+    </script>
   </body>
 </html>
