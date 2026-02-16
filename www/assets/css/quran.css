@@ -845,3 +845,26 @@
         animation: none !important;
     }
 }
+
+/* ==========================================
+   زر العودة للرئيسية
+   ========================================== */
+.back-button {
+    display: inline-block;
+    padding: 14px 30px;
+    background: var(--primary-color);
+    color: var(--text-light);
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.back-button:hover {
+    background: var(--secondary-color);
+    color: var(--dark-bg);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(148, 137, 121, 0.4);
+}
