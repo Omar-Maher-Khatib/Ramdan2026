@@ -2388,23 +2388,25 @@ function addCustomActivityToDOM(
 
 // Delete custom activity
 function deleteCustomActivity(prayer, activityId) {
-  const container = document.querySelector(
-    `.custom-activities-container[data-prayer="${prayer}"]`,
-  );
-  const activityItem = container.querySelector(
-    `.custom-activity-item[data-activity-id="${activityId}"]`,
-  );
+  showDeleteConfirmation(() => {
+    const container = document.querySelector(
+      `.custom-activities-container[data-prayer="${prayer}"]`,
+    );
+    const activityItem = container.querySelector(
+      `.custom-activity-item[data-activity-id="${activityId}"]`,
+    );
 
-  if (activityItem) {
-    activityItem.remove();
-    saveCustomActivities(prayer);
+    if (activityItem) {
+      activityItem.remove();
+      saveCustomActivities(prayer);
 
-    // Remove checkbox state from localStorage
-    const checkboxStateKey = `day${currentDay}_${prayer}_custom_${activityId}`;
-    localStorage.removeItem(checkboxStateKey);
+      // Remove checkbox state from localStorage
+      const checkboxStateKey = `day${currentDay}_${prayer}_custom_${activityId}`;
+      localStorage.removeItem(checkboxStateKey);
 
-    updateCardCompletionStatus();
-  }
+      updateCardCompletionStatus();
+    }
+  });
 }
 
 // Edit custom activity
@@ -2548,7 +2550,117 @@ const originalUpdateDayDisplay = updateDayDisplay;
 updateDayDisplay = function () {
   originalUpdateDayDisplay();
   loadCustomActivities();
+  loadDeletedFixedActivities();
 };
 
 // Load custom activities on initial load
 loadCustomActivities();
+
+// ============================================
+// DELETE FIXED ACTIVITIES
+// ============================================
+
+// Delete a fixed activity and save to localStorage
+function deleteFixedActivity(prayer, time) {
+  showDeleteConfirmation(() => {
+    const key = `deletedFixed_day${currentDay}_${prayer}_${time}`;
+    localStorage.setItem(key, "true");
+
+    // Remove checkbox state too
+    const checkboxKey = `day${currentDay}_${prayer}_${time}`;
+    localStorage.removeItem(checkboxKey);
+
+    // Hide the element
+    const activityItem = document.querySelector(
+      `.fixed-activity[data-prayer="${prayer}"][data-time="${time}"]`,
+    );
+    if (activityItem) {
+      activityItem.style.transition = "all 0.3s ease";
+      activityItem.style.opacity = "0";
+      activityItem.style.transform = "translateX(30px)";
+      setTimeout(() => {
+        activityItem.style.display = "none";
+        updateCardCompletionStatus();
+      }, 300);
+    }
+  });
+}
+
+// Show delete confirmation modal
+function showDeleteConfirmation(onConfirm) {
+  const overlay = document.createElement("div");
+  overlay.className = "modal-overlay";
+  overlay.innerHTML = `
+    <div class="modal-content" style="max-width: 380px; text-align: center;">
+      <div style="font-size: 3em; margin-bottom: 15px;">🗑️</div>
+      <h2 style="color: #DFD0B8; margin-bottom: 12px; font-size: 1.3em;">حذف النشاط</h2>
+      <p style="color: #b0b0b0; margin-bottom: 25px; font-size: 1em;">هل أنت متأكد من حذف هذا النشاط؟</p>
+      <div class="modal-footer">
+        <button class="modal-btn modal-btn-primary" id="confirmDeleteBtn" style="background: rgba(220, 38, 38, 0.9);">
+          حذف
+        </button>
+        <button class="modal-btn modal-btn-secondary" id="cancelDeleteBtn">
+          إلغاء
+        </button>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+
+  const confirmBtn = overlay.querySelector("#confirmDeleteBtn");
+  const cancelBtn = overlay.querySelector("#cancelDeleteBtn");
+
+  confirmBtn.addEventListener("click", () => {
+    overlay.remove();
+    onConfirm();
+  });
+
+  cancelBtn.addEventListener("click", () => {
+    overlay.remove();
+  });
+
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) overlay.remove();
+  });
+
+  document.addEventListener(
+    "keydown",
+    (e) => {
+      if (e.key === "Escape") overlay.remove();
+    },
+    { once: true },
+  );
+}
+
+// Load deleted fixed activities state for current day
+function loadDeletedFixedActivities() {
+  document.querySelectorAll(".fixed-activity").forEach((item) => {
+    const prayer = item.dataset.prayer;
+    const time = item.dataset.time;
+    const key = `deletedFixed_day${currentDay}_${prayer}_${time}`;
+    const isDeleted = localStorage.getItem(key) === "true";
+
+    if (isDeleted) {
+      item.style.display = "none";
+      item.style.opacity = "0";
+    } else {
+      item.style.display = "";
+      item.style.opacity = "";
+      item.style.transform = "";
+    }
+  });
+}
+
+// Add event listeners to all fixed activity delete buttons
+document.querySelectorAll(".delete-fixed-btn").forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const prayer = btn.dataset.prayer;
+    const time = btn.dataset.time;
+    deleteFixedActivity(prayer, time);
+  });
+});
+
+// Load deleted fixed activities on initial load
+loadDeletedFixedActivities();
