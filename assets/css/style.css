@@ -516,11 +516,28 @@ header p {
     
     .day-selector {
         top: 10px;
-        padding: 10px 15px;
-        gap: 10px;
+        padding: 12px 15px;
+        gap: 0;
         flex-wrap: wrap;
-        width: 95%;
-        border-radius: 20px;
+        justify-content: center;
+        width: 90%;
+        max-width: 400px;
+        border-radius: 16px;
+    }
+    
+    .day-selector > .nav-btn:first-child {
+        order: 1;
+    }
+    
+    .day-display {
+        order: 2;
+        font-size: 1em;
+        gap: 8px;
+        margin: 0 10px;
+    }
+    
+    .day-selector > .nav-btn:nth-child(3) {
+        order: 3;
     }
     
     .day-number {
@@ -528,18 +545,14 @@ header p {
         min-width: 40px;
     }
     
-    .day-display {
-        font-size: 1em;
-        gap: 8px;
-    }
-    
     .nav-btn {
-        width: 35px;
-        height: 35px;
+        width: 38px;
+        height: 38px;
         font-size: 1.2em;
     }
     
     .date-picker-container {
+        order: 4;
         width: 100%;
         justify-content: center;
         margin: 10px 0 0 0;
@@ -608,37 +621,47 @@ header p {
     
     .day-selector {
         top: 5px;
-        padding: 8px 10px;
-        gap: 8px;
+        padding: 10px 12px;
+        gap: 0;
+        width: 92%;
+        max-width: 340px;
+        border-radius: 14px;
     }
     
     .day-number {
-        font-size: 1.2em;
-        min-width: 30px;
+        font-size: 1.4em;
+        min-width: 35px;
     }
     
     .day-display {
-        font-size: 0.85em;
-        gap: 5px;
+        font-size: 0.9em;
+        gap: 6px;
+        margin: 0 8px;
     }
     
     .day-label {
-        font-size: 0.9em;
+        font-size: 0.85em;
     }
     
     .nav-btn {
-        width: 30px;
-        height: 30px;
+        width: 34px;
+        height: 34px;
         font-size: 1em;
+        flex-shrink: 0;
+    }
+    
+    .date-picker-container {
+        margin: 8px 0 0 0;
     }
     
     .day-selector-dropdown {
         font-size: 0.9em;
-        padding: 6px 10px;
+        padding: 8px 10px;
+        min-width: unset;
     }
     
     .container {
-        margin-top: 140px;
+        margin-top: 135px;
     }
     
     header {
@@ -738,21 +761,39 @@ header p {
 /* Very Small Mobile */
 @media (max-width: 360px) {
     .day-selector {
-        padding: 6px 8px;
+        padding: 8px 10px;
+        width: 95%;
+        max-width: 300px;
     }
     
     .day-number {
-        font-size: 1em;
+        font-size: 1.2em;
+        min-width: 30px;
     }
     
     .day-display {
-        font-size: 0.75em;
+        font-size: 0.8em;
+        gap: 4px;
+        margin: 0 5px;
     }
     
     .nav-btn {
-        width: 25px;
-        height: 25px;
+        width: 30px;
+        height: 30px;
         font-size: 0.9em;
+    }
+    
+    .date-picker-container {
+        margin: 6px 0 0 0;
+    }
+    
+    .day-selector-dropdown {
+        font-size: 0.85em;
+        padding: 6px 8px;
+    }
+    
+    .container {
+        margin-top: 125px;
     }
     
     header h1 {
