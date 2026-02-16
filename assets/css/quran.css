@@ -1,0 +1,847 @@
+/* ==========================================
+   وِردي القرآني - Quran Tracker Styles
+   ========================================== */
+
+/* الحاوية */
+.quran-container {
+    max-width: 900px;
+    padding-top: 30px;
+}
+
+/* ==========================================
+   الرأس (Header)
+   ========================================== */
+.quran-header {
+    text-align: center;
+    padding: 40px 20px 30px;
+    margin-bottom: 30px;
+    animation: fadeInDown 0.8s ease-out;
+}
+
+.header-icon {
+    font-size: 4em;
+    margin-bottom: 15px;
+    animation: float 3s ease-in-out infinite;
+}
+
+.header-title {
+    font-size: 2.5em;
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.header-subtitle {
+    font-size: 1.1em;
+    color: var(--primary-color);
+}
+
+/* ==========================================
+   عنوان الأقسام
+   ========================================== */
+.section-title {
+    font-size: 1.5em;
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.section-desc {
+    color: var(--text-dim);
+    margin-bottom: 30px;
+    font-size: 1.05em;
+    text-align: center;
+}
+
+/* ==========================================
+   قسم اختيار الهدف (Setup)
+   ========================================== */
+.setup-section {
+    text-align: center;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.khatma-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.khatma-card {
+    background: rgba(34, 40, 49, 0.8);
+    border: 2px solid rgba(148, 137, 121, 0.3);
+    border-radius: 16px;
+    padding: 30px 20px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.khatma-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent, rgba(212, 175, 55, 0.08));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.khatma-card:hover::before {
+    opacity: 1;
+}
+
+.khatma-card:hover {
+    border-color: var(--accent-gold);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 35px rgba(212, 175, 55, 0.2);
+}
+
+.khatma-card:active {
+    transform: translateY(-4px) scale(1.01);
+}
+
+.khatma-number {
+    font-size: 3em;
+    color: var(--accent-gold);
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+}
+
+.khatma-label {
+    font-size: 1.2em;
+    color: var(--secondary-color);
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.khatma-pages {
+    color: var(--text-dim);
+    font-size: 0.95em;
+}
+
+/* ==========================================
+   شريط الهدف (Goal Banner)
+   ========================================== */
+.goal-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(212, 175, 55, 0.08);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    border-radius: 12px;
+    padding: 15px 25px;
+    margin-bottom: 25px;
+    animation: fadeIn 0.5s ease;
+}
+
+.goal-text {
+    color: var(--secondary-color);
+    font-size: 1.1em;
+}
+
+.goal-text strong {
+    color: var(--accent-gold);
+}
+
+.change-goal-btn {
+    background: rgba(148, 137, 121, 0.25);
+    border: 1px solid rgba(148, 137, 121, 0.4);
+    color: var(--secondary-color);
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9em;
+    font-family: inherit;
+}
+
+.change-goal-btn:hover {
+    background: rgba(148, 137, 121, 0.45);
+    transform: translateY(-2px);
+}
+
+/* ==========================================
+   بطاقات الإحصائيات (Stats)
+   ========================================== */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 30px;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.stat-card {
+    background: rgba(34, 40, 49, 0.8);
+    border: 1px solid rgba(148, 137, 121, 0.2);
+    border-radius: 14px;
+    padding: 20px 12px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.stat-icon {
+    font-size: 1.5em;
+    margin-bottom: 8px;
+}
+
+.stat-number {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: var(--accent-gold);
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 0.85em;
+    color: var(--text-dim);
+}
+
+/* ==========================================
+   حلقة التقدم (Progress Ring)
+   ========================================== */
+.progress-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    margin-bottom: 30px;
+    background: rgba(34, 40, 49, 0.6);
+    border-radius: 18px;
+    padding: 35px;
+    border: 1px solid rgba(148, 137, 121, 0.12);
+    animation: fadeInUp 0.7s ease-out;
+}
+
+.progress-ring-container {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    flex-shrink: 0;
+}
+
+.progress-ring {
+    transform: rotate(-90deg);
+}
+
+.progress-ring-bg {
+    fill: none;
+    stroke: rgba(148, 137, 121, 0.12);
+    stroke-width: 12;
+}
+
+.progress-ring-fill {
+    fill: none;
+    stroke: var(--accent-gold);
+    stroke-width: 12;
+    stroke-linecap: round;
+    stroke-dasharray: 565.48;
+    stroke-dashoffset: 565.48;
+    transition: stroke-dashoffset 1s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.4));
+}
+
+.progress-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.progress-percent {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: var(--accent-gold);
+    line-height: 1.2;
+}
+
+.progress-label {
+    font-size: 0.9em;
+    color: var(--text-dim);
+    margin-top: 4px;
+}
+
+/* معلومات الختمة الحالية */
+.khatma-info-box {
+    text-align: center;
+}
+
+.khatma-info-box h3 {
+    color: var(--secondary-color);
+    font-size: 1.4em;
+    margin-bottom: 18px;
+}
+
+.khatma-info-box h3 span {
+    color: var(--accent-gold);
+}
+
+.current-page-display {
+    font-size: 1.1em;
+    color: var(--text-dim);
+    margin-bottom: 18px;
+}
+
+.current-page-display span {
+    color: var(--accent-gold);
+    font-weight: bold;
+    font-size: 1.4em;
+}
+
+.page-progress-bar {
+    width: 220px;
+    height: 10px;
+    background: rgba(148, 137, 121, 0.15);
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.page-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-gold), var(--accent-green));
+    border-radius: 5px;
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 0%;
+}
+
+/* ==========================================
+   وِرد اليوم (Today's Reading)
+   ========================================== */
+.today-reading {
+    background: rgba(34, 40, 49, 0.8);
+    border: 1px solid rgba(148, 137, 121, 0.2);
+    border-radius: 18px;
+    padding: 30px;
+    margin-bottom: 30px;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.today-info {
+    text-align: center;
+    margin: 22px 0;
+}
+
+.today-range {
+    font-size: 1.2em;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.today-range strong {
+    color: var(--accent-gold);
+    font-size: 1.4em;
+    background: rgba(212, 175, 55, 0.1);
+    padding: 6px 18px;
+    border-radius: 10px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.today-status {
+    margin-top: 18px;
+    font-size: 1em;
+    padding: 12px 20px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.today-status.ahead {
+    color: var(--accent-green);
+    background: rgba(74, 157, 95, 0.1);
+    border: 1px solid rgba(74, 157, 95, 0.25);
+}
+
+.today-status.behind {
+    color: #e07a5f;
+    background: rgba(224, 122, 95, 0.1);
+    border: 1px solid rgba(224, 122, 95, 0.25);
+}
+
+.today-status.on-track {
+    color: var(--accent-gold);
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+/* ==========================================
+   قسم تحديث التقدم (Update)
+   ========================================== */
+.update-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 22px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(148, 137, 121, 0.12);
+}
+
+.update-section label {
+    color: var(--secondary-color);
+    font-size: 1.05em;
+    font-weight: 500;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+}
+
+.input-btn {
+    width: 42px;
+    height: 42px;
+    background: rgba(148, 137, 121, 0.25);
+    border: 1px solid rgba(148, 137, 121, 0.35);
+    color: var(--text-light);
+    font-size: 1.4em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.input-btn.minus {
+    border-radius: 8px 0 0 8px;
+}
+
+.input-btn.plus {
+    border-radius: 0 8px 8px 0;
+}
+
+.input-btn:hover {
+    background: rgba(148, 137, 121, 0.45);
+}
+
+.input-btn:active {
+    transform: scale(0.95);
+}
+
+#pageInput {
+    width: 80px;
+    height: 42px;
+    text-align: center;
+    font-size: 1.15em;
+    background: rgba(26, 31, 38, 0.95);
+    border: 1px solid rgba(148, 137, 121, 0.35);
+    border-left: none;
+    border-right: none;
+    color: var(--accent-gold);
+    font-weight: bold;
+    outline: none;
+    font-family: inherit;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+#pageInput::-webkit-outer-spin-button,
+#pageInput::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#pageInput:focus {
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.15);
+}
+
+.update-btn {
+    background: linear-gradient(135deg, var(--accent-gold), #c49b2f);
+    color: #1a1f26;
+    border: none;
+    padding: 11px 28px;
+    border-radius: 10px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.update-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+}
+
+.update-btn:active {
+    transform: translateY(-1px);
+}
+
+/* ==========================================
+   تتبع الأجزاء (Juz Tracker)
+   ========================================== */
+.juz-tracker {
+    margin-bottom: 30px;
+    animation: fadeInUp 0.9s ease-out;
+}
+
+.juz-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.juz-box {
+    background: rgba(34, 40, 49, 0.8);
+    border: 2px solid rgba(148, 137, 121, 0.15);
+    border-radius: 12px;
+    padding: 14px 8px;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.juz-box:hover {
+    transform: translateY(-2px);
+}
+
+.juz-num {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: var(--text-dim);
+    margin-bottom: 4px;
+    line-height: 1.2;
+}
+
+.juz-label {
+    font-size: 0.7em;
+    color: rgba(176, 176, 176, 0.6);
+}
+
+/* جزء مكتمل */
+.juz-box.completed {
+    border-color: var(--accent-green);
+    background: rgba(74, 157, 95, 0.12);
+}
+
+.juz-box.completed .juz-num {
+    color: var(--accent-green);
+}
+
+.juz-box.completed::after {
+    content: '✓';
+    display: block;
+    font-size: 0.7em;
+    color: var(--accent-green);
+    margin-top: 2px;
+}
+
+/* الجزء الحالي */
+.juz-box.current {
+    border-color: var(--accent-gold);
+    background: rgba(212, 175, 55, 0.1);
+    animation: juzPulse 2s ease-in-out infinite;
+}
+
+.juz-box.current .juz-num {
+    color: var(--accent-gold);
+}
+
+.juz-box.current::after {
+    content: '◄';
+    display: block;
+    font-size: 0.65em;
+    color: var(--accent-gold);
+    margin-top: 2px;
+}
+
+@keyframes juzPulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 18px 4px rgba(212, 175, 55, 0.12);
+    }
+}
+
+/* ==========================================
+   زر إعادة التعيين (Reset)
+   ========================================== */
+.reset-section {
+    text-align: center;
+    margin: 35px 0;
+}
+
+.reset-btn {
+    background: rgba(224, 122, 95, 0.1);
+    border: 1px solid rgba(224, 122, 95, 0.25);
+    color: #e07a5f;
+    padding: 12px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.95em;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.reset-btn:hover {
+    background: rgba(224, 122, 95, 0.2);
+    border-color: rgba(224, 122, 95, 0.4);
+    transform: translateY(-2px);
+}
+
+/* ==========================================
+   نافذة الاحتفال (Celebration Modal)
+   ========================================== */
+.celebration-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    backdrop-filter: blur(6px);
+}
+
+.celebration-overlay.active {
+    display: flex;
+    animation: fadeIn 0.3s ease;
+}
+
+.celebration-content {
+    background: linear-gradient(135deg, #222831, #2d3642);
+    border: 2px solid var(--accent-gold);
+    border-radius: 24px;
+    padding: 50px 40px;
+    text-align: center;
+    max-width: 420px;
+    width: 90%;
+    animation: celebrationPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 20px 60px rgba(212, 175, 55, 0.2);
+}
+
+.celebration-icon {
+    font-size: 5em;
+    margin-bottom: 20px;
+    animation: celebrateBounce 0.8s ease infinite alternate;
+}
+
+.celebration-title {
+    font-size: 2em;
+    color: var(--accent-gold);
+    margin-bottom: 15px;
+}
+
+.celebration-text {
+    font-size: 1.15em;
+    color: var(--text-dim);
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.celebration-btn {
+    background: linear-gradient(135deg, var(--accent-gold), #c49b2f);
+    color: #1a1f26;
+    border: none;
+    padding: 14px 40px;
+    border-radius: 12px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.celebration-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.35);
+}
+
+@keyframes celebrationPop {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes celebrateBounce {
+    from {
+        transform: translateY(0) scale(1);
+    }
+    to {
+        transform: translateY(-10px) scale(1.1);
+    }
+}
+
+/* ==========================================
+   الاستجابة (Responsive)
+   ========================================== */
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .progress-section {
+        flex-direction: column;
+        gap: 30px;
+        padding: 25px 20px;
+    }
+
+    .page-progress-bar {
+        width: 180px;
+    }
+
+    .juz-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .header-title {
+        font-size: 2em;
+    }
+
+    .khatma-grid {
+        gap: 15px;
+    }
+
+    .goal-banner {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .quran-container {
+        padding: 15px;
+        padding-top: 20px;
+    }
+
+    .quran-header {
+        padding: 30px 15px 20px;
+        margin-bottom: 20px;
+    }
+
+    .header-icon {
+        font-size: 3em;
+    }
+
+    .header-title {
+        font-size: 1.6em;
+    }
+
+    .header-subtitle {
+        font-size: 1em;
+    }
+
+    .khatma-grid {
+        grid-template-columns: 1fr;
+        max-width: 300px;
+    }
+
+    .khatma-card {
+        padding: 22px 15px;
+    }
+
+    .stat-number {
+        font-size: 1.5em;
+    }
+
+    .stat-label {
+        font-size: 0.78em;
+    }
+
+    .juz-grid {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 6px;
+    }
+
+    .juz-box {
+        padding: 10px 5px;
+    }
+
+    .juz-num {
+        font-size: 1.2em;
+    }
+
+    .update-section {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .today-range {
+        font-size: 1.05em;
+    }
+
+    .today-range strong {
+        font-size: 1.2em;
+        padding: 4px 12px;
+    }
+
+    .progress-ring-container {
+        width: 180px;
+        height: 180px;
+    }
+
+    .progress-ring {
+        width: 180px;
+        height: 180px;
+    }
+
+    .progress-ring-bg,
+    .progress-ring-fill {
+        cx: 90;
+        cy: 90;
+        r: 72;
+    }
+
+    .progress-percent {
+        font-size: 2em;
+    }
+
+    .celebration-content {
+        padding: 35px 25px;
+    }
+
+    .celebration-icon {
+        font-size: 3.5em;
+    }
+
+    .celebration-title {
+        font-size: 1.5em;
+    }
+}
+
+/* تحسينات الأداء */
+@media (prefers-reduced-motion: reduce) {
+    .progress-ring-fill {
+        transition: stroke-dashoffset 0.3s ease !important;
+    }
+
+    .juz-box.current {
+        animation: none !important;
+    }
+
+    .celebration-icon {
+        animation: none !important;
+    }
+}

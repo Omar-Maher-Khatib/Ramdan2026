@@ -5,48 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>وِردي القرآني - التطبيق الإسلامي</title>
     <link rel="stylesheet" href="assets/css/home.css" />
-    <style>
-      .coming-soon {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        min-height: 80vh;
-        text-align: center;
-        padding: 40px 20px;
-      }
-      .coming-soon-icon {
-        font-size: 5em;
-        margin-bottom: 30px;
-        animation: float 3s ease-in-out infinite;
-      }
-      .coming-soon-title {
-        font-size: 2.5em;
-        color: #dfd0b8;
-        margin-bottom: 20px;
-      }
-      .coming-soon-text {
-        font-size: 1.2em;
-        color: #948979;
-        margin-bottom: 40px;
-      }
-      .back-button {
-        display: inline-block;
-        padding: 15px 40px;
-        background: linear-gradient(135deg, #948979, #dfd0b8);
-        color: #222831;
-        text-decoration: none;
-        border-radius: 50px;
-        font-size: 1.1em;
-        font-weight: bold;
-        transition: all 0.3s ease;
-        box-shadow: 0 8px 20px rgba(148, 137, 121, 0.3);
-      }
-      .back-button:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 12px 30px rgba(148, 137, 121, 0.5);
-      }
-    </style>
+    <link rel="stylesheet" href="assets/css/quran.css" />
   </head>
   <body>
     <div class="background-overlay"></div>
@@ -119,14 +78,167 @@
 
     <div class="overlay" id="overlay"></div>
 
-    <div class="container coming-soon">
-      <div class="coming-soon-icon">📖</div>
-      <h1 class="coming-soon-title">وِردي القرآني</h1>
-      <p class="coming-soon-text">
-        هذه الميزة قيد التطوير<br />
-        ستكون متاحة قريباً إن شاء الله
-      </p>
-      <a href="index.html" class="back-button">← العودة للرئيسية</a>
+    <div class="container quran-container">
+      <!-- Header -->
+      <header class="quran-header">
+        <div class="header-icon">📖</div>
+        <h1 class="header-title">وِردي القرآني</h1>
+        <p class="header-subtitle">تتبع قراءتك للقرآن الكريم في رمضان</p>
+      </header>
+
+      <!-- ===== Setup Section ===== -->
+      <section class="setup-section" id="setupSection">
+        <h2 class="section-title">🎯 اختر هدفك لرمضان</h2>
+        <p class="section-desc">
+          كم مرة تريد ختم القرآن الكريم خلال شهر رمضان المبارك؟
+        </p>
+
+        <div class="khatma-grid">
+          <div class="khatma-card" data-count="1">
+            <div class="khatma-number">١</div>
+            <div class="khatma-label">ختمة واحدة</div>
+            <div class="khatma-pages">~20 صفحة / يوم</div>
+          </div>
+          <div class="khatma-card" data-count="2">
+            <div class="khatma-number">٢</div>
+            <div class="khatma-label">ختمتان</div>
+            <div class="khatma-pages">~41 صفحة / يوم</div>
+          </div>
+          <div class="khatma-card" data-count="3">
+            <div class="khatma-number">٣</div>
+            <div class="khatma-label">3 ختمات</div>
+            <div class="khatma-pages">~61 صفحة / يوم</div>
+          </div>
+          <div class="khatma-card" data-count="4">
+            <div class="khatma-number">٤</div>
+            <div class="khatma-label">4 ختمات</div>
+            <div class="khatma-pages">~81 صفحة / يوم</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Dashboard Section ===== -->
+      <section
+        class="dashboard-section"
+        id="dashboardSection"
+        style="display: none"
+      >
+        <!-- Goal Banner -->
+        <div class="goal-banner">
+          <span class="goal-text"
+            >🎯 هدفك: <strong id="goalText">ختمة واحدة</strong></span
+          >
+          <button class="change-goal-btn" id="changeGoalBtn">
+            تغيير الهدف
+          </button>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon">📄</div>
+            <div class="stat-number" id="pagesPerDay">20</div>
+            <div class="stat-label">صفحة / يوم</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">⏳</div>
+            <div class="stat-number" id="daysRemaining">30</div>
+            <div class="stat-label">يوم متبقي</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">✅</div>
+            <div class="stat-number" id="totalRead">0</div>
+            <div class="stat-label">صفحة مقروءة</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">🏆</div>
+            <div class="stat-number" id="completedKhatmas">0/1</div>
+            <div class="stat-label">ختمات مكتملة</div>
+          </div>
+        </div>
+
+        <!-- Progress Ring + Khatma Info -->
+        <div class="progress-section">
+          <div class="progress-ring-container">
+            <svg class="progress-ring" width="220" height="220">
+              <circle class="progress-ring-bg" cx="110" cy="110" r="90" />
+              <circle
+                class="progress-ring-fill"
+                id="progressRing"
+                cx="110"
+                cy="110"
+                r="90"
+              />
+            </svg>
+            <div class="progress-center">
+              <div class="progress-percent" id="progressPercent">0%</div>
+              <div class="progress-label">الإنجاز الكلي</div>
+            </div>
+          </div>
+
+          <div class="khatma-info-box">
+            <h3>
+              الختمة <span id="currentKhatmaNum">1</span> من
+              <span id="totalKhatmas">1</span>
+            </h3>
+            <div class="current-page-display">
+              وصلت لصفحة <span id="currentPageDisplay">0</span> من 604
+            </div>
+            <div class="page-progress-bar">
+              <div class="page-progress-fill" id="khatmaProgressBar"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Today's Reading -->
+        <div class="today-reading">
+          <h3 class="section-title">📚 وِرد اليوم</h3>
+          <div class="today-info">
+            <div class="today-range">
+              <span>اقرأ من صفحة</span>
+              <strong id="fromPage">1</strong>
+              <span>إلى صفحة</span>
+              <strong id="toPage">20</strong>
+            </div>
+            <div class="today-status" id="todayStatus"></div>
+          </div>
+
+          <div class="update-section">
+            <label for="pageInput">وصلت لصفحة:</label>
+            <div class="input-group" dir="ltr">
+              <button class="input-btn minus" id="pageMinus">−</button>
+              <input type="number" id="pageInput" min="1" max="604" value="1" />
+              <button class="input-btn plus" id="pagePlus">+</button>
+            </div>
+            <button class="update-btn" id="updateBtn">تحديث التقدم</button>
+          </div>
+        </div>
+
+        <!-- Juz Tracker -->
+        <div class="juz-tracker">
+          <h3 class="section-title">📋 تتبع الأجزاء</h3>
+          <div class="juz-grid" id="juzGrid">
+            <!-- Generated by JS -->
+          </div>
+        </div>
+
+        <!-- Reset -->
+        <div class="reset-section">
+          <button class="reset-btn" id="resetBtn">🔄 إعادة تعيين التقدم</button>
+        </div>
+      </section>
+    </div>
+
+    <!-- Celebration Modal -->
+    <div class="celebration-overlay" id="celebrationModal">
+      <div class="celebration-content">
+        <div class="celebration-icon" id="celebrationIcon">🎉</div>
+        <h2 class="celebration-title" id="celebrationTitle">مبارك!</h2>
+        <p class="celebration-text" id="celebrationText">
+          أتممت ختمة القرآن الكريم
+        </p>
+        <button class="celebration-btn" id="celebrationBtn">متابعة</button>
+      </div>
     </div>
 
     <footer class="main-footer">
@@ -136,5 +248,6 @@
     </footer>
 
     <script src="assets/js/navbar.js"></script>
+    <script src="assets/js/quran.js"></script>
   </body>
 </html>
